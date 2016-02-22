@@ -7,16 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		291D2A8E1C76A7FA00237283 /* WaveFormOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 291D2A8D1C76A7FA00237283 /* WaveFormOverlay.m */; };
+		291D2A911C76AE4B00237283 /* Global.m in Sources */ = {isa = PBXBuildFile; fileRef = 291D2A901C76AE4B00237283 /* Global.m */; };
+		291D792B1C759FFE00AE8D6D /* ControlsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 291D792A1C759FFE00AE8D6D /* ControlsView.m */; };
+		295E440F1C7AF9BE002B28FD /* Draw_Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 295E440E1C7AF9BE002B28FD /* Draw_Helper.m */; };
+		298290DF1C7561F7007613D6 /* RingBuff_t.c in Sources */ = {isa = PBXBuildFile; fileRef = 298290DE1C7561F7007613D6 /* RingBuff_t.c */; };
 		29D060181C6F96D000EC3B92 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29D060171C6F96D000EC3B92 /* main.m */; };
 		29D0601B1C6F96D000EC3B92 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 29D0601A1C6F96D000EC3B92 /* AppDelegate.m */; };
 		29D0601E1C6F96D000EC3B92 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29D0601D1C6F96D000EC3B92 /* ViewController.m */; };
 		29D060211C6F96D000EC3B92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29D0601F1C6F96D000EC3B92 /* Main.storyboard */; };
 		29D060231C6F96D000EC3B92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29D060221C6F96D000EC3B92 /* Assets.xcassets */; };
 		29D060261C6F96D000EC3B92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29D060241C6F96D000EC3B92 /* LaunchScreen.storyboard */; };
+		29D0602F1C6F96E300EC3B92 /* MicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29D0602E1C6F96E300EC3B92 /* MicController.m */; };
+		29D060321C6F971F00EC3B92 /* functions.c in Sources */ = {isa = PBXBuildFile; fileRef = 29D060311C6F971F00EC3B92 /* functions.c */; };
+		29D060351C71649400EC3B92 /* WaveFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = 29D060341C71649400EC3B92 /* WaveFormView.m */; };
+		29E4715A1C75646E00F6EA59 /* AlexRingBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E471591C75646E00F6EA59 /* AlexRingBuffer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		29D060131C6F96D000EC3B92 /* WavformVizualizer_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WavformVizualizer_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		291D2A8C1C76A7FA00237283 /* WaveFormOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveFormOverlay.h; sourceTree = "<group>"; };
+		291D2A8D1C76A7FA00237283 /* WaveFormOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveFormOverlay.m; sourceTree = "<group>"; };
+		291D2A8F1C76AE4B00237283 /* Global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
+		291D2A901C76AE4B00237283 /* Global.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Global.m; sourceTree = "<group>"; };
+		291D79291C759FFE00AE8D6D /* ControlsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlsView.h; sourceTree = "<group>"; };
+		291D792A1C759FFE00AE8D6D /* ControlsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlsView.m; sourceTree = "<group>"; };
+		295E440D1C7AF9BE002B28FD /* Draw_Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Draw_Helper.h; sourceTree = "<group>"; };
+		295E440E1C7AF9BE002B28FD /* Draw_Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Draw_Helper.m; sourceTree = "<group>"; };
+		298290DD1C7561D8007613D6 /* RingBuff_t.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RingBuff_t.h; sourceTree = "<group>"; };
+		298290DE1C7561F7007613D6 /* RingBuff_t.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = RingBuff_t.c; sourceTree = "<group>"; };
+		29D060131C6F96D000EC3B92 /* DraWWave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DraWWave.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29D060171C6F96D000EC3B92 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29D060191C6F96D000EC3B92 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		29D0601A1C6F96D000EC3B92 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -26,6 +45,14 @@
 		29D060221C6F96D000EC3B92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29D060251C6F96D000EC3B92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		29D060271C6F96D000EC3B92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		29D0602D1C6F96E300EC3B92 /* MicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MicController.h; sourceTree = "<group>"; };
+		29D0602E1C6F96E300EC3B92 /* MicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MicController.m; sourceTree = "<group>"; };
+		29D060301C6F971F00EC3B92 /* functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = functions.h; sourceTree = "<group>"; };
+		29D060311C6F971F00EC3B92 /* functions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = functions.c; sourceTree = "<group>"; };
+		29D060331C71649400EC3B92 /* WaveFormView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveFormView.h; sourceTree = "<group>"; };
+		29D060341C71649400EC3B92 /* WaveFormView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveFormView.m; sourceTree = "<group>"; };
+		29E471581C75646E00F6EA59 /* AlexRingBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexRingBuffer.h; sourceTree = "<group>"; };
+		29E471591C75646E00F6EA59 /* AlexRingBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexRingBuffer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +77,7 @@
 		29D060141C6F96D000EC3B92 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				29D060131C6F96D000EC3B92 /* WavformVizualizer_iOS.app */,
+				29D060131C6F96D000EC3B92 /* DraWWave.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,15 +85,33 @@
 		29D060151C6F96D000EC3B92 /* WavformVizualizer_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				29D060191C6F96D000EC3B92 /* AppDelegate.h */,
-				29D0601A1C6F96D000EC3B92 /* AppDelegate.m */,
+				29D060301C6F971F00EC3B92 /* functions.h */,
+				29D060311C6F971F00EC3B92 /* functions.c */,
+				291D2A8F1C76AE4B00237283 /* Global.h */,
+				291D2A901C76AE4B00237283 /* Global.m */,
+				29D0602D1C6F96E300EC3B92 /* MicController.h */,
+				29D0602E1C6F96E300EC3B92 /* MicController.m */,
+				29D060331C71649400EC3B92 /* WaveFormView.h */,
+				29D060341C71649400EC3B92 /* WaveFormView.m */,
 				29D0601C1C6F96D000EC3B92 /* ViewController.h */,
 				29D0601D1C6F96D000EC3B92 /* ViewController.m */,
+				295E440D1C7AF9BE002B28FD /* Draw_Helper.h */,
+				295E440E1C7AF9BE002B28FD /* Draw_Helper.m */,
+				291D79291C759FFE00AE8D6D /* ControlsView.h */,
+				291D792A1C759FFE00AE8D6D /* ControlsView.m */,
 				29D0601F1C6F96D000EC3B92 /* Main.storyboard */,
 				29D060221C6F96D000EC3B92 /* Assets.xcassets */,
 				29D060241C6F96D000EC3B92 /* LaunchScreen.storyboard */,
 				29D060271C6F96D000EC3B92 /* Info.plist */,
 				29D060161C6F96D000EC3B92 /* Supporting Files */,
+				29E471581C75646E00F6EA59 /* AlexRingBuffer.h */,
+				29E471591C75646E00F6EA59 /* AlexRingBuffer.m */,
+				298290DD1C7561D8007613D6 /* RingBuff_t.h */,
+				298290DE1C7561F7007613D6 /* RingBuff_t.c */,
+				291D2A8C1C76A7FA00237283 /* WaveFormOverlay.h */,
+				291D2A8D1C76A7FA00237283 /* WaveFormOverlay.m */,
+				29D060191C6F96D000EC3B92 /* AppDelegate.h */,
+				29D0601A1C6F96D000EC3B92 /* AppDelegate.m */,
 			);
 			path = WavformVizualizer_iOS;
 			sourceTree = "<group>";
@@ -82,9 +127,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		29D060121C6F96D000EC3B92 /* WavformVizualizer_iOS */ = {
+		29D060121C6F96D000EC3B92 /* DraWWave */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 29D0602A1C6F96D000EC3B92 /* Build configuration list for PBXNativeTarget "WavformVizualizer_iOS" */;
+			buildConfigurationList = 29D0602A1C6F96D000EC3B92 /* Build configuration list for PBXNativeTarget "DraWWave" */;
 			buildPhases = (
 				29D0600F1C6F96D000EC3B92 /* Sources */,
 				29D060101C6F96D000EC3B92 /* Frameworks */,
@@ -94,9 +139,9 @@
 			);
 			dependencies = (
 			);
-			name = WavformVizualizer_iOS;
+			name = DraWWave;
 			productName = WavformVizualizer_iOS;
-			productReference = 29D060131C6F96D000EC3B92 /* WavformVizualizer_iOS.app */;
+			productReference = 29D060131C6F96D000EC3B92 /* DraWWave.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -113,7 +158,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 29D0600E1C6F96D000EC3B92 /* Build configuration list for PBXProject "WavformVizualizer_iOS" */;
+			buildConfigurationList = 29D0600E1C6F96D000EC3B92 /* Build configuration list for PBXProject "DraWWave" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -126,7 +171,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				29D060121C6F96D000EC3B92 /* WavformVizualizer_iOS */,
+				29D060121C6F96D000EC3B92 /* DraWWave */,
 			);
 		};
 /* End PBXProject section */
@@ -149,9 +194,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				291D2A911C76AE4B00237283 /* Global.m in Sources */,
 				29D0601E1C6F96D000EC3B92 /* ViewController.m in Sources */,
 				29D0601B1C6F96D000EC3B92 /* AppDelegate.m in Sources */,
+				291D792B1C759FFE00AE8D6D /* ControlsView.m in Sources */,
+				29D060321C6F971F00EC3B92 /* functions.c in Sources */,
+				29E4715A1C75646E00F6EA59 /* AlexRingBuffer.m in Sources */,
+				291D2A8E1C76A7FA00237283 /* WaveFormOverlay.m in Sources */,
+				298290DF1C7561F7007613D6 /* RingBuff_t.c in Sources */,
 				29D060181C6F96D000EC3B92 /* main.m in Sources */,
+				295E440F1C7AF9BE002B28FD /* Draw_Helper.m in Sources */,
+				29D0602F1C6F96E300EC3B92 /* MicController.m in Sources */,
+				29D060351C71649400EC3B92 /* WaveFormView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,7 +318,7 @@
 				INFOPLIST_FILE = WavformVizualizer_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "test.WavformVizualizer-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DraWWave;
 			};
 			name = Debug;
 		};
@@ -275,14 +329,14 @@
 				INFOPLIST_FILE = WavformVizualizer_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "test.WavformVizualizer-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DraWWave;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		29D0600E1C6F96D000EC3B92 /* Build configuration list for PBXProject "WavformVizualizer_iOS" */ = {
+		29D0600E1C6F96D000EC3B92 /* Build configuration list for PBXProject "DraWWave" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				29D060281C6F96D000EC3B92 /* Debug */,
@@ -291,13 +345,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		29D0602A1C6F96D000EC3B92 /* Build configuration list for PBXNativeTarget "WavformVizualizer_iOS" */ = {
+		29D0602A1C6F96D000EC3B92 /* Build configuration list for PBXNativeTarget "DraWWave" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				29D0602B1C6F96D000EC3B92 /* Debug */,
 				29D0602C1C6F96D000EC3B92 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
