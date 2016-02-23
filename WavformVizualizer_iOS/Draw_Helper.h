@@ -22,10 +22,7 @@
 
 - (void)increment;
 
-//- (int)getMissing;
-
 - (NSMutableArray *)getMissingPoints_WithDirection:(BOOL)direction;
-
 
 @end
 

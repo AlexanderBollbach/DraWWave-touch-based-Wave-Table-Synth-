@@ -73,13 +73,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WavformVizualizer_iOS/ViewController.m"
-            timestampString = "477877666.118486"
+            filePath = "WavformVizualizer_iOS/Draw_Helper.m"
+            timestampString = "477881998.59719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
-            landmarkName = "-pan:"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "-getMissingPoints_WithDirection:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WavformVizualizer_iOS/Draw_Helper.m"
-            timestampString = "477874582.959181"
+            timestampString = "477892545.981922"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
             landmarkName = "-getMissingPoints_WithDirection:"
             landmarkType = "5">
          </BreakpointContent>

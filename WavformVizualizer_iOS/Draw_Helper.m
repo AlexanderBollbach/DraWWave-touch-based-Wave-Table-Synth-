@@ -10,13 +10,9 @@
 #import <UIKit/UIKit.h>
 
 @implementation Draw_Helper {
-   
    int xAxis[1000];
    float yAxis[1000];
-   
    int idx;
-
-   
 }
 
 
@@ -43,12 +39,12 @@
 
 - (void)pushXValue:(int)value {
    xAxis[idx] = value;
- 
+   
 }
 
 - (void)pushYValue:(int)value {
    yAxis[idx] = value;
-  
+   
 }
 
 
@@ -69,65 +65,6 @@
    
 }
 
-
-
-
-
-
-
-- (NSMutableArray *)getMissingPoints_WithDirection:(BOOL)direction {
-   
-   NSMutableArray *missingPoints = [NSMutableArray array];
-   
-   int missing = 0;
-   int j = 1;
-
-      int this = xAxis[idx];
-      int last = xAxis[idx - j];
-      if (this != (last + 1) && !(idx - j < 0) && !(this == last)) {
-         missing = this - last;
-      } else {
-         return nil;
-      }
-      
-   
-//   if (idx - j < 0) {
-//      return nil;
-//   }
-   
-//   if (this == last) {
-//      return nil;
-//   }
-//   
-   
-    //  j++;
-      
-   //}
-   
-   if (missing == 0) { // can missing even be 0 at this point?
-      return nil;
-   }
-   
-   
-   // now create samples
-   
-   float yLo = yAxis[idx -  1];
-   float yHi = yAxis[idx];
-   float ave = (yHi - yLo) / missing;
-   
-   float y = yLo;
-
-   for (int x = 0; x < missing; x++) {
-
-      int baseX = xAxis[idx - 1] + 1;
-      CGPoint point = CGPointMake(baseX + x, (y += ave));
-      [missingPoints addObject:[NSValue valueWithCGPoint:point]];
-      
-   }
-   return missingPoints;
-}
-
-
 - (void)dump {
    
    for (int x = 0 ; x < 100; x++) {
@@ -139,59 +76,47 @@
 }
 
 
-
-// NEW BELOW WITH REVERSE
-
-
-//
-//
-//
-//- (NSMutableArray *)getMissingPoints_WithDirection:(BOOL)direction {
-//   
-//   NSMutableArray *missingPoints = [NSMutableArray array];
-//   
-//   int missing = 0;
-//   int j;
-//   
-//   if (direction == YES) {
-//      j = 1;
-//   }  else {
-//      j = -1;
-//   }
-//   
-//   int this = xAxis[idx];
-//   int last = xAxis[idx - j];
-//   
-//   if (this != (last + j) && !(idx - j < 0) && !(this == last)) {
-//      missing = this - last;
-//   } else {
-//      return nil;
-//   }
-//   
-//   //
-//   //   if (missing == 0) { // can missing even be 0 at this point?
-//   //      return nil;
-//   //   }
-//   
-//   float yLo = yAxis[idx - j];
-//   float yHi = yAxis[idx];
-//   float ave = (yHi - yLo) / missing;
-//   
-//   if (direction) {
-//      ave = -ave;
-//   }
-//   
-//   float y = yLo;
-//   
-//   for (int x = 0; x < missing; x++) {
-//      
-//      int baseX = xAxis[idx - j] + 1;
-//      CGPoint point = CGPointMake(baseX + x, (y += ave));
-//      [missingPoints addObject:[NSValue valueWithCGPoint:point]];
-//      
-//   }
-//   return missingPoints;
-//}
+- (NSMutableArray *)getMissingPoints_WithDirection:(BOOL)direction {
+   
+   NSMutableArray *missingPoints = [NSMutableArray array];
+   
+   int missing = 0;
+   int j = 1;
+   
+   
+   int this = xAxis[idx];
+   int last = xAxis[idx - j];
+   
+   if (this != (last + j) && !(idx == 0) && !(this == last)) {
+      missing = abs(this - last);
+   } else {
+      return nil;
+   }
+   
+   //
+   //   if (missing == 0) { // can missing even be 0 at this point?
+   //      return nil;
+   //   }
+   
+   float yLo = yAxis[idx - 1];
+   float yHi = yAxis[idx];
+   float ave = (yHi - yLo) / missing; // because i am not taking abs value of ylo and yhi difference the slope is implicit.  i.e. i don't have to change "y += ave" to "y -= ave" if yHi is lower than yLo. also, it doesn't seem that direction needs to be taken into account for y+=ave...
+   
+   //   if (!direction) {
+   //      ave = -ave;
+   //   }
+   
+   float y = yLo;
+   
+   for (int x = 0; x < missing; x++) {
+      
+      int baseX = xAxis[idx - j] + ((direction) ? 1 : -1);
+      CGPoint point = CGPointMake(baseX + ((direction) ? x : -x), (y += ave));
+      [missingPoints addObject:[NSValue valueWithCGPoint:point]];
+      
+   }
+   return missingPoints;
+}
 
 
 @end
