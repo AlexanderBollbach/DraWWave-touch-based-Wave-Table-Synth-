@@ -13,7 +13,7 @@
 
 #define kOutputBus 0
 #define kInputBus 1
-#define kSampleRate 44100.0
+#define kSampleRate 88200
 #define kBufferDuration 0.01
 
 
@@ -61,6 +61,9 @@
    if (self = [super init]) {
       
       
+      samplesBuffer = malloc(300000 * sizeof(float));
+      effectsBuffer = malloc(500000 * sizeof(float));
+
       self.bufferDuration = kBufferDuration;
       
       self.global = [Global sharedInstance];
@@ -70,10 +73,7 @@
       
       
       
-      
-      samplesBuffer = malloc(300000 * sizeof(float));
-      effectsBuffer = malloc(500000 * sizeof(float));
-
+    
       
       
    }
@@ -113,7 +113,6 @@
             (long)audioSessionError.code, audioSessionError.localizedDescription);
    }
    
-   // register for callbacks when route changes
    [[NSNotificationCenter defaultCenter] addObserver: self
                                             selector: @selector(handleRouteChange:)
                                                 name: AVAudioSessionRouteChangeNotification
@@ -136,65 +135,13 @@
 
 - (void)handleRouteChange:(NSNotification *)notification {
    printf("handle\n");
+  // CheckError(, "Couldn't initialize input unit");
+   
+
 }
-
-- (void)setBufferSizeFromMode:(int)mode {
-   
-   NSTimeInterval bufferDuration;
-   
-   switch (mode) {
-      case 1:
-         bufferDuration = 0.0001;
-         break;
-      case 2:
-         bufferDuration = 0.001;
-         break;
-      case 3:
-         bufferDuration = 0.0; // reserved
-         break;
-      case 4:
-         bufferDuration = 0.0; // reserved
-         break;
-      case 5:
-         bufferDuration = 0.001;
-         break;
-      default:
-         break;
-   }
-   
-   
-   //   NSError *audioSessionError = nil;
-   //   AVAudioSession *session = [AVAudioSession sharedInstance];
-   //
-   //
-   //   if (self.remoteIOUnit != NULL) {
-   //      AudioOutputUnitStop(self.remoteIOUnit);
-   //      AudioUnitUninitialize(self.remoteIOUnit);
-   //      self.remoteIOUnit = NULL;
-   //   }
-   
-   
-   //   [session setActive:NO error:&audioSessionError];
-   //
-   //   [session setPreferredIOBufferDuration:bufferDuration error:&audioSessionError];
-   //   if (audioSessionError) {
-   //      NSLog(@"Error %ld, %@",
-   //            (long)audioSessionError.code, audioSessionError.localizedDescription);
-   //   }
-   
-   
-   
-   
-}
-
-
-
-
 
 
 - (void)initializeAU {
-   
-   printf("beginningg of intiailize au \n");
    
    AudioComponentDescription iocd;
    iocd.componentType = kAudioUnitType_Output;
@@ -248,7 +195,7 @@
    
    
    
-   UInt32 shouldAllocateBuffer = 0;
+   UInt32 shouldAllocateBuffer = 1;
    CheckError(AudioUnitSetProperty(remoteIOUnit,
                                    kAudioUnitProperty_ShouldAllocateBuffer,
                                    kAudioUnitScope_Input,
@@ -260,8 +207,7 @@
    
    
    
-   //////// INITIALIZE RemoteIO
-   CheckError(AudioUnitInitialize(remoteIOUnit), "Couldn't initialize input unit");
+  
    
    /////////////////////////////////////////////////// bufferlist
    UInt32 maxFrames = 0;
@@ -292,17 +238,7 @@
    
    
    
-   /////////////////////////////////////////////// callback setup
-   AURenderCallbackStruct callbackStruct;
-   callbackStruct.inputProc = inputCallback;
-   callbackStruct.inputProcRefCon = (__bridge void * _Nullable)self;
-   CheckError(AudioUnitSetProperty(remoteIOUnit,
-                                   kAudioOutputUnitProperty_SetInputCallback,
-                                   kAudioUnitScope_Global,
-                                   kInputBus,
-                                   &callbackStruct,
-                                   sizeof(callbackStruct)), "Couldn't set input callback");
-   AURenderCallbackStruct renderCallback;
+     AURenderCallbackStruct renderCallback;
    renderCallback.inputProc = playbackCallback;
    renderCallback.inputProcRefCon = (__bridge void * _Nullable)self;
    CheckError(AudioUnitSetProperty(remoteIOUnit,
@@ -315,13 +251,13 @@
    
    
    
-   
-   
-   ////////////  START ///
-   CheckError(AudioOutputUnitStart(remoteIOUnit), "Couldn't initialize input unit");
-   
-   //  printf("max frame = %i \n", maxFrames);
-   
+   //////// INITIALIZE RemoteIO
+   CheckError(AudioUnitInitialize(remoteIOUnit), "Couldn't initialize input unit");
+
+ 
+   OSStatus err = AudioOutputUnitStart(remoteIOUnit);
+
+//   AudioOutputUnitStop(remoteIOUnit);
 }
 
 
@@ -345,58 +281,63 @@ OSStatus playbackCallback(void * inRefCon,
                           UInt32 inNumberFrames,
                           AudioBufferList * ioData) {
    
+   
+   
+   static int howMany = 0;
+   howMany++;
+   
    AudioController *THIS = (__bridge AudioController *)inRefCon;
    
+
    
-   
-   
+   float * temp = ioData->mBuffers[0].mData;
    
    int start = (int)THIS.global.modeManager.mode1.param1.value;
    int end = (int)THIS.global.modeManager.mode1.param2.value;
    
-   static BOOL dir = NO;
-   static float LFO = 0;
    
+   if (end < 0 || start < 0) return noErr;
+   
+  //  clear outside of start/end
+   for (int x = 0;  x < start; x++) {
+      THIS->samplesBuffer[x] = 0;
+   }
+   for (int x = end;  x < 1000; x++) {
+      THIS->samplesBuffer[x] = 0;
+   }
 
-   
-   THIS->effectsBuffer = THIS->samplesBuffer;
-   
-   float * output = ioData->mBuffers[0].mData;
-   
+
+   float lfoRate = THIS.global.modeManager.mode2.param1.value;
+   float lfoAmount = THIS.global.modeManager.mode2.param2.value / 100;
+
+
+
    for (int x = 0; x < inNumberFrames; x++) {
-      
-      if (THIS.bufferIndex >= end) {
-         THIS.bufferIndex = start;
-      }
-      
-      
       
       
       THIS->timeIndex++;
-      if (THIS->timeIndex % 100 == 0) {
-         dir = !dir;
-      }
-      if (dir) {
-         LFO = 0.011;
-      } else {
-         LFO = -0.011;
-      }
-
       
-  
-      THIS->samplesBuffer[THIS.bufferIndex] += LFO;
       
+      if (THIS.bufferIndex >= end) THIS.bufferIndex = start;
+      if (THIS->samplesBuffer[THIS.bufferIndex] > 1) THIS->samplesBuffer[THIS.bufferIndex] = 1;
+      if (THIS->samplesBuffer[THIS.bufferIndex] < -1) THIS->samplesBuffer[THIS.bufferIndex] = -1;
+      
+      
+      
+      if (THIS->timeIndex % (int)lfoRate == 0) lfoAmount = -lfoAmount;
+      THIS->samplesBuffer[THIS.bufferIndex] += lfoAmount;
+      
+      
+      
+      
+      temp[x] = THIS->samplesBuffer[THIS.bufferIndex];
       
       THIS.bufferIndex++;
-      
-      
-      output[x] = THIS->samplesBuffer[THIS.bufferIndex];
-      
 
    }
    
    
-  
+  // ioData->mBuffers[0].mData = THIS->samplesBuffer;
    
    return noErr;
 }
@@ -485,27 +426,6 @@ void gain(float * data, int amount, int n) {
 
 
 
-
-
-#pragma mark - remoteIO input -
-OSStatus inputCallback(void *inRefCon,
-                       AudioUnitRenderActionFlags *ioActionFlags,
-                       const AudioTimeStamp *inTimeStamp,
-                       UInt32 inBusNumber,
-                       UInt32 inNumberFrames,
-                       AudioBufferList * ioData) {
-   
-   AudioController *SELFP = (__bridge AudioController *)inRefCon;
-   
-   CheckError(AudioUnitRender(SELFP->remoteIOUnit,
-                              ioActionFlags,
-                              inTimeStamp,
-                              inBusNumber,
-                              inNumberFrames,
-                              SELFP.inputBuffer), "audio unit render");
-   
-   return noErr;
-}
 
 
 

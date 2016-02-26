@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WaveFormOverlay : UIView
+@interface WaveFormOverlayView : UIView
 
 @end

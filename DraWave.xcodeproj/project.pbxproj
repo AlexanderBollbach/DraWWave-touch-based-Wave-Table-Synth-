@@ -18,7 +18,7 @@
 		2902AB391C7C455E004632DF /* RingBuff_t.c in Sources */ = {isa = PBXBuildFile; fileRef = 298290DE1C7561F7007613D6 /* RingBuff_t.c */; };
 		2902AB3A1C7C4560004632DF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 29D0601A1C6F96D000EC3B92 /* AppDelegate.m */; };
 		2902AB3B1C7C4563004632DF /* WaveFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = 29D060341C71649400EC3B92 /* WaveFormView.m */; };
-		2902AB3C1C7C4565004632DF /* WaveFormOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 291D2A8D1C76A7FA00237283 /* WaveFormOverlay.m */; };
+		2902AB3C1C7C4565004632DF /* WaveFormOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 291D2A8D1C76A7FA00237283 /* WaveFormOverlayView.m */; };
 		2902AB3D1C7C4566004632DF /* ControlsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 291D792A1C759FFE00AE8D6D /* ControlsView.m */; };
 		2902AB3E1C7C456D004632DF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2902AB111C7C436B004632DF /* main.m */; };
 		2902AB471C7C50B6004632DF /* ModeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2902AB461C7C50B6004632DF /* ModeManager.m */; };
@@ -28,11 +28,16 @@
 		2902AB561C7D4CB3004632DF /* SampleMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2902AB551C7D4CB3004632DF /* SampleMode.m */; };
 		2902AB591C7D4DC5004632DF /* CreateMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2902AB581C7D4DC5004632DF /* CreateMode.m */; };
 		2902AB5C1C7D6E81004632DF /* ModeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2902AB5B1C7D6E81004632DF /* ModeCollectionViewCell.m */; };
+		2902AB5F1C7DB461004632DF /* LFOMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2902AB5E1C7DB461004632DF /* LFOMode.m */; };
+		2902AB621C7E6AC9004632DF /* ControlsViewB.m in Sources */ = {isa = PBXBuildFile; fileRef = 2902AB611C7E6AC9004632DF /* ControlsViewB.m */; };
+		29F305051C7EBB1D00912694 /* WaveFormHolderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F305041C7EBB1D00912694 /* WaveFormHolderView.m */; };
+		29F305321C7EF2D300912694 /* WaveFormBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F305311C7EF2D300912694 /* WaveFormBackgroundView.m */; };
+		29F305351C7FB55300912694 /* CV_lineDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F305341C7FB55300912694 /* CV_lineDrawer.m */; };
+		29F305391C7FC0A300912694 /* ParameterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F305381C7FC0A300912694 /* ParameterView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2902AB111C7C436B004632DF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = content/main.m; sourceTree = "<group>"; };
-		2902AB181C7C44EB004632DF /* DraWave_Iphone_Target.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = DraWave_Iphone_Target.app; path = "/Users/alexanderbollbach/Desktop/DraWWave/build/Debug-iphoneos/DraWave_Iphone_Target.app"; sourceTree = "<absolute>"; };
 		2902AB1B1C7C44EB004632DF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2902AB1D1C7C44EB004632DF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2902AB1E1C7C44EB004632DF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -55,8 +60,12 @@
 		2902AB581C7D4DC5004632DF /* CreateMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateMode.m; sourceTree = "<group>"; };
 		2902AB5A1C7D6E81004632DF /* ModeCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModeCollectionViewCell.h; sourceTree = "<group>"; };
 		2902AB5B1C7D6E81004632DF /* ModeCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModeCollectionViewCell.m; sourceTree = "<group>"; };
-		291D2A8C1C76A7FA00237283 /* WaveFormOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveFormOverlay.h; sourceTree = "<group>"; };
-		291D2A8D1C76A7FA00237283 /* WaveFormOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveFormOverlay.m; sourceTree = "<group>"; };
+		2902AB5D1C7DB461004632DF /* LFOMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFOMode.h; sourceTree = "<group>"; };
+		2902AB5E1C7DB461004632DF /* LFOMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFOMode.m; sourceTree = "<group>"; };
+		2902AB601C7E6AC9004632DF /* ControlsViewB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlsViewB.h; sourceTree = "<group>"; };
+		2902AB611C7E6AC9004632DF /* ControlsViewB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlsViewB.m; sourceTree = "<group>"; };
+		291D2A8C1C76A7FA00237283 /* WaveFormOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveFormOverlayView.h; sourceTree = "<group>"; };
+		291D2A8D1C76A7FA00237283 /* WaveFormOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveFormOverlayView.m; sourceTree = "<group>"; };
 		291D2A8F1C76AE4B00237283 /* Global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
 		291D2A901C76AE4B00237283 /* Global.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Global.m; sourceTree = "<group>"; };
 		291D79291C759FFE00AE8D6D /* ControlsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlsView.h; sourceTree = "<group>"; };
@@ -81,6 +90,15 @@
 		29E471581C75646E00F6EA59 /* AlexRingBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexRingBuffer.h; sourceTree = "<group>"; };
 		29E471591C75646E00F6EA59 /* AlexRingBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexRingBuffer.m; sourceTree = "<group>"; };
 		29E59ECD1C7C429B0038D86B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		29F305021C7E9CC400912694 /* DraWave_Iphone_Target.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DraWave_Iphone_Target.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		29F305031C7EBB1D00912694 /* WaveFormHolderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveFormHolderView.h; sourceTree = "<group>"; };
+		29F305041C7EBB1D00912694 /* WaveFormHolderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveFormHolderView.m; sourceTree = "<group>"; };
+		29F305301C7EF2D300912694 /* WaveFormBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveFormBackgroundView.h; sourceTree = "<group>"; };
+		29F305311C7EF2D300912694 /* WaveFormBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveFormBackgroundView.m; sourceTree = "<group>"; };
+		29F305331C7FB55300912694 /* CV_lineDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CV_lineDrawer.h; sourceTree = "<group>"; };
+		29F305341C7FB55300912694 /* CV_lineDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CV_lineDrawer.m; sourceTree = "<group>"; };
+		29F305371C7FC0A300912694 /* ParameterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParameterView.h; sourceTree = "<group>"; };
+		29F305381C7FC0A300912694 /* ParameterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParameterView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,10 +150,8 @@
 		295E44101C7C323A002B28FD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				29D060331C71649400EC3B92 /* WaveFormView.h */,
-				29D060341C71649400EC3B92 /* WaveFormView.m */,
-				291D2A8C1C76A7FA00237283 /* WaveFormOverlay.h */,
-				291D2A8D1C76A7FA00237283 /* WaveFormOverlay.m */,
+				29F305361C7FC08C00912694 /* ControlViews */,
+				29F305061C7EBB2500912694 /* WaveFormViews */,
 				291D79291C759FFE00AE8D6D /* ControlsView.h */,
 				291D792A1C759FFE00AE8D6D /* ControlsView.m */,
 				2902AB5A1C7D6E81004632DF /* ModeCollectionViewCell.h */,
@@ -178,6 +194,8 @@
 				2902AB551C7D4CB3004632DF /* SampleMode.m */,
 				2902AB571C7D4DC5004632DF /* CreateMode.h */,
 				2902AB581C7D4DC5004632DF /* CreateMode.m */,
+				2902AB5D1C7DB461004632DF /* LFOMode.h */,
+				2902AB5E1C7DB461004632DF /* LFOMode.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -191,6 +209,7 @@
 				29D060271C6F96D000EC3B92 /* Info.plist */,
 				29D060151C6F96D000EC3B92 /* content */,
 				2902AB191C7C44EB004632DF /* DraWave_Iphone_Target */,
+				29F305021C7E9CC400912694 /* DraWave_Iphone_Target.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -203,6 +222,34 @@
 				295E44111C7C3254002B28FD /* Help */,
 			);
 			path = content;
+			sourceTree = "<group>";
+		};
+		29F305061C7EBB2500912694 /* WaveFormViews */ = {
+			isa = PBXGroup;
+			children = (
+				29F305031C7EBB1D00912694 /* WaveFormHolderView.h */,
+				29F305041C7EBB1D00912694 /* WaveFormHolderView.m */,
+				29D060331C71649400EC3B92 /* WaveFormView.h */,
+				29D060341C71649400EC3B92 /* WaveFormView.m */,
+				291D2A8C1C76A7FA00237283 /* WaveFormOverlayView.h */,
+				291D2A8D1C76A7FA00237283 /* WaveFormOverlayView.m */,
+				29F305301C7EF2D300912694 /* WaveFormBackgroundView.h */,
+				29F305311C7EF2D300912694 /* WaveFormBackgroundView.m */,
+			);
+			name = WaveFormViews;
+			sourceTree = "<group>";
+		};
+		29F305361C7FC08C00912694 /* ControlViews */ = {
+			isa = PBXGroup;
+			children = (
+				29F305331C7FB55300912694 /* CV_lineDrawer.h */,
+				29F305341C7FB55300912694 /* CV_lineDrawer.m */,
+				2902AB601C7E6AC9004632DF /* ControlsViewB.h */,
+				2902AB611C7E6AC9004632DF /* ControlsViewB.m */,
+				29F305371C7FC0A300912694 /* ParameterView.h */,
+				29F305381C7FC0A300912694 /* ParameterView.m */,
+			);
+			name = ControlViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,7 +269,7 @@
 			);
 			name = DraWave_Iphone_Target;
 			productName = DraWave_Iphone_Target;
-			productReference = 2902AB181C7C44EB004632DF /* DraWave_Iphone_Target.app */;
+			productReference = 29F305021C7E9CC400912694 /* DraWave_Iphone_Target.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -276,19 +323,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				2902AB4F1C7D12F1004632DF /* Parameter.m in Sources */,
+				29F305351C7FB55300912694 /* CV_lineDrawer.m in Sources */,
 				2902AB321C7C453C004632DF /* ViewController.m in Sources */,
 				2902AB591C7D4DC5004632DF /* CreateMode.m in Sources */,
+				29F305321C7EF2D300912694 /* WaveFormBackgroundView.m in Sources */,
 				2902AB311C7C453B004632DF /* AudioController.m in Sources */,
+				29F305391C7FC0A300912694 /* ParameterView.m in Sources */,
+				29F305051C7EBB1D00912694 /* WaveFormHolderView.m in Sources */,
 				2902AB3E1C7C456D004632DF /* main.m in Sources */,
 				2902AB5C1C7D6E81004632DF /* ModeCollectionViewCell.m in Sources */,
 				2902AB391C7C455E004632DF /* RingBuff_t.c in Sources */,
-				2902AB3C1C7C4565004632DF /* WaveFormOverlay.m in Sources */,
+				2902AB3C1C7C4565004632DF /* WaveFormOverlayView.m in Sources */,
 				2902AB4C1C7C5365004632DF /* Mode.m in Sources */,
 				2902AB3B1C7C4563004632DF /* WaveFormView.m in Sources */,
 				2902AB561C7D4CB3004632DF /* SampleMode.m in Sources */,
 				2902AB361C7C4559004632DF /* functions.c in Sources */,
+				2902AB5F1C7DB461004632DF /* LFOMode.m in Sources */,
 				2902AB3A1C7C4560004632DF /* AppDelegate.m in Sources */,
 				2902AB471C7C50B6004632DF /* ModeManager.m in Sources */,
+				2902AB621C7E6AC9004632DF /* ControlsViewB.m in Sources */,
 				2902AB3D1C7C4566004632DF /* ControlsView.m in Sources */,
 				2902AB381C7C455D004632DF /* AlexRingBuffer.m in Sources */,
 				2902AB371C7C455B004632DF /* Draw_Helper.m in Sources */,
@@ -446,6 +499,7 @@
 				2902AB2E1C7C44EB004632DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		29D0600E1C6F96D000EC3B92 /* Build configuration list for PBXProject "DraWave" */ = {
 			isa = XCConfigurationList;

@@ -12,6 +12,7 @@
 @interface ControlsView : UIView
 @property (nonatomic) BOOL pulledDown;
 
+@property (nonatomic,strong) UILabel * hudLabel;
 
 - (void)setup;
 @end

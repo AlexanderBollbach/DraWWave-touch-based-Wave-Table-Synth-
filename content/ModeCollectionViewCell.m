@@ -26,7 +26,7 @@
       self.backgroundColor = [UIColor clearColor];
       
       self.layer.borderColor = [UIColor whiteColor].CGColor;
-      self.layer.borderWidth = 0;
+      self.layer.borderWidth = 0.4;
    }
    return self;
 }

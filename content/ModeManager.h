@@ -11,6 +11,7 @@
 
 #import "SampleMode.h"
 #import "CreateMode.h"
+#import "LFOMode.h"
 
 @protocol ModeManagerDelegate <NSObject>
 
@@ -21,7 +22,7 @@
 @interface ModeManager : NSObject <ModeDelegate>
 
 @property (nonatomic,strong) SampleMode * mode1;
-@property (nonatomic,strong) CreateMode * mode2;
+@property (nonatomic,strong) LFOMode * mode2;
 @property (nonatomic,strong) Mode * mode3;
 @property (nonatomic,strong) Mode * mode4;
 @property (nonatomic,strong) Mode * mode5;
@@ -31,6 +32,16 @@
 @property (nonatomic,strong) NSMutableArray * allModes;
 
 @property (nonatomic,strong) id <ModeManagerDelegate> delegate;
+
+
+
+@property (nonatomic,strong) Parameter * waveStart;
+@property (nonatomic,strong) Parameter * waveEnd;
+@property (nonatomic,strong) Parameter * lfoAmount;
+@property (nonatomic,strong) Parameter * lfoRate;
+
+@property (nonatomic,strong) Parameter * activeXParam;
+@property (nonatomic,strong) Parameter * activeYParam;
 
 
 - (void)setActiveModeWithId:(int)Id;
@@ -43,6 +54,11 @@
 - (NSString *)getNameForActiveParam:(int)paramId;
 
 - (BOOL)isModeActive:(int)mode;
+
+
+
+- (void)setActiveXParamValue:(float)value;
+- (void)setActiveYParamValue:(float)value;
 
 
 @end

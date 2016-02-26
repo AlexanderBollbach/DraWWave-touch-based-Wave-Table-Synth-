@@ -11,8 +11,9 @@
 @implementation SampleMode
 
 -(void)setActiveParamValue:(UIPanGestureRecognizer *)pan andView:(UIView *)view {
-   
    [super setActiveParamValue:pan andView:view];
+   
+   
    
    if ([self.activeParameter isEqual:self.param1]) {
       int panScale = 100;
@@ -23,6 +24,7 @@
    }
    
  
+   
    if ([self.activeParameter isEqual:self.param2]) {
       int panScale = 100;
       float value = [pan velocityInView:view].x / panScale;
@@ -32,6 +34,8 @@
    }
    
    
+   
+   // special case: 3rd param adjusts 1st & 2nd param
  
    if ([self.activeParameter isEqual:self.param3]) {
       int panScale = 100;

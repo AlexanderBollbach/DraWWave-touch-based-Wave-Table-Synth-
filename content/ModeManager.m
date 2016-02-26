@@ -22,16 +22,17 @@
       self.mode1.param3.name = @"scan";
 
       
-      self.mode2 = [[CreateMode alloc] init];
-      self.mode2.name = @"create";
-      self.mode2.param1.name = @"draw";
-      self.mode2.param2.name = @"clear";
+      self.mode2 = [[LFOMode alloc] init];
+      self.mode2.name = @"LFO";
+      self.mode2.param1.name = @"rate";
+      self.mode2.param2.name = @"amount";
+      self.mode2.param3.name = @"---";
       self.mode2.delegate = self;
       
-      self.mode3 = [[Mode alloc] init];
-      self.mode3.name = @"nav";
-      self.mode3.param1.name = @"pan";
-      self.mode3.param2.name = @"zoom";
+      self.mode3 = [[CreateMode alloc] init];
+      self.mode3.name = @"mode3";
+      self.mode3.param1.name = @"param1";
+      self.mode3.param2.name = @"param2";
       self.mode3.delegate = self;
       
       self.mode4 = [[Mode alloc] init];
@@ -45,6 +46,23 @@
       self.mode5.param1.name = @"---";
       self.mode5.param2.name = @"---";
       self.mode5.delegate = self;
+      
+      
+      self.waveStart = [[Parameter alloc] init];
+      self.waveStart.value = 0;
+      self.waveStart.name = @"waveStart";
+      
+      self.waveEnd = [[Parameter alloc] init];
+      self.waveEnd.value = 0;
+      self.waveEnd.name = @"waveEnd";
+      
+      self.lfoRate = [[Parameter alloc] init];
+      self.lfoRate.value = 0;
+      self.lfoRate.name = @"lfoRate";
+      
+      self.lfoAmount = [[Parameter alloc] init];
+      self.lfoAmount.value = 0;
+      self.lfoAmount.name = @"lfoAmount";
       
       self.allModes = [NSMutableArray arrayWithObjects:self.mode1,self.mode2,self.mode3,self.mode4,self.mode5, nil];
       
@@ -86,6 +104,14 @@
    self.activeMode = [self.allModes objectAtIndex:Id];
 }
 
+
+- (void)setActiveXParamValue:(float)value {
+   self.activeXParam.value = value;
+}
+
+- (void)setActiveYParamValue:(float)value {
+   self.activeYParam.value = value;
+}
 
 #pragma mark - mode delegate -
 

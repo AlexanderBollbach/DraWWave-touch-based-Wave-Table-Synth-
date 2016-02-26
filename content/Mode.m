@@ -21,6 +21,10 @@
 
       self.allParameters = [NSMutableArray arrayWithObjects:self.param1,self.param2,self.param3, nil];
       
+      [self setActiveParameterWithId:0];
+      
+      self.param1.value = -2;
+      
    }
    return self;
 }
@@ -43,7 +47,9 @@
 
 
 - (void)setActiveParamValue:(UIPanGestureRecognizer *)pan andView:(UIView *)view {
-   [self.delegate parameterChanged:self.activeParameter.name withValue:self.activeParameter.value];   
+   
+   
+   [self.delegate parameterChanged:self.activeParameter.name withValue:self.activeParameter.value];
 }
 
 

@@ -14,12 +14,19 @@
 
 
 -(void)setActiveParamValue:(UIPanGestureRecognizer *)pan andView:(UIView *)view {
-   
    [super setActiveParamValue:pan andView:view];
+   
+   
    
    CGPoint point = [pan locationInView:view];
    BOOL direction = [pan velocityInView:view].x > 0;
 
+   if (pan.state == UIGestureRecognizerStateEnded) {
+      [[Draw_Helper sharedInstance] reset];
+      return;
+   }
+   
+   
    if (self.activeParameter == self.param1) { // draw param
       
       
@@ -38,9 +45,6 @@
 }
 
 
-- (void)resetDraw {
-   [[Draw_Helper sharedInstance] reset];
-}
 
 
 @end

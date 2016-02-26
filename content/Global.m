@@ -32,27 +32,12 @@
    return self;
 }
 
-#pragma mark - editing audio model -
-
-//- (void)writeSampleWithPoint:(CGPoint)point {
-
-
-//
-//   int i = alexMap(xPos, 0, screenWidth, self.startingSampleOnScreen, self.startingSampleOnScreen + self.samplesOnScreen);
-//   
-//   float * buffer = [[AudioController sharedInstance] getsamplesBuffer];
-//   
-//   buffer[i] = amp;
-
-//}
-
-
 
 
 
 -(void)parameterChangedWithName:(NSString *)name andValue:(float)value {
    
-   NSString * hudString = [NSString stringWithFormat:@"%@->%@ : %f", self.modeManager.activeMode.name,name, value];
+   NSString * hudString = [NSString stringWithFormat:@"%f", value];
    [self.delegate showOnHUDDisplay:hudString];
 }
 

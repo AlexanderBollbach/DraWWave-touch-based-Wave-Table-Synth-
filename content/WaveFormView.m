@@ -9,37 +9,21 @@
 #import "WaveFormView.h"
 #import "functions.h"
 #import "AudioController.h"
-#import "AlexRingBuffer.h"
 #import "Global.h"
 
 @implementation WaveFormView {
-   
-   
-   //AlexRingBuffer * alexRingBuffer;
-   
+
    UIBezierPath * path;
-   
-//   float * data;
-   
-   int startingSample; // 0 -- current sample count - 1
-   
-   
    float * sampleData;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame {
    if (self = [super initWithFrame:frame]) {
-      
-      
-      
+
+      self.backgroundColor = [UIColor blackColor];
       self.clearsContextBeforeDrawing = YES;
       path = [UIBezierPath bezierPath];
       
-      
-      AudioController *mc = [AudioController sharedInstance];
-      sampleData = [mc getsamplesBuffer];
-      
-   
    }
    return self;
 }
@@ -68,7 +52,7 @@
       [path addLineToPoint:CGPointMake(i,CGRectGetHeight(self.bounds) - amplitude)];
    }
    
-   [[UIColor redColor] set];
+   [[UIColor colorWithRed:0.8 green:0.2 blue:0.4 alpha:0.6] set];
    [path setLineWidth:1];
    [path stroke];
 }

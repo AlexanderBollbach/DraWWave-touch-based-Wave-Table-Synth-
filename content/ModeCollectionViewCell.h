@@ -11,5 +11,6 @@
 @interface ModeCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic,strong) UILabel * name;
+@property (nonatomic) BOOL active;
 
 @end
