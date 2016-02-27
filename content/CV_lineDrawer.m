@@ -47,15 +47,23 @@
       CGContextAddLineToPoint(context, self.currentPoint.x, self.currentPoint.y);
    }
    
-   if (self.xISConnected) {
-      CGContextMoveToPoint(context, self.xFrom.x, self.xFrom.y);
-      CGContextAddLineToPoint(context, self.xTo.x, self.xTo.y);
+   if (self.KS_X1_ISConnected) {
+      CGContextMoveToPoint(context, self.KS_X1_From.x, self.KS_X1_From.y);
+      CGContextAddLineToPoint(context, self.KS_X1_To.x, self.KS_X1_To.y);
    }
-   
-   if (self.yISConnected) {
-      CGContextMoveToPoint(context, self.yFrom.x, self.yFrom.y);
-      CGContextAddLineToPoint(context, self.yTo.x, self.yTo.y);
+   if (self.KS_Y1_ISConnected) {
+      CGContextMoveToPoint(context, self.KS_Y1_From.x, self.KS_Y1_From.y);
+      CGContextAddLineToPoint(context, self.KS_Y1_To.x, self.KS_Y1_To.y);
    }
+   if (self.KS_X2_ISConnected) {
+      CGContextMoveToPoint(context, self.KS_X2_From.x, self.KS_X2_From.y);
+      CGContextAddLineToPoint(context, self.KS_X2_To.x, self.KS_X2_To.y);
+   }
+   if (self.KS_Y2_ISConnected) {
+      CGContextMoveToPoint(context, self.KS_Y2_From.x, self.KS_Y2_From.y);
+      CGContextAddLineToPoint(context, self.KS_Y2_To.x, self.KS_Y2_To.y);
+   }
+
    
    
    CGContextSetLineWidth(context, 1.0f);

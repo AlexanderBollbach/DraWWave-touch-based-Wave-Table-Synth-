@@ -1,13 +1,13 @@
 //
-//  kaossConnection.m
+//  ControlsViewController.h
 //  DraWave
 //
 //  Created by alexanderbollbach on 2/26/16.
 //  Copyright © 2016 alexanderbollbach. All rights reserved.
 //
 
-#import "kaossConnection.h"
+#import <UIKit/UIKit.h>
 
-@implementation kaossConnection
+@interface KS_ConnectionViewController : UIViewController
 
 @end

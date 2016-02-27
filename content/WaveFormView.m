@@ -23,12 +23,17 @@
       self.clearsContextBeforeDrawing = YES;
       path = [UIBezierPath bezierPath];
       
+      CADisplayLink * link = [CADisplayLink displayLinkWithTarget:self selector:@selector(tick)];
+      [link addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+      
    }
    return self;
 }
 
 
-
+- (void)tick {
+   [self setNeedsDisplay];
+}
 
 - (void)drawRect:(CGRect)rect {
    [super drawRect:rect];
@@ -51,7 +56,7 @@
       [path addLineToPoint:CGPointMake(i,CGRectGetHeight(self.bounds) - amplitude)];
    }
    
-   [[UIColor colorWithRed:0.8 green:0.2 blue:0.4 alpha:0.6] set];
+   [[UIColor colorWithRed:0.8 green:0.2 blue:0.4 alpha:0.5] set];
    [path setLineWidth:1];
    [path stroke];
 }

@@ -26,7 +26,6 @@
 - (int *)getsamplesIndex;
 
 
-//- (void)setWaveStartValue:(float)value;
 - (void)setSamplesDurationValue:(float)value;
 - (void)setLfoRateValue:(float)value;
 - (void)setLfoAmountValue:(float)value;

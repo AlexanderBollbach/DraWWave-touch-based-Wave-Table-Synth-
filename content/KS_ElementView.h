@@ -7,14 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Types.h"
+#import "kaossTypes.h"
 
-@interface Param_Gesture_View : UIView
+@interface KS_ElementView : UIView
 
 @property (nonatomic,strong) UILabel * name;
-@property (nonatomic) ParamSelected_t paramType;
-@property (nonatomic) Gesture_t gestureType;
-@property BOOL isGesture;
+@property (nonatomic) KS_Element_t element;
 
 - (void)animate:(BOOL)animate;
 

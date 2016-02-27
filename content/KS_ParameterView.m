@@ -1,14 +1,14 @@
 //
-//  ParameterView.m
+//  KS_ParameterView.m
 //  DraWave
 //
-//  Created by alexanderbollbach on 2/25/16.
+//  Created by alexanderbollbach on 2/26/16.
 //  Copyright © 2016 alexanderbollbach. All rights reserved.
 //
 
-#import "Param_Gesture_View.h"
+#import "KS_ParameterView.h"
 
-@implementation Param_Gesture_View
+@implementation KS_ParameterView
 
 - (instancetype)initWithFrame:(CGRect)frame {
    if (self = [super initWithFrame:frame]) {
@@ -29,7 +29,7 @@
    
    self.layer.borderColor = [UIColor whiteColor].CGColor;
    self.layer.borderWidth = 1;
-
+   
 }
 
 -(void)layoutSubviews {

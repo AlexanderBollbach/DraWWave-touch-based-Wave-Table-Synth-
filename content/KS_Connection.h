@@ -1,5 +1,5 @@
 //
-//  KaossManager.h
+//  kaossConnection.h
 //  DraWave
 //
 //  Created by alexanderbollbach on 2/26/16.
@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "KaossControlView.h"
+#import "kaossTypes.h"
 
-@interface KaossConnectionManager : NSObject<KaossControlViewDelegate>
 
-+ (instancetype)sharedInstance;
+@interface KS_Connection : NSObject
+
+@property KS_Element_t element;
+@property KS_Parameter_t parameter;
 
 @end
+

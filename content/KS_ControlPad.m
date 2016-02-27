@@ -6,9 +6,11 @@
 //  Copyright © 2016 alexanderbollbach. All rights reserved.
 //
 
-#import "KaossControlView.h"
+#import "KS_ControlPad.h"
+#import "functions.h"
+#import "KS_ConnectionManager.h"
 
-@interface KaossControlView()
+@interface KS_ControlPad()
 
 @property float xPosition;
 @property float yPosition;
@@ -18,7 +20,7 @@
 
 @end
 
-@implementation KaossControlView
+@implementation KS_ControlPad
 
 - (instancetype)initWithFrame:(CGRect)frame {
    if (self = [super initWithFrame:frame]) {
@@ -29,7 +31,9 @@
 
 - (void)setup {
    
-   self.backgroundColor = [UIColor blackColor];
+   self.delegate = [KS_ConnectionManager sharedInstance];
+   
+   self.backgroundColor = [UIColor clearColor];
    self.clearsContextBeforeDrawing = YES;
    
    UIPanGestureRecognizer * pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
@@ -40,18 +44,24 @@
    self.yReadOut = @"test y";
 }
 
-
+// sends values of 0-100 along with element that sent them to connection manager
 - (void)pan:(UIPanGestureRecognizer *)pan {
    
    float xPanVal = [pan locationInView:self].x;
-   [self.delegate kaossChangedWithElement:self.elementX andValue:xPanVal];
+   self.xPosition = xPanVal;
+
+   xPanVal = alexMap(xPanVal, 0, CGRectGetWidth(self.bounds), 0, 100);
+   
+   [self.delegate ks_ChangedWithElement:self.elementX andValue:xPanVal];
    
    float yPanVal = [pan locationInView:self].y;
-   [self.delegate kaossChangedWithElement:self.elementY andValue:xPanVal];
-   
-   self.xPosition = xPanVal;
    self.yPosition = yPanVal;
+
+   yPanVal = alexMap(yPanVal, 0, CGRectGetHeight(self.bounds), 0, 100);
+
+   [self.delegate ks_ChangedWithElement:self.elementY andValue:xPanVal];
    
+
    [self setNeedsDisplay];
 }
 

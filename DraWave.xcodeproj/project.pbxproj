@@ -22,14 +22,15 @@
 		2902AB471C7C50B6004632DF /* ParameterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2902AB461C7C50B6004632DF /* ParameterManager.m */; };
 		2902AB491C7C5212004632DF /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = 2902AB481C7C5212004632DF /* TODO */; };
 		2902AB4F1C7D12F1004632DF /* Gesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 2902AB4E1C7D12F1004632DF /* Gesture.m */; };
-		2902AB621C7E6AC9004632DF /* ControlsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2902AB611C7E6AC9004632DF /* ControlsView.m */; };
-		2940D48B1C8145D800E5C405 /* KaossControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2940D48A1C8145D800E5C405 /* KaossControlView.m */; };
-		2940D48E1C81557200E5C405 /* KaossConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2940D48D1C81557200E5C405 /* KaossConnectionManager.m */; };
-		2940D4911C81566B00E5C405 /* kaossConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2940D4901C81566B00E5C405 /* kaossConnection.m */; };
-		296AA1A41C81252B00AE06E4 /* ControlsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 296AA1A31C81252B00AE06E4 /* ControlsViewController.m */; };
+		2902AB621C7E6AC9004632DF /* KS_ConnectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2902AB611C7E6AC9004632DF /* KS_ConnectorView.m */; };
+		2940D48B1C8145D800E5C405 /* KS_ControlPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2940D48A1C8145D800E5C405 /* KS_ControlPad.m */; };
+		2940D48E1C81557200E5C405 /* KS_ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2940D48D1C81557200E5C405 /* KS_ConnectionManager.m */; };
+		2940D4911C81566B00E5C405 /* KS_Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2940D4901C81566B00E5C405 /* KS_Connection.m */; };
+		296AA1A41C81252B00AE06E4 /* KS_ConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 296AA1A31C81252B00AE06E4 /* KS_ConnectionViewController.m */; };
+		297166621C81609C007B0772 /* KS_ParameterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 297166611C81609C007B0772 /* KS_ParameterView.m */; };
 		29F305051C7EBB1D00912694 /* WaveFormHolderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F305041C7EBB1D00912694 /* WaveFormHolderView.m */; };
 		29F305351C7FB55300912694 /* CV_lineDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F305341C7FB55300912694 /* CV_lineDrawer.m */; };
-		29F305391C7FC0A300912694 /* Param_Gesture_View.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F305381C7FC0A300912694 /* Param_Gesture_View.m */; };
+		29F305391C7FC0A300912694 /* KS_ElementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F305381C7FC0A300912694 /* KS_ElementView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,22 +49,24 @@
 		2902AB481C7C5212004632DF /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
 		2902AB4D1C7D12F1004632DF /* Gesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gesture.h; sourceTree = "<group>"; };
 		2902AB4E1C7D12F1004632DF /* Gesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Gesture.m; sourceTree = "<group>"; };
-		2902AB601C7E6AC9004632DF /* ControlsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlsView.h; sourceTree = "<group>"; };
-		2902AB611C7E6AC9004632DF /* ControlsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlsView.m; sourceTree = "<group>"; };
+		2902AB601C7E6AC9004632DF /* KS_ConnectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KS_ConnectorView.h; sourceTree = "<group>"; };
+		2902AB611C7E6AC9004632DF /* KS_ConnectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KS_ConnectorView.m; sourceTree = "<group>"; };
 		291D2A8C1C76A7FA00237283 /* WaveFormOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveFormOverlayView.h; sourceTree = "<group>"; };
 		291D2A8D1C76A7FA00237283 /* WaveFormOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveFormOverlayView.m; sourceTree = "<group>"; };
 		29314E611C8014EB009782F4 /* DraWave_Iphone_Target.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DraWave_Iphone_Target.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2940D4891C8145D800E5C405 /* KaossControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaossControlView.h; sourceTree = "<group>"; };
-		2940D48A1C8145D800E5C405 /* KaossControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KaossControlView.m; sourceTree = "<group>"; };
-		2940D48C1C81557200E5C405 /* KaossConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaossConnectionManager.h; sourceTree = "<group>"; };
-		2940D48D1C81557200E5C405 /* KaossConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KaossConnectionManager.m; sourceTree = "<group>"; };
-		2940D48F1C81566B00E5C405 /* kaossConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kaossConnection.h; sourceTree = "<group>"; };
-		2940D4901C81566B00E5C405 /* kaossConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kaossConnection.m; sourceTree = "<group>"; };
+		2940D4891C8145D800E5C405 /* KS_ControlPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KS_ControlPad.h; sourceTree = "<group>"; };
+		2940D48A1C8145D800E5C405 /* KS_ControlPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KS_ControlPad.m; sourceTree = "<group>"; };
+		2940D48C1C81557200E5C405 /* KS_ConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KS_ConnectionManager.h; sourceTree = "<group>"; };
+		2940D48D1C81557200E5C405 /* KS_ConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KS_ConnectionManager.m; sourceTree = "<group>"; };
+		2940D48F1C81566B00E5C405 /* KS_Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KS_Connection.h; sourceTree = "<group>"; };
+		2940D4901C81566B00E5C405 /* KS_Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KS_Connection.m; sourceTree = "<group>"; };
 		2940D4921C81568700E5C405 /* kaossTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kaossTypes.h; sourceTree = "<group>"; };
 		295E440D1C7AF9BE002B28FD /* Draw_Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Draw_Helper.h; sourceTree = "<group>"; };
 		295E440E1C7AF9BE002B28FD /* Draw_Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Draw_Helper.m; sourceTree = "<group>"; };
-		296AA1A21C81252B00AE06E4 /* ControlsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlsViewController.h; sourceTree = "<group>"; };
-		296AA1A31C81252B00AE06E4 /* ControlsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlsViewController.m; sourceTree = "<group>"; };
+		296AA1A21C81252B00AE06E4 /* KS_ConnectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KS_ConnectionViewController.h; sourceTree = "<group>"; };
+		296AA1A31C81252B00AE06E4 /* KS_ConnectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KS_ConnectionViewController.m; sourceTree = "<group>"; };
+		297166601C81609C007B0772 /* KS_ParameterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KS_ParameterView.h; sourceTree = "<group>"; };
+		297166611C81609C007B0772 /* KS_ParameterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KS_ParameterView.m; sourceTree = "<group>"; };
 		298290DD1C7561D8007613D6 /* RingBuff_t.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RingBuff_t.h; sourceTree = "<group>"; };
 		298290DE1C7561F7007613D6 /* RingBuff_t.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = RingBuff_t.c; sourceTree = "<group>"; };
 		29D060191C6F96D000EC3B92 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -86,8 +89,8 @@
 		29F305041C7EBB1D00912694 /* WaveFormHolderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveFormHolderView.m; sourceTree = "<group>"; };
 		29F305331C7FB55300912694 /* CV_lineDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CV_lineDrawer.h; sourceTree = "<group>"; };
 		29F305341C7FB55300912694 /* CV_lineDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CV_lineDrawer.m; sourceTree = "<group>"; };
-		29F305371C7FC0A300912694 /* Param_Gesture_View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Param_Gesture_View.h; sourceTree = "<group>"; };
-		29F305381C7FC0A300912694 /* Param_Gesture_View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Param_Gesture_View.m; sourceTree = "<group>"; };
+		29F305371C7FC0A300912694 /* KS_ElementView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KS_ElementView.h; sourceTree = "<group>"; };
+		29F305381C7FC0A300912694 /* KS_ElementView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KS_ElementView.m; sourceTree = "<group>"; };
 		29F3053E1C8001E200912694 /* Types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Types.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,8 +132,6 @@
 		2902AB501C7D19A6004632DF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				296AA1A21C81252B00AE06E4 /* ControlsViewController.h */,
-				296AA1A31C81252B00AE06E4 /* ControlsViewController.m */,
 				29D0601C1C6F96D000EC3B92 /* SynthVC.h */,
 				29D0601D1C6F96D000EC3B92 /* SynthVC.m */,
 			);
@@ -140,13 +141,12 @@
 		2940D4931C81569200E5C405 /* kaoss */ = {
 			isa = PBXGroup;
 			children = (
-				2940D4921C81568700E5C405 /* kaossTypes.h */,
-				2940D48C1C81557200E5C405 /* KaossConnectionManager.h */,
-				2940D48D1C81557200E5C405 /* KaossConnectionManager.m */,
-				2940D48F1C81566B00E5C405 /* kaossConnection.h */,
-				2940D4901C81566B00E5C405 /* kaossConnection.m */,
-				2940D4891C8145D800E5C405 /* KaossControlView.h */,
-				2940D48A1C8145D800E5C405 /* KaossControlView.m */,
+				29FF66081C816D930092CF50 /* M */,
+				29FF66071C816D7B0092CF50 /* V */,
+				2940D4891C8145D800E5C405 /* KS_ControlPad.h */,
+				2940D48A1C8145D800E5C405 /* KS_ControlPad.m */,
+				296AA1A21C81252B00AE06E4 /* KS_ConnectionViewController.h */,
+				296AA1A31C81252B00AE06E4 /* KS_ConnectionViewController.m */,
 			);
 			name = kaoss;
 			sourceTree = "<group>";
@@ -243,12 +243,6 @@
 		29F305361C7FC08C00912694 /* ControlViews */ = {
 			isa = PBXGroup;
 			children = (
-				2902AB601C7E6AC9004632DF /* ControlsView.h */,
-				2902AB611C7E6AC9004632DF /* ControlsView.m */,
-				29F305371C7FC0A300912694 /* Param_Gesture_View.h */,
-				29F305381C7FC0A300912694 /* Param_Gesture_View.m */,
-				29F305331C7FB55300912694 /* CV_lineDrawer.h */,
-				29F305341C7FB55300912694 /* CV_lineDrawer.m */,
 			);
 			name = ControlViews;
 			sourceTree = "<group>";
@@ -258,6 +252,33 @@
 			children = (
 			);
 			name = Deprecated;
+			sourceTree = "<group>";
+		};
+		29FF66071C816D7B0092CF50 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				2902AB601C7E6AC9004632DF /* KS_ConnectorView.h */,
+				2902AB611C7E6AC9004632DF /* KS_ConnectorView.m */,
+				297166601C81609C007B0772 /* KS_ParameterView.h */,
+				297166611C81609C007B0772 /* KS_ParameterView.m */,
+				29F305371C7FC0A300912694 /* KS_ElementView.h */,
+				29F305381C7FC0A300912694 /* KS_ElementView.m */,
+				29F305331C7FB55300912694 /* CV_lineDrawer.h */,
+				29F305341C7FB55300912694 /* CV_lineDrawer.m */,
+			);
+			name = V;
+			sourceTree = "<group>";
+		};
+		29FF66081C816D930092CF50 /* M */ = {
+			isa = PBXGroup;
+			children = (
+				2940D4921C81568700E5C405 /* kaossTypes.h */,
+				2940D48C1C81557200E5C405 /* KS_ConnectionManager.h */,
+				2940D48D1C81557200E5C405 /* KS_ConnectionManager.m */,
+				2940D48F1C81566B00E5C405 /* KS_Connection.h */,
+				2940D4901C81566B00E5C405 /* KS_Connection.m */,
+			);
+			name = M;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,23 +352,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				2902AB4F1C7D12F1004632DF /* Gesture.m in Sources */,
-				2940D48E1C81557200E5C405 /* KaossConnectionManager.m in Sources */,
+				2940D48E1C81557200E5C405 /* KS_ConnectionManager.m in Sources */,
 				29F305351C7FB55300912694 /* CV_lineDrawer.m in Sources */,
 				2902AB321C7C453C004632DF /* SynthVC.m in Sources */,
 				2902AB311C7C453B004632DF /* AudioController.m in Sources */,
-				29F305391C7FC0A300912694 /* Param_Gesture_View.m in Sources */,
+				297166621C81609C007B0772 /* KS_ParameterView.m in Sources */,
+				29F305391C7FC0A300912694 /* KS_ElementView.m in Sources */,
 				29F305051C7EBB1D00912694 /* WaveFormHolderView.m in Sources */,
 				2902AB3E1C7C456D004632DF /* main.m in Sources */,
 				2902AB391C7C455E004632DF /* RingBuff_t.c in Sources */,
 				2902AB3C1C7C4565004632DF /* WaveFormOverlayView.m in Sources */,
 				2902AB3B1C7C4563004632DF /* WaveFormView.m in Sources */,
 				2902AB361C7C4559004632DF /* functions.c in Sources */,
-				296AA1A41C81252B00AE06E4 /* ControlsViewController.m in Sources */,
+				296AA1A41C81252B00AE06E4 /* KS_ConnectionViewController.m in Sources */,
 				2902AB3A1C7C4560004632DF /* AppDelegate.m in Sources */,
 				2902AB471C7C50B6004632DF /* ParameterManager.m in Sources */,
-				2940D48B1C8145D800E5C405 /* KaossControlView.m in Sources */,
-				2902AB621C7E6AC9004632DF /* ControlsView.m in Sources */,
-				2940D4911C81566B00E5C405 /* kaossConnection.m in Sources */,
+				2940D48B1C8145D800E5C405 /* KS_ControlPad.m in Sources */,
+				2902AB621C7E6AC9004632DF /* KS_ConnectorView.m in Sources */,
+				2940D4911C81566B00E5C405 /* KS_Connection.m in Sources */,
 				2902AB381C7C455D004632DF /* AlexRingBuffer.m in Sources */,
 				2902AB371C7C455B004632DF /* Draw_Helper.m in Sources */,
 			);

@@ -172,9 +172,7 @@ OSStatus playbackCallback(void * inRefCon,
 - (float *)getsamplesBuffer {
    return myStuff.samplesBuffer;
 }
-//- (void)setWaveStartValue:(float)value {
-//   myStuff.waveStart = value;
-//}
+
 - (void)setSamplesDurationValue:(float)value {
    myStuff.samplesDuration = value;
 }
@@ -260,7 +258,7 @@ void gain(float * data, int amount, int n) {
    AVAudioSession *session = [AVAudioSession sharedInstance];
    
    // set category
-   [session setCategory:AVAudioSessionCategoryPlayAndRecord error:&audioSessionError];
+   [session setCategory:AVAudioSessionCategoryPlayback error:&audioSessionError];
    if (audioSessionError) {
       NSLog(@"Error %ld, %@",
             (long)audioSessionError.code, audioSessionError.localizedDescription);
@@ -292,13 +290,13 @@ void gain(float * data, int amount, int n) {
             (long)audioSessionError.code, audioSessionError.localizedDescription);
    }
    
+   
    // Get current values
    sampleRate = session.sampleRate;
    self.bufferDuration = session.IOBufferDuration;
-   NSLog(@"Sample Rate:%0.0fHz I/O Buffer Duration:%f", sampleRate, self.bufferDuration);
+//   NSLog(@"Sample Rate:%0.0fHz I/O Buffer Duration:%f", sampleRate, self.bufferDuration);
    
-   
-   printf("end of set session \n");
+   NSLog(@"vol %f", session.outputVolume);
 }
 
 - (void)handleRouteChange:(NSNotification *)notification {

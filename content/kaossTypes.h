@@ -11,24 +11,24 @@
 
 typedef enum {
    
-   ks_X1,
-   ks_Y1,
-   ks_X2,
-   ks_Y2
+   KS_X1,
+   KS_Y1,
+   KS_X2,
+   KS_Y2
    
-} kaossElement_t;
+} KS_Element_t;
 
 
 typedef enum {
    
-   ks_blank,
-   ks_samplesDuration,
-   ks_lfoRate,
-   ks_lfoAmount,
-   ks_reverbAmount,
-   ks_blank2
+   KS_blank,
+   KS_samplesDuration,
+   KS_lfoRate,
+   KS_lfoAmount,
+   KS_reverbAmount,
+   KS_blank2
    
-} kaoss_Parameter_t;
+} KS_Parameter_t;
 
 
 #endif /* kaossTypes_h */
