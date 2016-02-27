@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CV_lineDrawer : UIView
+@interface KS_LineDrawer : UIView
 
 @property (nonatomic) CGPoint chosenGesturePoint;
 @property (nonatomic) CGPoint currentPoint;

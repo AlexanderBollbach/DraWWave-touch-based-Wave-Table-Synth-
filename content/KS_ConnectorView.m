@@ -7,9 +7,10 @@
 //
 
 #import "KS_ConnectorView.h"
-#import "CV_lineDrawer.h"
+#import "KS_LineDrawer.h"
 #import "KS_ElementView.h"
 #import "KS_ParameterView.h"
+#import "KS_TypesAndHelpers.h"
 
 @interface KS_ConnectorView()
 
@@ -29,7 +30,7 @@
 @property (nonatomic,strong) NSArray * animatingElements;
 
 
-@property (nonatomic,strong) CV_lineDrawer * lineDrawer;
+@property (nonatomic,strong) KS_LineDrawer * lineDrawer;
 @property (nonatomic,strong) KS_ElementView * touchedElement; // need to be strong if just ref?
 
 @property (nonatomic,strong) UIView * mainView;
@@ -76,7 +77,7 @@
    self.KS_X2_view.element = KS_X2;
    self.KS_Y2_view.element = KS_Y2;
    
-   self.blank.parameter = KS_blank;
+   self.blank.parameter = KS_samplesDurationLong;
    self.samplesDurationView.parameter = KS_samplesDuration;
    self.lfoRateView.parameter = KS_lfoRate;
    self.lfoAmountView.parameter = KS_lfoAmount;
@@ -88,12 +89,12 @@
    self.KS_X2_view.name.text = @"KS_X2";
    self.KS_Y2_view.name.text = @"KS_Y2";
    
-   self.blank.name.text = @"blank";
-   self.samplesDurationView.name.text = @"duration";
-   self.lfoRateView.name.text = @"rate";
-   self.lfoAmountView.name.text = @"amount";
-   self.reverbAmountView.name.text = @"rev amount";
-   self.blank2.name.text = @"blank 2";
+   self.blank.name.text = [[KS_TypesAndHelpers sharedInstance] getNameFromKS_Parameter:self.blank.parameter];
+   self.samplesDurationView.name.text =[[KS_TypesAndHelpers sharedInstance] getNameFromKS_Parameter:self.samplesDurationView.parameter];
+   self.lfoRateView.name.text = [[KS_TypesAndHelpers sharedInstance] getNameFromKS_Parameter:self.lfoRateView.parameter];
+   self.lfoAmountView.name.text = [[KS_TypesAndHelpers sharedInstance] getNameFromKS_Parameter:self.lfoAmountView.parameter];
+   self.reverbAmountView.name.text = [[KS_TypesAndHelpers sharedInstance] getNameFromKS_Parameter:self.reverbAmountView.parameter];
+   self.blank2.name.text = [[KS_TypesAndHelpers sharedInstance] getNameFromKS_Parameter:self.blank2.parameter];
 
    self.animatingElements = [NSArray arrayWithObjects:
                           self.KS_X1_view,
@@ -108,7 +109,7 @@
                           self.blank2,
                           nil];
 
-   self.lineDrawer = [[CV_lineDrawer alloc] initWithFrame:self.bounds];
+   self.lineDrawer = [[KS_LineDrawer alloc] initWithFrame:self.bounds];
    
    [self.mainView addSubview:self.KS_X1_view];
    [self.mainView addSubview:self.KS_Y1_view];

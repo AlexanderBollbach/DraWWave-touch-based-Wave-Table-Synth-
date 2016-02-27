@@ -1,13 +1,12 @@
 //
-//  kaossTypes.h
+//  KS_TypesAndHelpers.h
 //  DraWave
 //
-//  Created by alexanderbollbach on 2/26/16.
+//  Created by alexanderbollbach on 2/27/16.
 //  Copyright © 2016 alexanderbollbach. All rights reserved.
 //
 
-#ifndef kaossTypes_h
-#define kaossTypes_h
+#import <Foundation/Foundation.h>
 
 typedef enum {
    
@@ -21,7 +20,7 @@ typedef enum {
 
 typedef enum {
    
-   KS_blank,
+   KS_samplesDurationLong,
    KS_samplesDuration,
    KS_lfoRate,
    KS_lfoAmount,
@@ -31,4 +30,12 @@ typedef enum {
 } KS_Parameter_t;
 
 
-#endif /* kaossTypes_h */
+@interface KS_TypesAndHelpers : NSObject
+
+
+- (NSString *)getNameFromKS_Parameter:(KS_Parameter_t)parameter;
+
++ (instancetype)sharedInstance;
+
+
+@end

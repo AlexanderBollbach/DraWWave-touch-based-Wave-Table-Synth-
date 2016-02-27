@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "kaossTypes.h"
+#import "KS_TypesAndHelpers.h"
+
+@class KS_ControlPad;
 
 @protocol KS_ControlPadDelegate <NSObject>
-- (void)ks_ChangedWithElement:(KS_Element_t)element andValue:(float)value;
+//- (void)changedWithElement:(KS_Element_t)element andValue:(float)value;
+- (void)changedWithParameter:(KS_Parameter_t)parameter andValue:(float)value;
 @end
 
 @interface KS_ControlPad : UIView
@@ -20,4 +23,8 @@
 @property KS_Element_t elementX;
 @property KS_Element_t elementY;
 
+- (void)setXreadOutWithString:(NSString *)string;
+- (void)setYreadOutWithString:(NSString *)string;
+
 @end
+

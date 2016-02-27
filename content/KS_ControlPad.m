@@ -18,6 +18,8 @@
 @property (nonatomic,strong) NSString * xReadOut;
 @property (nonatomic,strong) NSString * yReadOut;
 
+
+
 @end
 
 @implementation KS_ControlPad
@@ -48,21 +50,46 @@
 - (void)pan:(UIPanGestureRecognizer *)pan {
    
    float xPanVal = [pan locationInView:self].x;
+   
+   if (xPanVal > CGRectGetWidth(self.bounds)) { // so left controlpad does not go off to second control pad
+      return;
+   }
+   
    self.xPosition = xPanVal;
+   
 
    xPanVal = alexMap(xPanVal, 0, CGRectGetWidth(self.bounds), 0, 100);
-   
-   [self.delegate ks_ChangedWithElement:self.elementX andValue:xPanVal];
+   [self changedWithElement:self.elementX andValue:xPanVal];
    
    float yPanVal = [pan locationInView:self].y;
    self.yPosition = yPanVal;
 
    yPanVal = alexMap(yPanVal, 0, CGRectGetHeight(self.bounds), 0, 100);
-
-   [self.delegate ks_ChangedWithElement:self.elementY andValue:xPanVal];
+   [self changedWithElement:self.elementY andValue:yPanVal];
    
 
    [self setNeedsDisplay];
+}
+
+
+- (void)changedWithElement:(KS_Element_t)element andValue:(float)value {
+   
+   
+   KS_ConnectionManager * connMan = [KS_ConnectionManager sharedInstance];
+   
+   for (KS_Connection * connection in connMan.connections) {
+      if (connection.element == element) {
+         [self.delegate changedWithParameter:connection.parameter andValue:value];
+         NSString * string = [[KS_TypesAndHelpers sharedInstance] getNameFromKS_Parameter:connection.parameter];
+         NSString * stringWithValue = [NSString stringWithFormat:@"%@ : %f", string, value];
+         if (connection.element == KS_X1 || connection.element == KS_X2) {
+            [self setXreadOutWithString:stringWithValue];
+         }
+         if (connection.element == KS_Y1 || connection.element == KS_Y2) {
+            [self setYreadOutWithString:stringWithValue];
+         }
+      }
+   }
 }
 
 
@@ -101,7 +128,7 @@
    NSStringDrawingContext *drawingContext = [[NSStringDrawingContext alloc] init];
    drawingContext.minimumScaleFactor = 1;
    
-   CGRect panXStrRect = CGRectMake(self.xPosition + 2, CGRectGetHeight(self.bounds) * 0.9, 75, 15);
+   CGRect panXStrRect = CGRectMake(self.xPosition + 2, CGRectGetHeight(self.bounds) * 0.9, 200, 15);
    [self.xReadOut drawWithRect:panXStrRect
                              options:NSStringDrawingUsesLineFragmentOrigin
                           attributes:textAttributes
@@ -109,12 +136,18 @@
    
    
    
-   CGRect panYStrRect = CGRectMake(w - 50, self.yPosition + 2, 75, 15);
+   CGRect panYStrRect = CGRectMake(w - 175, self.yPosition + 2, 200, 15);
    [self.yReadOut drawWithRect:panYStrRect
                              options:NSStringDrawingUsesLineFragmentOrigin
                           attributes:textAttributes
                              context:drawingContext];
 }
 
+- (void)setXreadOutWithString:(NSString *)string {
+   self.xReadOut = string;
+}
 
+- (void)setYreadOutWithString:(NSString *)string {
+   self.yReadOut = string;
+}
 @end

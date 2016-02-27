@@ -43,17 +43,6 @@
    [self.connections addObject:connection];
 }
 
-
-- (void)ks_ChangedWithElement:(KS_Element_t)ks_Element andValue:(float)value {
-   
-   for (KS_Connection * connection in self.connections) {
-      if (connection.element == ks_Element) {
-         [self.delegate elementChangedWithParameter:connection.parameter andValue:value];
-      }
-   }
-}
-
-
 - (void)breakConnectionsWithElement:(KS_Element_t)element {
    
    NSMutableArray * toRemove = [NSMutableArray array];

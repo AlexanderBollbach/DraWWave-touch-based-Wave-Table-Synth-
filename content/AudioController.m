@@ -68,6 +68,11 @@ typedef struct stuff {
       
       myStuff.samplesBuffer = malloc(1000000 * sizeof(float));
       
+      
+      for (int x = 0; x < 10000; x++) {
+         myStuff.samplesBuffer[x] = -1;
+      }
+      
       self.bufferDuration = kBufferDuration;
       
       

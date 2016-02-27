@@ -8,7 +8,6 @@
 
 #import "KS_ConnectionViewController.h"
 #import "KS_ConnectorView.h"
-#import "ParameterManager.h"
 #import "KS_ConnectionManager.h"
 
 @interface KS_ConnectionViewController() <KS_ConnectorViewDelegate>

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "kaossTypes.h"
+#import "KS_TypesAndHelpers.h"
 
 @interface KS_ElementView : UIView
 

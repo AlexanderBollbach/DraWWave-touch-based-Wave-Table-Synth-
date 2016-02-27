@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "kaossTypes.h"
-//
+#import "KS_TypesAndHelpers.h"
+
 @protocol KS_ConnectorViewDelegate <NSObject>
 
 - (void)connectionMadeFromElement:(KS_Element_t)element toParameter:(KS_Parameter_t)parameter;

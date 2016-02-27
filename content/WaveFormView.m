@@ -50,7 +50,8 @@
       int idx = alexMap(i, 0, w, 0, self.numOfSamplesToDraw);
       
       float f = sampleData[idx];
-      float amplitude = alexMap(fabsf(f), 0, 1, 0, self.bounds.size.height);;
+      
+      float amplitude = alexMap(f, -1, 1, 0, self.bounds.size.height);;
       
       [path moveToPoint:CGPointMake(i,CGRectGetHeight(self.bounds))];
       [path addLineToPoint:CGPointMake(i,CGRectGetHeight(self.bounds) - amplitude)];

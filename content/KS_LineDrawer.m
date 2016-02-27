@@ -6,13 +6,13 @@
 //  Copyright © 2016 alexanderbollbach. All rights reserved.
 //
 
-#import "CV_lineDrawer.h"
+#import "KS_LineDrawer.h"
 
-@interface CV_lineDrawer()
+@interface KS_LineDrawer()
 @property (nonatomic) float dashConstant1;
 @end
 
-@implementation CV_lineDrawer
+@implementation KS_LineDrawer
 
 
 - (instancetype)initWithFrame:(CGRect)frame {

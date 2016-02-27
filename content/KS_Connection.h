@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "kaossTypes.h"
-
+#import "KS_TypesAndHelpers.h"
 
 @interface KS_Connection : NSObject
 
