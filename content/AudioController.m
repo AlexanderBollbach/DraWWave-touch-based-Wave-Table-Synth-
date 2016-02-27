@@ -9,7 +9,6 @@
 #import "AudioController.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import <Accelerate/Accelerate.h>
-#import "Global.h"
 
 #define kOutputBus 0
 #define kInputBus 1
@@ -17,36 +16,43 @@
 #define kBufferDuration 0.01
 
 
-
-@interface AudioController() {
+typedef struct stuff {
    
-   int index;
-   int timeIndex;
-   
-   
-   AudioUnit remoteIOUnit;
-   
-   
-   
+   //   float waveStart;
    
    
    float * samplesBuffer;
    
-   float * effectsBuffer;
+   int index;
+   int timeIndex;
+   int bufferIndex;
+   
+   
+   
+   float samplesDuration;
+   
+   float lfoRate;
+   float lfoAmount;
+   
+} stuff_t;
 
-   
-   
+
+@interface AudioController() {
+   AudioUnit remoteIOUnit;
+   AudioUnit reverbUnit;
    
 }
 
 @property (nonatomic,assign) float bufferDuration;
-@property (nonatomic,assign) int bufferIndex;
 
-@property (nonatomic,strong)  Global * global;
 
 @end
 
-@implementation AudioController
+@implementation AudioController {
+   stuff_t myStuff;
+}
+
+
 
 + (instancetype)sharedInstance {
    static dispatch_once_t once;
@@ -60,25 +66,187 @@
 - (instancetype)init {
    if (self = [super init]) {
       
+      myStuff.samplesBuffer = malloc(1000000 * sizeof(float));
       
-      samplesBuffer = malloc(300000 * sizeof(float));
-      effectsBuffer = malloc(500000 * sizeof(float));
-
       self.bufferDuration = kBufferDuration;
       
-      self.global = [Global sharedInstance];
       
       [self initializeAudioSession];
       [self initializeAU];
       
-      
-      
-    
-      
-      
    }
    return self;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#pragma mark - remoteIO Playback -
+
+
+OSStatus playbackCallback(void * inRefCon,
+                          AudioUnitRenderActionFlags * ioActionFlags,
+                          const AudioTimeStamp * inTimeStamp,
+                          UInt32 inBusNumber,
+                          UInt32 inNumberFrames,
+                          AudioBufferList * ioData) {
+   
+   stuff_t * THIS = (stuff_t *)inRefCon;
+   
+   
+   // test
+   static int a = 0;
+   a++;
+   //  printf("playback %i \n", a);
+   
+   
+   
+   
+   
+   // temp reference to buffer to fill
+   float * bufferToFill = ioData->mBuffers[0].mData;
+   
+   int start = 1;//THIS->waveStart;
+   int duration = THIS->samplesDuration;
+   float lfoRate = THIS->lfoRate;
+   float lfoAmount = THIS->lfoAmount;
+   
+   
+   
+   if (duration <= 0 || start <= 0) {
+      return noErr;
+   }
+   
+
+   
+   
+   // write samples to buffer
+   for (int x = 0; x < inNumberFrames; x++) {
+      
+      if (THIS->bufferIndex >= duration) {
+       //  lfoAmount = fabsf(lfoAmount);
+         THIS->bufferIndex = start;
+      }
+      
+      THIS->samplesBuffer[THIS->bufferIndex] += lfoAmount;
+      
+      if (THIS->timeIndex % (int)lfoRate == 0) lfoAmount = -lfoAmount;
+      
+      if (THIS->samplesBuffer[THIS->bufferIndex] > 1) THIS->samplesBuffer[THIS->bufferIndex] = 1;
+      if (THIS->samplesBuffer[THIS->bufferIndex] < -1) THIS->samplesBuffer[THIS->bufferIndex] = -1;
+      
+      
+      // float val = gainSample(&THIS->samplesBuffer[THIS->bufferIndex], 10);
+      
+      bufferToFill[x] = THIS->samplesBuffer[THIS->bufferIndex];
+      
+      
+      THIS->bufferIndex++;
+      THIS->timeIndex++;
+   }
+   
+   
+   return noErr;
+}
+
+
+
+
+
+
+
+
+
+#pragma mark - setters / getters -
+
+- (float *)getsamplesBuffer {
+   return myStuff.samplesBuffer;
+}
+//- (void)setWaveStartValue:(float)value {
+//   myStuff.waveStart = value;
+//}
+- (void)setSamplesDurationValue:(float)value {
+   myStuff.samplesDuration = value;
+}
+
+- (void)setLfoRateValue:(float)value {
+   myStuff.lfoRate = value;
+}
+- (void)setLfoAmountValue:(float)value {
+   myStuff.lfoAmount = value;
+}
+
+
+- (OSStatus)setReverbAmount:(float)amount {
+   
+   int scope = 0; // input scope
+   
+   OSStatus err = AudioUnitSetParameter(reverbUnit,
+                                        kAudioUnitScope_Global,
+                                        scope,
+                                        kReverb2Param_DryWetMix,
+                                        amount,
+                                        0);
+   return err;
+}
+
+
+
+
+
+
+
+#pragma mark - custom DSP -
+
+
+float gainSample(float * data, int amount) {
+   
+   
+   float gainSample = *(data);
+   gainSample *= amount;
+   
+   if (gainSample > 0.8) gainSample = 1;
+   if (gainSample < -0.8) gainSample = -1;
+   
+   return gainSample;
+   
+}
+
+
+
+void gain(float * data, int amount, int n) {
+   
+   for (int x = 0; x < n; x++) {
+      
+      
+      float gainSample = *(data + x);
+      gainSample *= amount;
+      
+      if (gainSample > 0.8) gainSample = 1;
+      if (gainSample < -0.8) gainSample = -0.0;
+      
+      *(data + x) = gainSample;
+   }
+   
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -135,9 +303,9 @@
 
 - (void)handleRouteChange:(NSNotification *)notification {
    printf("handle\n");
-  // CheckError(, "Couldn't initialize input unit");
+   // CheckError(, "Couldn't initialize input unit");
    
-
+   
 }
 
 
@@ -147,10 +315,20 @@
    iocd.componentType = kAudioUnitType_Output;
    iocd.componentSubType = kAudioUnitSubType_RemoteIO;
    iocd.componentManufacturer = kAudioUnitManufacturer_Apple;
-   iocd.componentFlags = 0;
-   iocd.componentFlagsMask = 0;
+   //   iocd.componentFlags = 0;
+   //   iocd.componentFlagsMask = 0;
    AudioComponent ioComp = AudioComponentFindNext(NULL, &iocd);
    CheckError(AudioComponentInstanceNew(ioComp, &remoteIOUnit), "Couldn't get RIO unit instance");
+   
+   
+   AudioComponentDescription rvcd;
+   rvcd.componentType = kAudioUnitType_Effect;
+   rvcd.componentSubType = kAudioUnitSubType_Reverb2;
+   rvcd.componentManufacturer = kAudioUnitManufacturer_Apple;
+   
+   AudioComponent rvComp = AudioComponentFindNext(NULL, &rvcd);
+   CheckError(AudioComponentInstanceNew(rvComp, &reverbUnit), "Couldn't get RIO unit instance");
+   
    
    UInt32 oneFlag = 1; ///////////////////////////////   i/o
    CheckError(AudioUnitSetProperty(remoteIOUnit,
@@ -207,7 +385,7 @@
    
    
    
-  
+   
    
    /////////////////////////////////////////////////// bufferlist
    UInt32 maxFrames = 0;
@@ -238,10 +416,10 @@
    
    
    
-     AURenderCallbackStruct renderCallback;
+   AURenderCallbackStruct renderCallback;
    renderCallback.inputProc = playbackCallback;
-   renderCallback.inputProcRefCon = (__bridge void * _Nullable)self;
-   CheckError(AudioUnitSetProperty(remoteIOUnit,
+   renderCallback.inputProcRefCon = &myStuff;
+   CheckError(AudioUnitSetProperty(reverbUnit,
                                    kAudioUnitProperty_SetRenderCallback,
                                    kAudioUnitScope_Output,
                                    kOutputBus,
@@ -251,179 +429,37 @@
    
    
    
-   //////// INITIALIZE RemoteIO
+   //////// INITIALIZE
    CheckError(AudioUnitInitialize(remoteIOUnit), "Couldn't initialize input unit");
-
- 
-   OSStatus err = AudioOutputUnitStart(remoteIOUnit);
-
-//   AudioOutputUnitStop(remoteIOUnit);
+   CheckError(AudioUnitInitialize(reverbUnit), "Couldn't initialize input unit");
+   
+   
+   //connection
+   AudioUnitElement reverbOutputBus  = 0;
+   AudioUnitElement ioUnitOutputElement = 0;
+   
+   AudioUnitConnection revOutToRemoteIOIn;
+   revOutToRemoteIOIn.sourceAudioUnit    = reverbUnit;
+   revOutToRemoteIOIn.sourceOutputNumber = reverbOutputBus;
+   revOutToRemoteIOIn.destInputNumber    = ioUnitOutputElement;
+   
+   OSStatus err = AudioUnitSetProperty (
+                                        remoteIOUnit,                     // connection destination
+                                        kAudioUnitProperty_MakeConnection,  // property key
+                                        kAudioUnitScope_Input,              // destination scope
+                                        ioUnitOutputElement,                // destination element
+                                        &revOutToRemoteIOIn,                // connection definition
+                                        sizeof (revOutToRemoteIOIn)
+                                        );
+   
+   
+   
+   
+   
+   err = AudioOutputUnitStart(remoteIOUnit);
+   
+   //   AudioOutputUnitStop(remoteIOUnit);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-#pragma mark - remoteIO Playback -
-
-
-OSStatus playbackCallback(void * inRefCon,
-                          AudioUnitRenderActionFlags * ioActionFlags,
-                          const AudioTimeStamp * inTimeStamp,
-                          UInt32 inBusNumber,
-                          UInt32 inNumberFrames,
-                          AudioBufferList * ioData) {
-   
-   
-   
-   static int howMany = 0;
-   howMany++;
-   
-   AudioController *THIS = (__bridge AudioController *)inRefCon;
-   
-
-   
-   float * temp = ioData->mBuffers[0].mData;
-   
-   int start = (int)THIS.global.modeManager.mode1.param1.value;
-   int end = (int)THIS.global.modeManager.mode1.param2.value;
-   
-   
-   if (end < 0 || start < 0) return noErr;
-   
-  //  clear outside of start/end
-   for (int x = 0;  x < start; x++) {
-      THIS->samplesBuffer[x] = 0;
-   }
-   for (int x = end;  x < 1000; x++) {
-      THIS->samplesBuffer[x] = 0;
-   }
-
-
-   float lfoRate = THIS.global.modeManager.mode2.param1.value;
-   float lfoAmount = THIS.global.modeManager.mode2.param2.value / 100;
-
-
-
-   for (int x = 0; x < inNumberFrames; x++) {
-      
-      
-      THIS->timeIndex++;
-      
-      
-      if (THIS.bufferIndex >= end) THIS.bufferIndex = start;
-      if (THIS->samplesBuffer[THIS.bufferIndex] > 1) THIS->samplesBuffer[THIS.bufferIndex] = 1;
-      if (THIS->samplesBuffer[THIS.bufferIndex] < -1) THIS->samplesBuffer[THIS.bufferIndex] = -1;
-      
-      
-      
-      if (THIS->timeIndex % (int)lfoRate == 0) lfoAmount = -lfoAmount;
-      THIS->samplesBuffer[THIS.bufferIndex] += lfoAmount;
-      
-      
-      
-      
-      temp[x] = THIS->samplesBuffer[THIS.bufferIndex];
-      
-      THIS.bufferIndex++;
-
-   }
-   
-   
-  // ioData->mBuffers[0].mData = THIS->samplesBuffer;
-   
-   return noErr;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#pragma mark - custom DSP -
-
-
-float gainSample(float * data, int amount) {
-   
-   
-   float gainSample = *(data);
-   gainSample *= amount;
-   
-   if (gainSample > 0.8) gainSample = 1;
-   if (gainSample < -0.8) gainSample = -1;
-   
-   return gainSample;
-   
-}
-
-
-
-void gain(float * data, int amount, int n) {
-   
-   for (int x = 0; x < n; x++) {
-      
-      
-      float gainSample = *(data + x);
-      gainSample *= amount;
-      
-      if (gainSample > 0.8) gainSample = 1;
-      if (gainSample < -0.8) gainSample = -0.0;
-      
-      *(data + x) = gainSample;
-   }
-   
-}
-
-
-
-
-
-#pragma mark - generate getters -
-
-
-
-
-
-- (float *)getsamplesBuffer {
-   return samplesBuffer;
-}
-
-
-
-#pragma mark - effect controls -
-
-- (void)setEffect1:(float)amount {
-}
-
-
-- (void)setEffect2:(float)amount {
-}
-
-- (void)setEffect3:(float)amount {
-}
-
-- (void)setEffect4:(float)amount {
-}
-
-- (void)setEffect5:(float)amount {
-}
-
 
 
 

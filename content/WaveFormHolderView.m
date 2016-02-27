@@ -25,12 +25,12 @@
    
    self.waveFormView = [[WaveFormView alloc] initWithFrame:self.bounds];
    self.waveFormOverlayView = [[WaveFormOverlayView alloc] initWithFrame:self.bounds];
-   self.waveFormBackgroundView = [[WaveFormBackgroundView alloc] initWithFrame:self.bounds];
+//   self.waveFormBackgroundView = [[WaveFormBackgroundView alloc] initWithFrame:self.bounds];
    
    
    [self addSubview:self.waveFormView];
    [self addSubview:self.waveFormOverlayView];
-   [self addSubview:self.waveFormBackgroundView];
+//   [self addSubview:self.waveFormBackgroundView];
    
    
    CADisplayLink * link = [CADisplayLink displayLinkWithTarget:self selector:@selector(tick)];
@@ -50,6 +50,9 @@
    [self.waveFormOverlayView setNeedsDisplay];
 }
 
+- (void)setNumOfSamplesToDraw:(float)num {
+   self.waveFormView.numOfSamplesToDraw = num;
+}
 
 
 @end

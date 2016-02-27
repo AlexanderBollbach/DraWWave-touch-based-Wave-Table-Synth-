@@ -10,4 +10,9 @@
 
 @interface WaveFormView : UIView
 
+@property float numOfSamplesToDraw;
+
+- (void)setNumOfSamplesToDraw:(float)num;
+
+
 @end

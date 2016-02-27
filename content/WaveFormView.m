@@ -9,7 +9,6 @@
 #import "WaveFormView.h"
 #import "functions.h"
 #import "AudioController.h"
-#import "Global.h"
 
 @implementation WaveFormView {
 
@@ -43,7 +42,7 @@
    
    for (int i = 0; i < w; i++) {
  
-      int idx = alexMap(i, 0, w, 0,w);
+      int idx = alexMap(i, 0, w, 0, self.numOfSamplesToDraw);
       
       float f = sampleData[idx];
       float amplitude = alexMap(fabsf(f), 0, 1, 0, self.bounds.size.height);;
@@ -57,7 +56,9 @@
    [path stroke];
 }
 
-
+- (void)setNumOfSamplesToDrawValue:(float)value {
+   self.numOfSamplesToDraw = value;
+}
 
 
 @end

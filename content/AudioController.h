@@ -16,20 +16,23 @@
 @property (nonatomic,assign) AudioBufferList * inputBuffer;
 @property (nonatomic,assign) AudioStreamBasicDescription streamFormat;
 
+
+
 + (instancetype)sharedInstance;
-- (void)setBufferSizeFromMode:(int)mode;
 
 
-//DSP settings // knob twiddling
-- (void)setEffect1:(float)amount;
-- (void)setEffect2:(float)amount;
-- (void)setEffect3:(float)amount;
-- (void)setEffect4:(float)amount;
-- (void)setEffect5:(float)amount;
 
-- (int *)getsamplesSize;
 - (float *)getsamplesBuffer;
-- (int*)getsamplesIndex;
+- (int *)getsamplesIndex;
+
+
+//- (void)setWaveStartValue:(float)value;
+- (void)setSamplesDurationValue:(float)value;
+- (void)setLfoRateValue:(float)value;
+- (void)setLfoAmountValue:(float)value;
+
+
+- (OSStatus)setReverbAmount:(float)amount;
 
 
 @end

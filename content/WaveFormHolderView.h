@@ -10,12 +10,17 @@
 
 #import "WaveFormView.h"
 #import "WaveFormOverlayView.h"
-#import "WaveFormBackgroundView.h"
 
 @interface WaveFormHolderView : UIView
 
 @property (nonatomic,strong) WaveFormView * waveFormView;
 @property (nonatomic,strong) WaveFormOverlayView * waveFormOverlayView;
-@property (nonatomic,strong) WaveFormBackgroundView * waveFormBackgroundView;
 
+- (void)setNumOfSamplesToDraw:(float)num;
+
+- (void)setPanXValueReadOut:(NSString *)str;
+- (void)setPanYValueReadOut:(NSString *)str;
+
+- (void)setPanXPosition:(float)position;
+- (void)setPanYPosition:(float)position;
 @end

@@ -7,16 +7,23 @@
 //
 
 #import "AppDelegate.h"
+#import "SynthVC.h"
 
 @interface AppDelegate ()
-
+@property (nonatomic,strong) SynthVC * synthVC;
 @end
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-   // Override point for customization after application launch.
+
+self.synthVC = [[SynthVC alloc] init];
+   
+UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:self.synthVC];
+
+   self.window.rootViewController = nav;
+   
    return YES;
 }
 

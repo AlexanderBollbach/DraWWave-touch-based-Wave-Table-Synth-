@@ -6,9 +6,9 @@
 //  Copyright © 2016 alexanderbollbach. All rights reserved.
 //
 
-#import "ParameterView.h"
+#import "Param_Gesture_View.h"
 
-@implementation ParameterView
+@implementation Param_Gesture_View
 
 - (instancetype)initWithFrame:(CGRect)frame {
    if (self = [super initWithFrame:frame]) {
@@ -26,6 +26,10 @@
    self.name.textColor = [UIColor whiteColor];
    self.name.textAlignment = NSTextAlignmentCenter;
    [self addSubview:self.name];
+   
+   self.layer.borderColor = [UIColor whiteColor].CGColor;
+   self.layer.borderWidth = 1;
+
 }
 
 -(void)layoutSubviews {
@@ -36,7 +40,7 @@
    
    if (animate) {
       
-      [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse | UIViewAnimationOptionAllowUserInteraction animations:^{
+      [UIView animateWithDuration:0.05 delay:0.0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse | UIViewAnimationOptionAllowUserInteraction animations:^{
          self.backgroundColor = [UIColor whiteColor];
       } completion:nil];
       

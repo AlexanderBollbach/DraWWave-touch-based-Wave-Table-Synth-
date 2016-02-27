@@ -12,6 +12,14 @@
 
 @property (nonatomic) CGPoint chosenGesturePoint;
 @property (nonatomic) CGPoint currentPoint;
-@property BOOL stopDrawing;
+@property BOOL drawChoosingLine;
+
+@property BOOL xISConnected;
+@property CGPoint xFrom;
+@property CGPoint xTo;
+
+@property BOOL yISConnected;
+@property CGPoint yFrom;
+@property CGPoint yTo;
 
 @end

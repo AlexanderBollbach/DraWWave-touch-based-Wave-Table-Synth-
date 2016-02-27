@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Types.h"
 
-@interface ParameterView : UIView
+@interface Param_Gesture_View : UIView
 
 @property (nonatomic,strong) UILabel * name;
+@property (nonatomic) ParamSelected_t paramType;
+@property (nonatomic) Gesture_t gestureType;
+@property BOOL isGesture;
 
 - (void)animate:(BOOL)animate;
 

@@ -6,17 +6,25 @@
 //  Copyright © 2016 alexanderbollbach. All rights reserved.
 //
 
-#import "Parameter.h"
+#import "Gesture.h"
 
-@implementation Parameter : NSObject 
+@implementation Gesture : NSObject 
 
 
 - (instancetype)init {
    if (self = [super init]) {
-      self.name = @"someParam";
       self.value = 0;
    }
    return self;
 }
+
+
+- (void)setParamValue:(float)value {
+   
+   
+   self.value = value;
+}
+
+
 
 @end

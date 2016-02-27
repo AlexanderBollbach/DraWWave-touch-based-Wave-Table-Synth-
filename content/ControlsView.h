@@ -1,18 +1,23 @@
 //
-//  ControlsView.h
-//  WavformVizualizer_iOS
+//  ControlsViewB.h
+//  DraWave
 //
-//  Created by alexanderbollbach on 2/18/16.
+//  Created by alexanderbollbach on 2/24/16.
 //  Copyright © 2016 alexanderbollbach. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
+#import "Types.h"
+
+@protocol ControlsViewDelegate <NSObject>
+
+- (void)connectionMadeFromGesture:(Gesture_t)gesture toParameter:(ParamSelected_t)parameter;
+- (void)breakConnectionFor:(Gesture_t)gesture;
+@end
 
 @interface ControlsView : UIView
-@property (nonatomic) BOOL pulledDown;
 
-@property (nonatomic,strong) UILabel * hudLabel;
+@property (nonatomic,weak) id<ControlsViewDelegate> delegate;
 
-- (void)setup;
 @end

@@ -1,24 +1,58 @@
 //
-//  WaveFormView.m
-//  WavformVizualizer_iOS
+//  KaossControlView.m
+//  DraWave
 //
-//  Created by alexanderbollbach on 2/14/16.
+//  Created by alexanderbollbach on 2/26/16.
 //  Copyright © 2016 alexanderbollbach. All rights reserved.
 //
 
-#import "WaveFormOverlayView.h"
-#import "functions.h"
-#import "AudioController.h"
+#import "KaossControlView.h"
 
-@implementation WaveFormOverlayView
+@interface KaossControlView()
+
+@property float xPosition;
+@property float yPosition;
+
+@property (nonatomic,strong) NSString * xReadOut;
+@property (nonatomic,strong) NSString * yReadOut;
+
+@end
+
+@implementation KaossControlView
+
 - (instancetype)initWithFrame:(CGRect)frame {
    if (self = [super initWithFrame:frame]) {
-      self.opaque = NO;
-      self.clearsContextBeforeDrawing = YES;
-      self.userInteractionEnabled = NO;
-      self.backgroundColor = [UIColor clearColor];
+      [self setup];
    }
    return self;
+}
+
+- (void)setup {
+   
+   self.backgroundColor = [UIColor blackColor];
+   self.clearsContextBeforeDrawing = YES;
+   
+   UIPanGestureRecognizer * pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
+   [self addGestureRecognizer:pan];
+   
+   
+   self.xReadOut = @"test x";
+   self.yReadOut = @"test y";
+}
+
+
+- (void)pan:(UIPanGestureRecognizer *)pan {
+   
+   float xPanVal = [pan locationInView:self].x;
+   [self.delegate kaossChangedWithElement:self.elementX andValue:xPanVal];
+   
+   float yPanVal = [pan locationInView:self].y;
+   [self.delegate kaossChangedWithElement:self.elementY andValue:xPanVal];
+   
+   self.xPosition = xPanVal;
+   self.yPosition = yPanVal;
+   
+   [self setNeedsDisplay];
 }
 
 
@@ -30,7 +64,7 @@
    
    float w = CGRectGetWidth(self.bounds);
    float h = CGRectGetHeight(self.bounds);
-
+   
    
    // start
    [pathS moveToPoint:CGPointMake(self.xPosition, 0)];
@@ -52,13 +86,13 @@
    //string
    NSDictionary * textAttributes = @{
                                      NSFontAttributeName: [UIFont systemFontOfSize:10.0], NSForegroundColorAttributeName : [UIColor blackColor],
-                                      NSBackgroundColorAttributeName : [UIColor whiteColor]};
+                                     NSBackgroundColorAttributeName : [UIColor whiteColor]};
    
    NSStringDrawingContext *drawingContext = [[NSStringDrawingContext alloc] init];
    drawingContext.minimumScaleFactor = 1;
    
    CGRect panXStrRect = CGRectMake(self.xPosition + 2, CGRectGetHeight(self.bounds) * 0.9, 75, 15);
-   [self.panXValReadOut drawWithRect:panXStrRect
+   [self.xReadOut drawWithRect:panXStrRect
                              options:NSStringDrawingUsesLineFragmentOrigin
                           attributes:textAttributes
                              context:drawingContext];
@@ -66,28 +100,11 @@
    
    
    CGRect panYStrRect = CGRectMake(w - 50, self.yPosition + 2, 75, 15);
-   [self.panYValReadOut drawWithRect:panYStrRect
+   [self.yReadOut drawWithRect:panYStrRect
                              options:NSStringDrawingUsesLineFragmentOrigin
                           attributes:textAttributes
                              context:drawingContext];
-   
 }
 
-
-
-- (void)setPanXValueReadOut:(NSString *)str {
-   self.panXValReadOut = str;
-}
-
-- (void)setPanYValueReadOut:(NSString *)str {
-   self.panYValReadOut = str;
-}
-
-- (void)setPanXPosition:(float)position {
-   self.xPosition = position;
-}
-- (void)setPanYPosition:(float)position {
-   self.yPosition = position;
-}
 
 @end

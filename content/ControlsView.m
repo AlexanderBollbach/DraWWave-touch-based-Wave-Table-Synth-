@@ -1,27 +1,36 @@
 //
-//  ControlsView.m
-//  WavformVizualizer_iOS
+//  ControlsViewB.m
+//  DraWave
 //
-//  Created by alexanderbollbach on 2/18/16.
+//  Created by alexanderbollbach on 2/24/16.
 //  Copyright © 2016 alexanderbollbach. All rights reserved.
 //
 
 #import "ControlsView.h"
-#import "functions.h"
-#import "Global.h"
-#import "ModeCollectionViewCell.h"
+#import "CV_lineDrawer.h"
+#import "Param_Gesture_View.h"
 
-@interface ControlsView() <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ControlsView()
 
-@property (nonatomic,strong) UICollectionView * modeCollView;
-@property (nonatomic,strong) UICollectionView * paramCollView;
+@property (nonatomic,strong) Param_Gesture_View * panXView;
+@property (nonatomic,strong) Param_Gesture_View * panYView;
 
-@property (nonatomic) float w;
-@property (nonatomic) float h;
+@property (nonatomic,strong) Param_Gesture_View * blank;
+@property (nonatomic,strong) Param_Gesture_View * samplesDurationView;
+@property (nonatomic,strong) Param_Gesture_View * lfoRateView;
+@property (nonatomic,strong) Param_Gesture_View * lfoAmountView;
+@property (nonatomic,strong) Param_Gesture_View * reverbAmountView;
+@property (nonatomic,strong) Param_Gesture_View * blank2;
 
-@property (nonatomic,strong) Global * global;
+
+@property (nonatomic,strong) NSArray * parameterViews;
+@property (nonatomic,strong) CV_lineDrawer * lineDrawer;
+@property (nonatomic) Gesture_t touchedGesture;
+
+@property (nonatomic,strong) UIView * mainView;
 
 
+@property BOOL touchActuallyMoved;
 
 @end
 
@@ -29,197 +38,301 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
    if (self = [super initWithFrame:frame]) {
-      self.global = [Global sharedInstance];
-      self.pulledDown = NO;
-      
-      
-      self.w = CGRectGetWidth(self.bounds);
-      self.h = CGRectGetHeight(self.bounds);
+      [self setup];
    }
    return self;
 }
 
-
 - (void)setup {
    
+   self.clearsContextBeforeDrawing = YES;
    
-   CGRect modeFrame = CGRectMake(0,
-                                 0,
-                                 self.w,
-                                 self.h * 0.5);
-   CGRect paramFrame = CGRectMake(0,
-                                  self.h * 0.5,
-                                  self.w,
-                                  self.h * 0.3);
+   CGRect mainViewFr = CGRectInset(self.bounds, 100, 20);
+   mainViewFr.origin.y += 75;
+   self.mainView = [[UIView alloc] initWithFrame:mainViewFr];
    
-   CGRect hudFrame = CGRectMake(0,
-                                  self.h * 0.9,
-                                  self.w,
-                                  self.h * 0.1);
+   
+   self.mainView.backgroundColor = [UIColor blackColor];
+   [self addSubview:self.mainView];
+   
+   
+   self.panXView = [[Param_Gesture_View alloc] initWithFrame:CGRectZero];
+   self.panYView = [[Param_Gesture_View alloc] initWithFrame:CGRectZero];
+   
+   self.blank = [[Param_Gesture_View alloc] initWithFrame:CGRectZero];
+   self.samplesDurationView = [[Param_Gesture_View alloc] initWithFrame:CGRectZero];
+   self.lfoRateView = [[Param_Gesture_View alloc] initWithFrame:CGRectZero];
+   self.lfoAmountView = [[Param_Gesture_View alloc] initWithFrame:CGRectZero];
+   self.reverbAmountView = [[Param_Gesture_View alloc] initWithFrame:CGRectZero];
+   self.blank2 = [[Param_Gesture_View alloc] initWithFrame:CGRectZero];
 
-   UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc] init];
-   layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-   layout.minimumLineSpacing = 0;
-   layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+   self.panXView.gestureType = panX;
+   self.panYView.gestureType = panY;
+   
+   self.blank.paramType = blank;
+   self.samplesDurationView.paramType = samplesDuration;
+   self.lfoRateView.paramType = lfoRate;
+   self.lfoAmountView.paramType = lfoAmount;
+   self.reverbAmountView.paramType = reverbAmount;
+   self.blank2.paramType = blank2;
+
+   
+   self.panXView.name.text = @"X";
+   self.panYView.name.text = @"Y";
+   
+   self.blank.name.text = @"blank";
+   self.samplesDurationView.name.text = @"duration";
+   self.lfoRateView.name.text = @"rate";
+   self.lfoAmountView.name.text = @"amount";
+   self.reverbAmountView.name.text = @"rev amount";
+   self.blank2.name.text = @"blank 2";
+
+   self.panXView.isGesture = YES;
+   self.panYView.isGesture = YES;
+   
+   self.blank.isGesture = NO;
+   self.samplesDurationView.isGesture = NO;
+   self.lfoRateView.isGesture = NO;
+   self.lfoAmountView.isGesture = NO;
+   self.reverbAmountView.isGesture = NO;
+   self.blank2.isGesture = NO;
+
+   self.parameterViews = [NSArray arrayWithObjects:
+                          self.panXView,
+                          self.panYView,self.blank,
+                          self.samplesDurationView,
+                          self.lfoRateView,
+                          self.lfoAmountView,
+                          self.reverbAmountView,
+                          self.blank2,
+                          nil];
+
+   self.lineDrawer = [[CV_lineDrawer alloc] initWithFrame:self.bounds];
+   
+   [self.mainView addSubview:self.panXView];
+   [self.mainView addSubview:self.panYView];
+   
+   [self.mainView addSubview:self.blank];
+   [self.mainView addSubview:self.samplesDurationView];
+   [self.mainView addSubview:self.lfoRateView];
+   [self.mainView addSubview:self.lfoAmountView];
+   [self.mainView addSubview:self.reverbAmountView];
+   [self.mainView addSubview:self.blank2];
+
+   
+   self.blank.tag = 1;
+   self.samplesDurationView.tag = 2;
+   self.lfoRateView.tag = 3;
+   self.lfoAmountView.tag = 4;
+   self.reverbAmountView.tag = 5;
+   self.blank2.tag = 6;
+   
+   [self.mainView addSubview:self.lineDrawer];
    
    
-   self.modeCollView = [[UICollectionView alloc] initWithFrame:modeFrame collectionViewLayout:layout];
-   self.modeCollView.pagingEnabled = YES;
-   [self.modeCollView setDataSource:self];
-   [self.modeCollView setDelegate:self];
-   self.modeCollView.backgroundColor = [UIColor clearColor];
-   [self.modeCollView registerClass:[ModeCollectionViewCell class] forCellWithReuseIdentifier:@"mode"];
-   [self addSubview:self.modeCollView];
    
    
-   
-   
-   
-   UICollectionViewFlowLayout * layout2 = [[UICollectionViewFlowLayout alloc] init];
-   layout2.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-   layout2.minimumLineSpacing = 0;
-   layout2.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
-   
-   self.paramCollView = [[UICollectionView alloc] initWithFrame:paramFrame collectionViewLayout:layout2];
-   self.paramCollView.pagingEnabled = YES;
-   [self.paramCollView setDataSource:self];
-   [self.paramCollView setDelegate:self];
-   self.paramCollView.backgroundColor = [UIColor clearColor];
-   [self.paramCollView registerClass:[ModeCollectionViewCell class] forCellWithReuseIdentifier:@"param"];
-   [self addSubview:self.paramCollView];
-   
-   
-   
-   
-   self.hudLabel = [[UILabel alloc] initWithFrame:hudFrame];
-   [self addSubview:self.hudLabel];
-   self.hudLabel.textColor = [UIColor whiteColor];
-   
+   self.backgroundColor = [UIColor blackColor];
 }
 
--(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 
-   if ([scrollView isEqual:self.modeCollView]) {
-      CGPoint centerPoint = CGPointMake(self.modeCollView.frame.size.width / 2 + scrollView.contentOffset.x, self.modeCollView.frame.size.height /2 + scrollView.contentOffset.y);
-      
-      NSIndexPath * indexPath = [self.modeCollView indexPathForItemAtPoint:centerPoint];
-      NSLog(@"%@", indexPath);
-      
-      [self.global.modeManager setActiveModeWithId:(int)indexPath.item];
-      
-      [self.paramCollView reloadData];
-   }
+
+
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
    
-   if ([scrollView isEqual:self.paramCollView]) {
-      CGPoint centerPoint = CGPointMake(self.modeCollView.frame.size.width / 2 + scrollView.contentOffset.x, self.modeCollView.frame.size.height /2 + scrollView.contentOffset.y);
-      
-      NSIndexPath * indexPath = [self.modeCollView indexPathForItemAtPoint:centerPoint];
-      NSLog(@"%@", indexPath);
-      
-      [self.global.modeManager.activeMode setActiveParameterWithId:(int)indexPath.item];
-      
-   }
-
-   
-   
-}
-
-
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+   UITouch * touch = [touches anyObject];
+   Param_Gesture_View * gestureView = (Param_Gesture_View *)touch.view;
   
-   if ([collectionView isEqual:self.paramCollView]) {
-      return CGSizeMake(self.w, collectionView.bounds.size.height);
+   NSLog(@"began tag %i", (int)gestureView.tag);
+   
+   if (![gestureView isKindOfClass:[Param_Gesture_View class]]) {
+      return;
    }
-   if ([collectionView isEqual:self.modeCollView]) {
-      return CGSizeMake(self.w, collectionView.bounds.size.height);
+   
+   if (!gestureView.isGesture) {
+      [self clearAnimations];
+      return;
    }
-   return CGSizeMake(10, 10);
+   
+   //take note of gesture tapped for connection
+   self.touchedGesture = gestureView.gestureType;
+   
+   [gestureView animate:YES];
+   
+   // let drawer know where to stop choosing line from
+   self.lineDrawer.chosenGesturePoint = touch.view.center;
+   self.lineDrawer.currentPoint = touch.view.center;
+   self.lineDrawer.drawChoosingLine = YES;
+
+   [self.lineDrawer setNeedsDisplay];
+
+   self.touchActuallyMoved = NO; // if no touch moved than we want a deattach
+   // unfortunately the current scheme reattaches parameter in touches end so if we go from touches began directly to ended then we want to bypass the connection
+
 }
 
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
    
-   if ([collectionView isEqual:self.modeCollView]) {
-      NSInteger num = self.global.modeManager.allModes.count;
-      return num;
-   }
-   
-   
-   
-   if ([collectionView isEqual:self.paramCollView]) {
-      NSInteger num = self.global.modeManager.activeMode.allParameters.count;
-      return num;
-   }
-   
-   return 0;
-}
+   UIView * view = [self hitTest:[[touches anyObject] locationInView:self] withEvent:event];
 
+   Param_Gesture_View * gestureView = (Param_Gesture_View *)view;
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-   ModeCollectionViewCell * cell;
-   
-   if ([collectionView isEqual:self.modeCollView]) {
-      cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"mode" forIndexPath:indexPath];
-      NSString * name = [self.global.modeManager getNameForMode:(int)indexPath.item];
-      cell.name.text = name;
-      
-      //      if ([self.global.modeManager isModeActive:(int)indexPath.item]) {
-      //         cell.layer.borderWidth = 1;
-      //      } else {
-      //         cell.layer.borderWidth = 0;
-      //      }
-      //
-      
+   // rule out any non gesture/param related views
+   if (![gestureView isKindOfClass:[Param_Gesture_View class]]) {
+      return;
    }
    
-   
-   if ([collectionView isEqual:self.paramCollView]) {
-      cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"param" forIndexPath:indexPath];
-      NSString * name = [self.global.modeManager getNameForActiveParam:(int)indexPath.item];
-      cell.name.text = name;
-      
-      //
-      //      if ([self.global.modeManager.activeMode isParamActive:(int)indexPath.item]) {
-      //         cell.layer.borderWidth = 1;
-      //      } else {
-      //         cell.layer.borderWidth = 0;
-      //      }
-      
+   // only parameters should be selected
+   if (gestureView.isGesture) {
+      return;
    }
+
+   // animate on hover
+   [self clearAnimations];
+   [gestureView animate:YES];
+
+   // set end point for choosing line
+   self.lineDrawer.currentPoint = gestureView.center;
+   [self.lineDrawer setNeedsDisplay];
    
-   return cell;
-   
+   // we are going to make a connection
+   self.touchActuallyMoved = YES;
 }
 
 
 
-//- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
-//   
-//   if ([collectionView isEqual:self.modeCollView]) {
-//   NSLog(@"%@", indexPath);
-//   }
-//
-//}
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+  
+   // drawing
+   [self clearAnimations];
+   self.lineDrawer.drawChoosingLine = NO;
+   [self.lineDrawer setNeedsDisplay];
    
-      if ([collectionView isEqual:self.modeCollView]) {
-         [self.global.modeManager setActiveModeWithId:(int)indexPath.item];
+   
+   // break connection if touches began was not gesture and touches end was not parameter
+   if (!self.touchActuallyMoved) {
+    
+      switch (self.touchedGesture) {
+         case panX:
+            self.lineDrawer.xISConnected = NO;
+            [self.delegate breakConnectionFor:panX];
+            break;
+         case panY:
+            self.lineDrawer.yISConnected = NO;
+            [self.delegate breakConnectionFor:panY];
+            break;
+            
+         default:
+            break;
       }
+      
+
+      return;
+   }
+
    
    
-      if ([collectionView isEqual:self.paramCollView]) {
-         [self.global.modeManager.activeMode setActiveParameterWithId:(int)indexPath.item];
-      }
-   //
-   //   [self.modeCollView reloadData];
-   //   [self.paramCollView reloadData];
+   UIView * view = [self hitTest:[[touches anyObject] locationInView:self] withEvent:event];
+
+   // check if its param view
+   if (![view isKindOfClass:[Param_Gesture_View class]]) {
+      return;
+   }
    
+   Param_Gesture_View * paramView = (Param_Gesture_View *)view;
+
+   // tell VC to make connection in parameter manager
+   [self.delegate connectionMadeFromGesture:self.touchedGesture toParameter:paramView.paramType];
+
+   switch (self.touchedGesture) {
+      case panX: {
+        
+         self.lineDrawer.xISConnected = YES;
+         self.lineDrawer.xFrom = self.panXView.center;
+         self.lineDrawer.xTo = paramView.center;
+
+      } break;
+         
+      case panY: {
+        
+         self.lineDrawer.yISConnected = YES;
+         self.lineDrawer.yFrom = self.panYView.center;
+         self.lineDrawer.yTo = paramView.center;
+         
+      } break;
+      default:
+         break;
+   }
+
+
 }
 
 
 
 
+
+
+- (void)layoutSubviews {
+
+   CGRect masterFr = self.mainView.bounds;
+
+   // left column
+   CGRect xAxisFr = CGRectMake(masterFr.origin.x,
+                               masterFr.origin.y,
+                               masterFr.size.width / 2.0,
+                               masterFr.size.height / 6.0);
+
+   CGRect blankFr = xAxisFr;
+   blankFr.origin.y += xAxisFr.size.height + 26.0;
+
+   CGRect lfoRateFr = blankFr;
+   lfoRateFr.origin.y += blankFr.size.height;
+   
+   CGRect revAmountFr = lfoRateFr;
+   revAmountFr.origin.y += lfoRateFr.size.height;
+
+   
+   
+   // right column
+   CGRect yAxisFr = CGRectMake(masterFr.size.width / 2.0,
+                               masterFr.origin.y,
+                               masterFr.size.width / 2.0,
+                               masterFr.size.height / 6.0);
+   
+   CGRect samplesDurationFr = yAxisFr;
+   samplesDurationFr.origin.y += yAxisFr.size.height + 26.0;
+   
+   CGRect lfoAmountFr = samplesDurationFr;
+   lfoAmountFr.origin.y += samplesDurationFr.size.height;
+
+   CGRect blank2Fr = lfoAmountFr;
+   blank2Fr.origin.y += lfoAmountFr.size.height;
+   
+   self.panXView.frame = xAxisFr;
+   self.panYView.frame = yAxisFr;
+   
+   self.blank.frame = blankFr;
+   self.samplesDurationView.frame = samplesDurationFr;
+   self.lfoRateView.frame = lfoRateFr;
+   self.lfoAmountView.frame = lfoAmountFr;
+   self.reverbAmountView.frame = revAmountFr;
+   self.blank2.frame = blank2Fr;
+   
+   
+   NSLog(@"blank %@", NSStringFromCGPoint(self.blank.center));
+      NSLog(@"rate %@", NSStringFromCGPoint(self.lfoRateView.center));
+
+}
+
+
+
+- (void)clearAnimations {
+   
+   for (Param_Gesture_View * param in self.parameterViews) {
+      [param animate:NO];
+   }
+}
 
 @end
