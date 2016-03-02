@@ -6,9 +6,9 @@
 //  Copyright © 2016 alexanderbollbach. All rights reserved.
 //
 
-#import "KS_ElementView.h"
+#import "KS_ElementButton.h"
 
-@implementation KS_ElementView
+@implementation KS_ElementButton
 
 - (instancetype)initWithFrame:(CGRect)frame {
    if (self = [super initWithFrame:frame]) {

@@ -10,30 +10,41 @@
 
 typedef enum {
    
-   KS_X1,
-   KS_Y1,
-   KS_X2,
-   KS_Y2
+   KS_Element1,
+   KS_Element2,
+   KS_Element3,
+   KS_Element4
    
 } KS_Element_t;
 
 
 typedef enum {
    
-   KS_samplesDurationLong,
-   KS_samplesDuration,
-   KS_lfoRate,
-   KS_lfoAmount,
-   KS_reverbAmount,
-   KS_blank2
+   KS_Parameter1,
+   KS_Parameter2,
+   KS_Parameter3,
+   KS_Parameter4,
+   KS_Parameter5,
+   KS_Parameter6
    
 } KS_Parameter_t;
+
+
+typedef enum {
+   
+   settings1,
+   settings2,
+   settings3,
+   settings4
+   
+} settingsType_t;
 
 
 @interface KS_TypesAndHelpers : NSObject
 
 
 - (NSString *)getNameFromKS_Parameter:(KS_Parameter_t)parameter;
+- (NSString *)getNameFromKS_Element:(KS_Element_t)element;
 
 + (instancetype)sharedInstance;
 

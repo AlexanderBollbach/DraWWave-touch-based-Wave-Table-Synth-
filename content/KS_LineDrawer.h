@@ -14,20 +14,20 @@
 @property (nonatomic) CGPoint currentPoint;
 @property BOOL drawChoosingLine;
 
-@property BOOL KS_X1_ISConnected;
-@property CGPoint KS_X1_From;
-@property CGPoint KS_X1_To;
+@property BOOL KS_Element1_isConnected;
+@property CGPoint KS_Element1_From;
+@property CGPoint KS_Element1_To;
 
-@property BOOL KS_Y1_ISConnected;
-@property CGPoint KS_Y1_From;
-@property CGPoint KS_Y1_To;
+@property BOOL KS_Element2_isConnected;
+@property CGPoint KS_Element2_From;
+@property CGPoint KS_Element2_To;
 
-@property BOOL KS_X2_ISConnected;
-@property CGPoint KS_X2_From;
-@property CGPoint KS_X2_To;
+@property BOOL KS_Element3_isConnected;
+@property CGPoint KS_Element3_From;
+@property CGPoint KS_Element3_To;
 
-@property BOOL KS_Y2_ISConnected;
-@property CGPoint KS_Y2_From;
-@property CGPoint KS_Y2_To;
+@property BOOL KS_Element4_isConnected;
+@property CGPoint KS_Element4_From;
+@property CGPoint KS_Element4_To;
 
 @end

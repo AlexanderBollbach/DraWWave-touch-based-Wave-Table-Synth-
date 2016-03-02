@@ -42,8 +42,9 @@
 #pragma mark - KS_ConnectorViewDelegate -
 
 - (void)connectionMadeFromElement:(KS_Element_t)element toParameter:(KS_Parameter_t)parameter {
-   
-   [self.ks_ConnectionManager addConnectionWithKS_Element:element andKS_Parameter:parameter];
+
+   [self.ks_ConnectionManager addConnectionWithKS_Element:element
+                                          andKS_Parameter:parameter];
 }
 
 - (void)breakConnectionsForElement:(KS_Element_t)element {
@@ -52,7 +53,28 @@
 }
 
 
-
+-(void)settingsButtonTappedWithSettings:(settingsType_t)settings selected:(BOOL)selected {
+   
+   switch (settings) {
+      case settings1:
+         
+         break;
+      case settings2:
+         
+         break;
+      case settings3:
+         
+         break;
+      case settings4:
+         
+         break;
+         
+      default:
+         break;
+   }
+   
+   
+}
 
 
 - (void)connectAnimation {

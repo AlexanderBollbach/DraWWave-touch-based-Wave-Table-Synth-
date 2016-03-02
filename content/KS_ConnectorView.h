@@ -10,9 +10,9 @@
 #import "KS_TypesAndHelpers.h"
 
 @protocol KS_ConnectorViewDelegate <NSObject>
-
 - (void)connectionMadeFromElement:(KS_Element_t)element toParameter:(KS_Parameter_t)parameter;
 - (void)breakConnectionsForElement:(KS_Element_t)element;
+- (void)settingsButtonTappedWithSettings:(settingsType_t)settings selected:(BOOL)selected;
 @end
 
 @interface KS_ConnectorView : UIView

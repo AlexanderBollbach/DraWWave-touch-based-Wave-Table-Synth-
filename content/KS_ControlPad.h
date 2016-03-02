@@ -12,8 +12,8 @@
 @class KS_ControlPad;
 
 @protocol KS_ControlPadDelegate <NSObject>
-//- (void)changedWithElement:(KS_Element_t)element andValue:(float)value;
 - (void)changedWithParameter:(KS_Parameter_t)parameter andValue:(float)value;
+- (void)elementButtonTapped:(KS_Element_t)element;
 @end
 
 @interface KS_ControlPad : UIView
@@ -22,6 +22,13 @@
 
 @property KS_Element_t elementX;
 @property KS_Element_t elementY;
+
+@property KS_Parameter_t elementXParameter;
+@property KS_Parameter_t elementYParameter;
+
+@property KS_Element_t selectedElement;
+@property BOOL elementIsListening;
+
 
 - (void)setXreadOutWithString:(NSString *)string;
 - (void)setYreadOutWithString:(NSString *)string;

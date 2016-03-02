@@ -15,12 +15,27 @@
 #import "KS_ControlPad.h"
 #import "KS_ConnectionManager.h"
 
+#import "KS_ElementButton.h"
+
+#import "ParameterBankView.h"
+
 @interface SynthVC () <KS_ControlPadDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic,strong) AudioController * audioController;
 @property (nonatomic,strong) WaveFormView * waveFormView;
 @property (nonatomic,strong) KS_ConnectionViewController * KS_ConnectionViewController;
 @property BOOL tapped;
+
+@property (nonatomic,strong) KS_ControlPad * controlPad1;
+@property (nonatomic,strong) KS_ControlPad * controlPad2;
+
+@property (nonatomic,strong) ParameterBankView * parameterBankView;
+
+@property (nonatomic,strong) KS_ConnectionManager * connectionManager;
+
+
+@property (nonatomic,assign) KS_Element_t selectedElement;
+@property (nonatomic,assign) KS_Parameter_t selectedParameter;
 
 @end
 
@@ -49,22 +64,27 @@
    CGRect kcvFr2 = kcvFr1;
    kcvFr2.origin.x += kcvFr2.size.width;
    
-//   KS_ConnectionManager * kaossManager = [KS_ConnectionManager sharedInstance];
-//   kaossManager.delegate = self;
+   //self.connectionManager = [KS_ConnectionManager sharedInstance];
+  // self.connectionManager.delegate = self;
    
-   KS_ControlPad * kcv = [[KS_ControlPad alloc] initWithFrame:kcvFr1];
-   kcv.elementX = KS_X1;
-   kcv.elementY = KS_Y1;
-   kcv.delegate = self;
-   [self.view addSubview:kcv];
+   self.controlPad1 = [[KS_ControlPad alloc] initWithFrame:kcvFr1];
+   self.controlPad1.elementX = KS_Element1;
+   self.controlPad1.elementY = KS_Element2;
+   self.controlPad1.delegate = self;
+   [self.view addSubview:self.controlPad1];
    
-   KS_ControlPad * kcv2 = [[KS_ControlPad alloc] initWithFrame:kcvFr2];
-   kcv2.elementX = KS_X2;
-   kcv2.elementY = KS_Y2;
-   kcv2.delegate = self;
-   [self.view addSubview:kcv2];
+   self.controlPad2 = [[KS_ControlPad alloc] initWithFrame:kcvFr2];
+   self.controlPad2.elementX = KS_Element3;
+   self.controlPad2.elementY = KS_Element4;
+   self.controlPad2.delegate = self;
+   [self.view addSubview:self.controlPad2];
    
    
+   
+   self.controlPad1.elementXParameter = KS_Parameter2;
+      self.controlPad1.elementYParameter = KS_Parameter3;
+      self.controlPad2.elementXParameter = KS_Parameter4;
+      self.controlPad2.elementYParameter = KS_Parameter5;
    
    self.KS_ConnectionViewController = [[KS_ConnectionViewController alloc] init];
    
@@ -78,52 +98,61 @@
    [self.view addGestureRecognizer:tap];
    
    
+   
+   self.parameterBankView = [[ParameterBankView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) / 8)];
+   [self.view addSubview:self.parameterBankView];
+   
 }
 
 
 
 
-#pragma mark - ks_ConnectionManager delegate -
+
+
 
 - (void)changedWithParameter:(KS_Parameter_t)parameter andValue:(float)value {
    switch (parameter) {
-      case KS_samplesDurationLong: {
+         
+         // empty
+      case KS_Parameter1: {
          value = alexMap(value, 0, 100, 50, 500000);
-         [self.audioController setSamplesDurationValue:value];
-         [self.waveFormView setNumOfSamplesToDraw:value];
+        // [self.audioController setSamplesDurationValue:value];
+        // [self.waveFormView setNumOfSamplesToDraw:value];
          break;
       }
 
-         
-      case KS_samplesDuration: {
+         // samples (short)
+      case KS_Parameter2: {
          value = alexMap(value, 0, 100, 0, 1000);
          [self.audioController setSamplesDurationValue:value];
          [self.waveFormView setNumOfSamplesToDraw:value];
          break;
       }
-         
-      case KS_lfoRate: {
+       
+         // lfo rate
+      case KS_Parameter3: {
          value = alexMap(value, 0, 100, 5, 100);
          [self.audioController setLfoRateValue:value];
          break;
       }
          
-      case KS_lfoAmount: {
+         // lfo amount
+      case KS_Parameter4: {
          value = alexMap(value, 0, 100, 0, 0.2);
          [self.audioController setLfoAmountValue:value];
          break;
       }
          
-      case KS_reverbAmount: {
+         // reverb
+      case KS_Parameter5: {
          value = alexMap(value, 0, 100, 0, 100);
          [self.audioController setReverbAmount:value];
          
          break;
       }
          
-         
-      case KS_blank2:
-         NSLog(@"blank2 changed %i   with Value %f", parameter,value);
+         // empty
+      case KS_Parameter6:
          
          break;
          

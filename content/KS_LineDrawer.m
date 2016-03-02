@@ -46,26 +46,23 @@
       CGContextMoveToPoint(context, self.chosenGesturePoint.x,self.chosenGesturePoint.y);
       CGContextAddLineToPoint(context, self.currentPoint.x, self.currentPoint.y);
    }
-   
-   if (self.KS_X1_ISConnected) {
-      CGContextMoveToPoint(context, self.KS_X1_From.x, self.KS_X1_From.y);
-      CGContextAddLineToPoint(context, self.KS_X1_To.x, self.KS_X1_To.y);
+   if (self.KS_Element1_isConnected) {
+      CGContextMoveToPoint(context, self.KS_Element1_From.x, self.KS_Element1_From.y);
+      CGContextAddLineToPoint(context, self.KS_Element1_To.x, self.KS_Element1_To.y);
    }
-   if (self.KS_Y1_ISConnected) {
-      CGContextMoveToPoint(context, self.KS_Y1_From.x, self.KS_Y1_From.y);
-      CGContextAddLineToPoint(context, self.KS_Y1_To.x, self.KS_Y1_To.y);
+   if (self.KS_Element2_isConnected) {
+      CGContextMoveToPoint(context, self.KS_Element2_From.x, self.KS_Element2_From.y);
+      CGContextAddLineToPoint(context, self.KS_Element1_To.x, self.KS_Element1_To.y);
    }
-   if (self.KS_X2_ISConnected) {
-      CGContextMoveToPoint(context, self.KS_X2_From.x, self.KS_X2_From.y);
-      CGContextAddLineToPoint(context, self.KS_X2_To.x, self.KS_X2_To.y);
+   if (self.KS_Element3_isConnected) {
+      CGContextMoveToPoint(context, self.KS_Element3_From.x, self.KS_Element3_From.y);
+      CGContextAddLineToPoint(context, self.KS_Element3_To.x, self.KS_Element3_To.y);
    }
-   if (self.KS_Y2_ISConnected) {
-      CGContextMoveToPoint(context, self.KS_Y2_From.x, self.KS_Y2_From.y);
-      CGContextAddLineToPoint(context, self.KS_Y2_To.x, self.KS_Y2_To.y);
+   if (self.KS_Element4_isConnected) {
+      CGContextMoveToPoint(context, self.KS_Element4_From.x, self.KS_Element4_From.y);
+      CGContextAddLineToPoint(context, self.KS_Element1_To.x, self.KS_Element1_To.y);
    }
 
-   
-   
    CGContextSetLineWidth(context, 1.0f);
    [[UIColor whiteColor] setStroke];
    CGContextDrawPath(context,kCGPathFillStroke);

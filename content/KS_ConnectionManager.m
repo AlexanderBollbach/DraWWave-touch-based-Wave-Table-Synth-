@@ -34,7 +34,8 @@
 }
 
 
-- (void)addConnectionWithKS_Element:(KS_Element_t)element andKS_Parameter:(KS_Parameter_t)parameter {
+- (void)addConnectionWithKS_Element:(KS_Element_t)element
+                    andKS_Parameter:(KS_Parameter_t)parameter {
    
    KS_Connection * connection = [[KS_Connection alloc] init];
    connection.element = element;

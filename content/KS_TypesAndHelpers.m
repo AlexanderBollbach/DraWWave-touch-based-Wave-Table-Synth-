@@ -36,28 +36,48 @@
    
    
 }
-
+- (NSString *)getNameFromKS_Element:(KS_Element_t)element {
+   switch (element) {
+      
+      case KS_Element1:
+         return @"KS_X1";
+         break;
+      case KS_Element2:
+         return @"KS_Y1";
+         break;
+      case KS_Element3:
+         return @"KS_X2";
+         break;
+      case KS_Element4:
+         return @"KS_Y2";
+         break;
+         
+      default:
+         break;
+   }
+ 
+}
 
 
 - (NSString *)getNameFromKS_Parameter:(KS_Parameter_t)parameter {
    
    switch (parameter) {
-      case KS_samplesDurationLong:
+      case KS_Parameter1:
          return @"samples long";
          break;
-      case KS_samplesDuration:
+      case KS_Parameter2:
          return @"samples short";
          break;
-      case KS_lfoRate:
+      case KS_Parameter3:
          return @"lfo rate";
          break;
-      case KS_lfoAmount:
+      case KS_Parameter4:
          return @"lfo amount";
          break;
-      case KS_reverbAmount:
+      case KS_Parameter5:
          return @"reverb amount";
          break;
-      case KS_blank2:
+      case KS_Parameter6:
          return @"blank2";
          break;
          
