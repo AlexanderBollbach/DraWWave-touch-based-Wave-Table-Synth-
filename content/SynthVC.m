@@ -19,6 +19,8 @@
 
 #import "ParameterBankView.h"
 
+#import "MenuView.h"
+
 @interface SynthVC () <KS_ControlPadDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic,strong) AudioController * audioController;
@@ -37,6 +39,8 @@
 @property (nonatomic,assign) KS_Element_t selectedElement;
 @property (nonatomic,assign) KS_Parameter_t selectedParameter;
 
+@property (nonatomic,strong) MenuView * menuView;
+
 @end
 
 @implementation SynthVC
@@ -51,56 +55,58 @@
    self.waveFormView = [[WaveFormView alloc] initWithFrame:waveFormFrame];
    [self.view addSubview:self.waveFormView];
    
+   
+   CGRect topMenuFrame = self.view.bounds;
+   topMenuFrame.size.height /= 3.5;
+   
+   self.menuView = [[MenuView alloc] initWithFrame:topMenuFrame];
+   [self.view addSubview:self.menuView];
+   
 
    
    
+   CGRect lowerFrame = self.view.bounds;
+   lowerFrame.origin.y += self.menuView.frame.size.height;
+   lowerFrame.size.height -= self.menuView.frame.size.height;
    
-
-   #pragma mark - KS Setup -
-
-   CGRect kcvFr1 = self.view.bounds;
+   CGRect kcvFr1 = lowerFrame;
    kcvFr1.size.width /= 2;
    
    CGRect kcvFr2 = kcvFr1;
    kcvFr2.origin.x += kcvFr2.size.width;
-   
-   //self.connectionManager = [KS_ConnectionManager sharedInstance];
-  // self.connectionManager.delegate = self;
-   
+
    self.controlPad1 = [[KS_ControlPad alloc] initWithFrame:kcvFr1];
-   self.controlPad1.elementX = KS_Element1;
-   self.controlPad1.elementY = KS_Element2;
+   self.controlPad1.elementX.element = KS_Element1;
+   self.controlPad1.elementY.element = KS_Element2;
    self.controlPad1.delegate = self;
    [self.view addSubview:self.controlPad1];
    
    self.controlPad2 = [[KS_ControlPad alloc] initWithFrame:kcvFr2];
-   self.controlPad2.elementX = KS_Element3;
-   self.controlPad2.elementY = KS_Element4;
+   self.controlPad2.elementX.element = KS_Element3;
+   self.controlPad2.elementY.element = KS_Element4;
    self.controlPad2.delegate = self;
    [self.view addSubview:self.controlPad2];
    
    
+   // initialize parameters
+   self.controlPad1.elementX.parameter = KS_Parameter2;
+   self.controlPad1.elementY.parameter = KS_Parameter3;
+   self.controlPad2.elementX.parameter = KS_Parameter4;
+   self.controlPad2.elementY.parameter = KS_Parameter5;
    
-   self.controlPad1.elementXParameter = KS_Parameter2;
-      self.controlPad1.elementYParameter = KS_Parameter3;
-      self.controlPad2.elementXParameter = KS_Parameter4;
-      self.controlPad2.elementYParameter = KS_Parameter5;
-   
-   self.KS_ConnectionViewController = [[KS_ConnectionViewController alloc] init];
+  // self.KS_ConnectionViewController = [[KS_ConnectionViewController alloc] init];
    
    self.view.backgroundColor = [UIColor blackColor];
    
    
    self.audioController = [AudioController sharedInstance];
    
-   UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
-   tap.numberOfTapsRequired = 2;
-   [self.view addGestureRecognizer:tap];
+//   UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
+//   tap.numberOfTapsRequired = 2;
+//   [self.view addGestureRecognizer:tap];
+
    
-   
-   
-   self.parameterBankView = [[ParameterBankView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) / 8)];
-   [self.view addSubview:self.parameterBankView];
+
    
 }
 
@@ -116,11 +122,11 @@
          // empty
       case KS_Parameter1: {
          value = alexMap(value, 0, 100, 50, 500000);
-        // [self.audioController setSamplesDurationValue:value];
-        // [self.waveFormView setNumOfSamplesToDraw:value];
+         // [self.audioController setSamplesDurationValue:value];
+         // [self.waveFormView setNumOfSamplesToDraw:value];
          break;
       }
-
+         
          // samples (short)
       case KS_Parameter2: {
          value = alexMap(value, 0, 100, 0, 1000);
@@ -128,7 +134,7 @@
          [self.waveFormView setNumOfSamplesToDraw:value];
          break;
       }
-       
+         
          // lfo rate
       case KS_Parameter3: {
          value = alexMap(value, 0, 100, 5, 100);

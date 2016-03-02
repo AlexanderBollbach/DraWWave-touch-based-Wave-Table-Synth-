@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "KS_ParameterView.h"
+#import "KS_ParameterButton.h"
 
 @interface ParameterBankView : UIView
 

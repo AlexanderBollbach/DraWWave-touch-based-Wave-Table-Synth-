@@ -9,7 +9,7 @@
 #import "KS_ConnectorView.h"
 #import "KS_LineDrawer.h"
 #import "KS_ElementButton.h"
-#import "KS_ParameterView.h"
+#import "KS_ParameterButton.h"
 #import "KS_TypesAndHelpers.h"
 #import "KS_SettingsButton.h"
 
@@ -20,12 +20,12 @@
 @property (nonatomic,strong) KS_ElementButton * KS_Element3_View;
 @property (nonatomic,strong) KS_ElementButton * KS_Element4_View;
 
-@property (nonatomic,strong) KS_ParameterView * KS_Parameter1_View;
-@property (nonatomic,strong) KS_ParameterView * KS_Parameter2_View;
-@property (nonatomic,strong) KS_ParameterView * KS_Parameter3_View;
-@property (nonatomic,strong) KS_ParameterView * KS_Parameter4_View;
-@property (nonatomic,strong) KS_ParameterView * KS_Parameter5_View;
-@property (nonatomic,strong) KS_ParameterView * KS_Parameter6_View;
+@property (nonatomic,strong) KS_ParameterButton * KS_Parameter1_View;
+@property (nonatomic,strong) KS_ParameterButton * KS_Parameter2_View;
+@property (nonatomic,strong) KS_ParameterButton * KS_Parameter3_View;
+@property (nonatomic,strong) KS_ParameterButton * KS_Parameter4_View;
+@property (nonatomic,strong) KS_ParameterButton * KS_Parameter5_View;
+@property (nonatomic,strong) KS_ParameterButton * KS_Parameter6_View;
 
 @property (nonatomic,strong) NSArray * animatingElements;
 
@@ -64,12 +64,12 @@
    self.KS_Element3_View = [[KS_ElementButton alloc] initWithFrame:CGRectZero];
    self.KS_Element4_View = [[KS_ElementButton alloc] initWithFrame:CGRectZero];
    
-   self.KS_Parameter1_View = [[KS_ParameterView alloc] initWithFrame:CGRectZero];
-   self.KS_Parameter2_View = [[KS_ParameterView alloc] initWithFrame:CGRectZero];
-   self.KS_Parameter3_View = [[KS_ParameterView alloc] initWithFrame:CGRectZero];
-   self.KS_Parameter4_View = [[KS_ParameterView alloc] initWithFrame:CGRectZero];
-   self.KS_Parameter5_View = [[KS_ParameterView alloc] initWithFrame:CGRectZero];
-   self.KS_Parameter6_View = [[KS_ParameterView alloc] initWithFrame:CGRectZero];
+   self.KS_Parameter1_View = [[KS_ParameterButton alloc] initWithFrame:CGRectZero];
+   self.KS_Parameter2_View = [[KS_ParameterButton alloc] initWithFrame:CGRectZero];
+   self.KS_Parameter3_View = [[KS_ParameterButton alloc] initWithFrame:CGRectZero];
+   self.KS_Parameter4_View = [[KS_ParameterButton alloc] initWithFrame:CGRectZero];
+   self.KS_Parameter5_View = [[KS_ParameterButton alloc] initWithFrame:CGRectZero];
+   self.KS_Parameter6_View = [[KS_ParameterButton alloc] initWithFrame:CGRectZero];
    
    self.KS_Element1_View.element = KS_Element1;
    self.KS_Element2_View.element = KS_Element2;
@@ -173,7 +173,7 @@
    KS_ElementButton * parameterView = (KS_ElementButton *)view;
    
    // rule out any non gesture/param related views
-   if (![parameterView isKindOfClass:[KS_ParameterView class]]) {
+   if (![parameterView isKindOfClass:[KS_ParameterButton class]]) {
       [self clearAnimations];
       return;
    }
@@ -229,10 +229,10 @@
    
    UIView * view = [self hitTest:[[touches anyObject] locationInView:self] withEvent:event];
    
-   if (![view isKindOfClass:[KS_ParameterView class]]) {
+   if (![view isKindOfClass:[KS_ParameterButton class]]) {
       return;
    }
-   KS_ParameterView * touchedEndedParameter = (KS_ParameterView *)view;
+   KS_ParameterButton * touchedEndedParameter = (KS_ParameterButton *)view;
    
    [self.delegate connectionMadeFromElement:self.touchedElement.element toParameter:touchedEndedParameter.parameter];
    

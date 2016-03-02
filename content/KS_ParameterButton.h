@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "KS_TypesAndHelpers.h"
 
-@interface KS_ParameterView : UIView
+@interface KS_ParameterButton : UIButton
 
 @property (nonatomic,strong) UILabel * name;
 @property (nonatomic) KS_Parameter_t parameter;
 
 - (void)animate:(BOOL)animate;
+- (void)animateQuick;
 
 @end

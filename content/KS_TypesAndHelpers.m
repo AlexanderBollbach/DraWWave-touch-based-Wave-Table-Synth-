@@ -78,7 +78,13 @@
          return @"reverb amount";
          break;
       case KS_Parameter6:
-         return @"blank2";
+         return @"empty";
+         break;
+      case KS_Parameter7:
+         return @"empty";
+         break;
+      case KS_Parameter8:
+         return @"empty";
          break;
          
       default:

@@ -1,14 +1,16 @@
 //
-//  KS_ParameterView.m
+//  AnimatingButton.m
 //  DraWave
 //
-//  Created by alexanderbollbach on 2/26/16.
+//  Created by alexanderbollbach on 3/2/16.
 //  Copyright © 2016 alexanderbollbach. All rights reserved.
 //
 
-#import "KS_ParameterView.h"
+#import "AnimatingButton.h"
 
-@implementation KS_ParameterView
+@implementation AnimatingButton
+
+
 
 - (instancetype)initWithFrame:(CGRect)frame {
    if (self = [super initWithFrame:frame]) {
@@ -21,20 +23,18 @@
 - (void)setup {
    
    self.backgroundColor = [UIColor blackColor];
-   
-   self.name = [[UILabel alloc] initWithFrame:CGRectZero];
-   self.name.textColor = [UIColor whiteColor];
-   self.name.textAlignment = NSTextAlignmentCenter;
-   [self addSubview:self.name];
+//   
+//   self.name = [[UILabel alloc] initWithFrame:CGRectZero];
+//   self.name.textColor = [UIColor whiteColor];
+//   self.name.textAlignment = NSTextAlignmentCenter;
+//   [self addSubview:self.name];
    
    self.layer.borderColor = [UIColor whiteColor].CGColor;
    self.layer.borderWidth = 1;
    
 }
 
--(void)layoutSubviews {
-   self.name.frame = self.bounds;
-}
+
 
 - (void)animate:(BOOL)animate {
    

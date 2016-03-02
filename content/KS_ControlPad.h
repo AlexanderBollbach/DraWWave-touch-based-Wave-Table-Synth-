@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "KS_TypesAndHelpers.h"
+#import "KS_ControlPad_Element.h"
 
 @class KS_ControlPad;
 
@@ -20,18 +21,15 @@
 
 @property (nonatomic,weak) id <KS_ControlPadDelegate> delegate;
 
-@property KS_Element_t elementX;
-@property KS_Element_t elementY;
+@property KS_ControlPad_Element * elementX;
+@property KS_ControlPad_Element * elementY;
 
-@property KS_Parameter_t elementXParameter;
-@property KS_Parameter_t elementYParameter;
 
-@property KS_Element_t selectedElement;
+
+@property KS_ControlPad_Element * selectedElement;
 @property BOOL elementIsListening;
 
 
-- (void)setXreadOutWithString:(NSString *)string;
-- (void)setYreadOutWithString:(NSString *)string;
 
 @end
 

@@ -25,7 +25,9 @@ typedef enum {
    KS_Parameter3,
    KS_Parameter4,
    KS_Parameter5,
-   KS_Parameter6
+   KS_Parameter6,
+   KS_Parameter7,
+   KS_Parameter8
    
 } KS_Parameter_t;
 
