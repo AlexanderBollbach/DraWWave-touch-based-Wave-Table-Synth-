@@ -41,6 +41,15 @@ typedef enum {
    
 } settingsType_t;
 
+typedef enum {
+   
+   torus,
+   parameters,
+   empty,
+   empty2
+   
+} menuSelect_t;
+
 
 @interface KS_TypesAndHelpers : NSObject
 

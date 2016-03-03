@@ -17,7 +17,6 @@
 @property (nonatomic,strong) KS_ParameterButton * parameterView6;
 @property (nonatomic,strong) KS_ParameterButton * parameterView7;
 @property (nonatomic,strong) KS_ParameterButton * parameterView8;
-
 @end
 
 @implementation ParameterBankView
@@ -31,11 +30,8 @@
 }
 
 
+- (void)setup {
 
--(void)setup {
-   
-   
-   
    self.parameterView1 = [[KS_ParameterButton alloc] initWithFrame:CGRectZero];
    [self addSubview:self.parameterView1];
    self.parameterView2 = [[KS_ParameterButton alloc] initWithFrame:CGRectZero];
@@ -65,6 +61,7 @@
    
    
    KS_TypesAndHelpers * help = [KS_TypesAndHelpers sharedInstance];
+   
    self.parameterView1.name.text = [help getNameFromKS_Parameter:self.parameterView1.parameter];
    self.parameterView2.name.text = [help getNameFromKS_Parameter:self.parameterView2.parameter];
    self.parameterView3.name.text = [help getNameFromKS_Parameter:self.parameterView3.parameter];
@@ -135,14 +132,14 @@
    CGRect bot4 = bot3;
    bot4.origin.x += bot1.size.width;
    
-   self.parameterView1.frame = top1;
-   self.parameterView2.frame = top2;
-   self.parameterView3.frame = top3;
-   self.parameterView4.frame = top4;
-   self.parameterView5.frame = bot1;
-   self.parameterView6.frame = bot2;
-   self.parameterView7.frame = bot3;
-   self.parameterView8.frame = bot4;
+   self.parameterView1.frame = CGRectInset(top1, 5, 5);
+   self.parameterView2.frame = CGRectInset(top2, 5, 5);
+   self.parameterView3.frame = CGRectInset(top3, 5, 5);
+   self.parameterView4.frame = CGRectInset(top4, 5, 5);
+   self.parameterView5.frame = CGRectInset(bot1, 5, 5);
+   self.parameterView6.frame = CGRectInset(bot2, 5, 5);
+   self.parameterView7.frame = CGRectInset(bot3, 5, 5);
+   self.parameterView8.frame = CGRectInset(bot4, 5, 5);
    
 }
 

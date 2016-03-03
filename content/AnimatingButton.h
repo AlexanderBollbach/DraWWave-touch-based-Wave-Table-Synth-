@@ -10,6 +10,9 @@
 
 @interface AnimatingButton : UIButton
 
+@property (nonatomic,strong) NSString * typeName;
+@property (nonatomic,strong) UILabel * title;
+
 - (void)animate:(BOOL)animate;
 
 @end

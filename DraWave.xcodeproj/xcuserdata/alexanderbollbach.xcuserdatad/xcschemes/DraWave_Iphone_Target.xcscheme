@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2902AB171C7C44EB004632DF"
-               BuildableName = "DraWave_Iphone_Target.app"
-               BlueprintName = "DraWave_Iphone_Target"
+               BuildableName = "DraWave.app"
+               BlueprintName = "DraWave"
                ReferencedContainer = "container:DraWave.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2902AB171C7C44EB004632DF"
-            BuildableName = "DraWave_Iphone_Target.app"
-            BlueprintName = "DraWave_Iphone_Target"
+            BuildableName = "DraWave.app"
+            BlueprintName = "DraWave"
             ReferencedContainer = "container:DraWave.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -56,8 +56,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2902AB171C7C44EB004632DF"
-            BuildableName = "DraWave_Iphone_Target.app"
-            BlueprintName = "DraWave_Iphone_Target"
+            BuildableName = "DraWave.app"
+            BlueprintName = "DraWave"
             ReferencedContainer = "container:DraWave.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -75,8 +75,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2902AB171C7C44EB004632DF"
-            BuildableName = "DraWave_Iphone_Target.app"
-            BlueprintName = "DraWave_Iphone_Target"
+            BuildableName = "DraWave.app"
+            BlueprintName = "DraWave"
             ReferencedContainer = "container:DraWave.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

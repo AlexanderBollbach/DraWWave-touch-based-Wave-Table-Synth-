@@ -22,12 +22,12 @@
 
 - (void)setup {
    
-   self.backgroundColor = [UIColor blackColor];
-//   
-//   self.name = [[UILabel alloc] initWithFrame:CGRectZero];
-//   self.name.textColor = [UIColor whiteColor];
-//   self.name.textAlignment = NSTextAlignmentCenter;
-//   [self addSubview:self.name];
+   self.backgroundColor = [UIColor clearColor];
+
+   self.title = [[UILabel alloc] initWithFrame:CGRectZero];
+   self.title.textColor = [UIColor whiteColor];
+   self.title.textAlignment = NSTextAlignmentCenter;
+   [self addSubview:self.title];
    
    self.layer.borderColor = [UIColor whiteColor].CGColor;
    self.layer.borderWidth = 1;
@@ -39,16 +39,18 @@
 - (void)animate:(BOOL)animate {
    
    if (animate) {
-      
       [UIView animateWithDuration:0.05 delay:0.0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse | UIViewAnimationOptionAllowUserInteraction animations:^{
          self.backgroundColor = [UIColor whiteColor];
       } completion:nil];
-      
    } else {
       [self.layer removeAllAnimations];
       self.backgroundColor = [UIColor blackColor];
    }
-   
 }
 
+
+
+-(void)layoutSubviews {
+   self.title.frame = self.bounds;
+}
 @end

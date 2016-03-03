@@ -14,18 +14,17 @@
 #import "KS_ConnectionViewController.h"
 #import "KS_ControlPad.h"
 #import "KS_ConnectionManager.h"
-
 #import "KS_ElementButton.h"
-
 #import "ParameterBankView.h"
-
 #import "MenuView.h"
+
+#import "constants.h"
 
 @interface SynthVC () <KS_ControlPadDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic,strong) AudioController * audioController;
 @property (nonatomic,strong) WaveFormView * waveFormView;
-@property (nonatomic,strong) KS_ConnectionViewController * KS_ConnectionViewController;
+//@property (nonatomic,strong) KS_ConnectionViewController * KS_ConnectionViewController;
 @property BOOL tapped;
 
 @property (nonatomic,strong) KS_ControlPad * controlPad1;
@@ -36,8 +35,8 @@
 @property (nonatomic,strong) KS_ConnectionManager * connectionManager;
 
 
-@property (nonatomic,assign) KS_Element_t selectedElement;
-@property (nonatomic,assign) KS_Parameter_t selectedParameter;
+//@property (nonatomic,assign) KS_Element_t selectedElement;
+//@property (nonatomic,assign) KS_Parameter_t selectedParameter;
 
 @property (nonatomic,strong) MenuView * menuView;
 
@@ -62,9 +61,7 @@
    self.menuView = [[MenuView alloc] initWithFrame:topMenuFrame];
    [self.view addSubview:self.menuView];
    
-
-   
-   
+ 
    CGRect lowerFrame = self.view.bounds;
    lowerFrame.origin.y += self.menuView.frame.size.height;
    lowerFrame.size.height -= self.menuView.frame.size.height;
@@ -74,14 +71,14 @@
    
    CGRect kcvFr2 = kcvFr1;
    kcvFr2.origin.x += kcvFr2.size.width;
-
-   self.controlPad1 = [[KS_ControlPad alloc] initWithFrame:kcvFr1];
+   
+   self.controlPad1 = [[KS_ControlPad alloc] initWithFrame:CGRectInset(kcvFr1, kAppSmallPadding, kAppSmallPadding)];
    self.controlPad1.elementX.element = KS_Element1;
    self.controlPad1.elementY.element = KS_Element2;
    self.controlPad1.delegate = self;
    [self.view addSubview:self.controlPad1];
    
-   self.controlPad2 = [[KS_ControlPad alloc] initWithFrame:kcvFr2];
+   self.controlPad2 = [[KS_ControlPad alloc] initWithFrame:CGRectInset(kcvFr2, kAppSmallPadding, kAppSmallPadding)];
    self.controlPad2.elementX.element = KS_Element3;
    self.controlPad2.elementY.element = KS_Element4;
    self.controlPad2.delegate = self;
@@ -94,19 +91,14 @@
    self.controlPad2.elementX.parameter = KS_Parameter4;
    self.controlPad2.elementY.parameter = KS_Parameter5;
    
-  // self.KS_ConnectionViewController = [[KS_ConnectionViewController alloc] init];
+   [self.controlPad1 refreshElementButtonNames];
+   [self.controlPad2 refreshElementButtonNames];
    
    self.view.backgroundColor = [UIColor blackColor];
    
    
    self.audioController = [AudioController sharedInstance];
    
-//   UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
-//   tap.numberOfTapsRequired = 2;
-//   [self.view addGestureRecognizer:tap];
-
-   
-
    
 }
 
@@ -132,6 +124,8 @@
          value = alexMap(value, 0, 100, 0, 1000);
          [self.audioController setSamplesDurationValue:value];
          [self.waveFormView setNumOfSamplesToDraw:value];
+         [self.menuView.abScene changeShape:value / 15];
+         
          break;
       }
          
@@ -186,7 +180,7 @@
    for (UIView * view in self.view.subviews) {
       view.hidden = YES;
    }
-   [self.navigationController pushViewController:self.KS_ConnectionViewController animated:YES];
+   //   [self.navigationController pushViewController:self.KS_ConnectionViewController animated:YES];
 }
 
 

@@ -30,6 +30,8 @@
 		294FBB3D1C86BCF0005EFAFF /* ControlPadMatrixView.m in Sources */ = {isa = PBXBuildFile; fileRef = 294FBB3C1C86BCF0005EFAFF /* ControlPadMatrixView.m */; };
 		296AA1A41C81252B00AE06E4 /* KS_ConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 296AA1A31C81252B00AE06E4 /* KS_ConnectionViewController.m */; };
 		297166621C81609C007B0772 /* KS_ParameterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 297166611C81609C007B0772 /* KS_ParameterButton.m */; };
+		297644061C878F0E009D71FC /* SwiftClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297644051C878F0E009D71FC /* SwiftClass.swift */; };
+		2979FEE31C87E082009E56D3 /* MenuSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2979FEE21C87E082009E56D3 /* MenuSelectView.m */; };
 		29F305351C7FB55300912694 /* KS_LineDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F305341C7FB55300912694 /* KS_LineDrawer.m */; };
 		29F305391C7FC0A300912694 /* KS_ElementButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F305381C7FC0A300912694 /* KS_ElementButton.m */; };
 		29FF660B1C81A7860092CF50 /* KS_TypesAndHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 29FF660A1C81A7860092CF50 /* KS_TypesAndHelpers.m */; };
@@ -38,19 +40,9 @@
 
 /* Begin PBXFileReference section */
 		2902AB111C7C436B004632DF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = content/main.m; sourceTree = "<group>"; };
-		2902AB1B1C7C44EB004632DF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		2902AB1D1C7C44EB004632DF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		2902AB1E1C7C44EB004632DF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		2902AB201C7C44EB004632DF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		2902AB211C7C44EB004632DF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		2902AB241C7C44EB004632DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2902AB261C7C44EB004632DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2902AB291C7C44EB004632DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		2902AB2B1C7C44EB004632DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2902AB481C7C5212004632DF /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
 		2902AB601C7E6AC9004632DF /* KS_ConnectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KS_ConnectorView.h; sourceTree = "<group>"; };
 		2902AB611C7E6AC9004632DF /* KS_ConnectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KS_ConnectorView.m; sourceTree = "<group>"; };
-		29314E611C8014EB009782F4 /* DraWave_Iphone_Target.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DraWave_Iphone_Target.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2940D4891C8145D800E5C405 /* KS_ControlPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KS_ControlPad.h; sourceTree = "<group>"; };
 		2940D48A1C8145D800E5C405 /* KS_ControlPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KS_ControlPad.m; sourceTree = "<group>"; };
 		2940D48C1C81557200E5C405 /* KS_ConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KS_ConnectionManager.h; sourceTree = "<group>"; };
@@ -67,12 +59,18 @@
 		294FBB381C86BA1A005EFAFF /* MenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuView.m; sourceTree = "<group>"; };
 		294FBB3B1C86BCF0005EFAFF /* ControlPadMatrixView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlPadMatrixView.h; sourceTree = "<group>"; };
 		294FBB3C1C86BCF0005EFAFF /* ControlPadMatrixView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlPadMatrixView.m; sourceTree = "<group>"; };
+		294FBB3E1C86E510005EFAFF /* constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 		295E440D1C7AF9BE002B28FD /* Draw_Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Draw_Helper.h; sourceTree = "<group>"; };
 		295E440E1C7AF9BE002B28FD /* Draw_Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Draw_Helper.m; sourceTree = "<group>"; };
 		296AA1A21C81252B00AE06E4 /* KS_ConnectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KS_ConnectionViewController.h; sourceTree = "<group>"; };
 		296AA1A31C81252B00AE06E4 /* KS_ConnectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KS_ConnectionViewController.m; sourceTree = "<group>"; };
 		297166601C81609C007B0772 /* KS_ParameterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KS_ParameterButton.h; sourceTree = "<group>"; };
 		297166611C81609C007B0772 /* KS_ParameterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KS_ParameterButton.m; sourceTree = "<group>"; };
+		297644031C878874009D71FC /* DraWave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DraWave.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		297644041C878F0E009D71FC /* DraWave-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DraWave-Bridging-Header.h"; sourceTree = "<group>"; };
+		297644051C878F0E009D71FC /* SwiftClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftClass.swift; path = ../SwiftClass.swift; sourceTree = "<group>"; };
+		2979FEE11C87E082009E56D3 /* MenuSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuSelectView.h; sourceTree = "<group>"; };
+		2979FEE21C87E082009E56D3 /* MenuSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuSelectView.m; sourceTree = "<group>"; };
 		298290DD1C7561D8007613D6 /* RingBuff_t.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RingBuff_t.h; sourceTree = "<group>"; };
 		298290DE1C7561F7007613D6 /* RingBuff_t.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = RingBuff_t.c; sourceTree = "<group>"; };
 		29D060191C6F96D000EC3B92 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -112,30 +110,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2902AB191C7C44EB004632DF /* DraWave_Iphone_Target */ = {
-			isa = PBXGroup;
-			children = (
-				2902AB1D1C7C44EB004632DF /* AppDelegate.h */,
-				2902AB1E1C7C44EB004632DF /* AppDelegate.m */,
-				2902AB201C7C44EB004632DF /* ViewController.h */,
-				2902AB211C7C44EB004632DF /* ViewController.m */,
-				2902AB231C7C44EB004632DF /* Main.storyboard */,
-				2902AB261C7C44EB004632DF /* Assets.xcassets */,
-				2902AB281C7C44EB004632DF /* LaunchScreen.storyboard */,
-				2902AB2B1C7C44EB004632DF /* Info.plist */,
-				2902AB1A1C7C44EB004632DF /* Supporting Files */,
-			);
-			path = DraWave_Iphone_Target;
-			sourceTree = "<group>";
-		};
-		2902AB1A1C7C44EB004632DF /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				2902AB1B1C7C44EB004632DF /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		2902AB501C7D19A6004632DF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,14 +144,17 @@
 			isa = PBXGroup;
 			children = (
 				294FBB3A1C86BCD4005EFAFF /* ControlPad */,
+				297644051C878F0E009D71FC /* SwiftClass.swift */,
 				29D060331C71649400EC3B92 /* WaveFormView.h */,
 				29D060341C71649400EC3B92 /* WaveFormView.m */,
 				294FBB2E1C869E92005EFAFF /* ParameterBankView.h */,
 				294FBB2F1C869E92005EFAFF /* ParameterBankView.m */,
-				294FBB341C86B782005EFAFF /* AnimatingButton.h */,
-				294FBB351C86B782005EFAFF /* AnimatingButton.m */,
 				294FBB371C86BA1A005EFAFF /* MenuView.h */,
 				294FBB381C86BA1A005EFAFF /* MenuView.m */,
+				294FBB341C86B782005EFAFF /* AnimatingButton.h */,
+				294FBB351C86B782005EFAFF /* AnimatingButton.m */,
+				2979FEE11C87E082009E56D3 /* MenuSelectView.h */,
+				2979FEE21C87E082009E56D3 /* MenuSelectView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -211,6 +188,15 @@
 			name = Audio;
 			sourceTree = "<group>";
 		};
+		2979FEE41C87E21D009E56D3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				29FF66091C81A7860092CF50 /* KS_TypesAndHelpers.h */,
+				29FF660A1C81A7860092CF50 /* KS_TypesAndHelpers.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		29D0600A1C6F96D000EC3B92 = {
 			isa = PBXGroup;
 			children = (
@@ -219,15 +205,17 @@
 				2902AB111C7C436B004632DF /* main.m */,
 				29D060271C6F96D000EC3B92 /* Info.plist */,
 				29D060151C6F96D000EC3B92 /* content */,
-				2902AB191C7C44EB004632DF /* DraWave_Iphone_Target */,
-				29314E611C8014EB009782F4 /* DraWave_Iphone_Target.app */,
+				297644031C878874009D71FC /* DraWave.app */,
+				297644041C878F0E009D71FC /* DraWave-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
 		29D060151C6F96D000EC3B92 /* content */ = {
 			isa = PBXGroup;
 			children = (
+				294FBB3E1C86E510005EFAFF /* constants.h */,
 				2940D4931C81569200E5C405 /* kaoss */,
+				2979FEE41C87E21D009E56D3 /* Models */,
 				295E44101C7C323A002B28FD /* Views */,
 				2902AB501C7D19A6004632DF /* Controllers */,
 				296AA1A51C8132CE00AE06E4 /* Audio */,
@@ -263,8 +251,6 @@
 		29FF66081C816D930092CF50 /* M */ = {
 			isa = PBXGroup;
 			children = (
-				29FF66091C81A7860092CF50 /* KS_TypesAndHelpers.h */,
-				29FF660A1C81A7860092CF50 /* KS_TypesAndHelpers.m */,
 				2940D48C1C81557200E5C405 /* KS_ConnectionManager.h */,
 				2940D48D1C81557200E5C405 /* KS_ConnectionManager.m */,
 				2940D48F1C81566B00E5C405 /* KS_Connection.h */,
@@ -287,9 +273,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2902AB171C7C44EB004632DF /* DraWave_Iphone_Target */ = {
+		2902AB171C7C44EB004632DF /* DraWave */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2902AB2C1C7C44EB004632DF /* Build configuration list for PBXNativeTarget "DraWave_Iphone_Target" */;
+			buildConfigurationList = 2902AB2C1C7C44EB004632DF /* Build configuration list for PBXNativeTarget "DraWave" */;
 			buildPhases = (
 				2902AB141C7C44EB004632DF /* Sources */,
 				2902AB151C7C44EB004632DF /* Frameworks */,
@@ -299,9 +285,9 @@
 			);
 			dependencies = (
 			);
-			name = DraWave_Iphone_Target;
+			name = DraWave;
 			productName = DraWave_Iphone_Target;
-			productReference = 29314E611C8014EB009782F4 /* DraWave_Iphone_Target.app */;
+			productReference = 297644031C878874009D71FC /* DraWave.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -331,7 +317,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2902AB171C7C44EB004632DF /* DraWave_Iphone_Target */,
+				2902AB171C7C44EB004632DF /* DraWave */,
 			);
 		};
 /* End PBXProject section */
@@ -377,6 +363,8 @@
 				294FBB391C86BA1A005EFAFF /* MenuView.m in Sources */,
 				2902AB381C7C455D004632DF /* AlexRingBuffer.m in Sources */,
 				2902AB371C7C455B004632DF /* Draw_Helper.m in Sources */,
+				2979FEE31C87E082009E56D3 /* MenuSelectView.m in Sources */,
+				297644061C878F0E009D71FC /* SwiftClass.swift in Sources */,
 				294FBB3D1C86BCF0005EFAFF /* ControlPadMatrixView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -384,22 +372,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		2902AB231C7C44EB004632DF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2902AB241C7C44EB004632DF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		2902AB281C7C44EB004632DF /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2902AB291C7C44EB004632DF /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 		29D0601F1C6F96D000EC3B92 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -422,24 +394,31 @@
 		2902AB2D1C7C44EB004632DF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = DraWave_Iphone_Target/Info.plist;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/content/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "test.DraWave-Iphone-Target";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/DraWave-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		2902AB2E1C7C44EB004632DF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = DraWave_Iphone_Target/Info.plist;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/content/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "test.DraWave-Iphone-Target";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/DraWave-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -463,6 +442,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -483,6 +464,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/DraWave-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -506,6 +488,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -519,6 +503,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/DraWave-Bridging-Header.h";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -526,7 +511,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2902AB2C1C7C44EB004632DF /* Build configuration list for PBXNativeTarget "DraWave_Iphone_Target" */ = {
+		2902AB2C1C7C44EB004632DF /* Build configuration list for PBXNativeTarget "DraWave" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2902AB2D1C7C44EB004632DF /* Debug */,

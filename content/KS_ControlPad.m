@@ -72,12 +72,14 @@
    self.elementXButton = [[AnimatingButton alloc] initWithFrame:CGRectZero];
    [self addSubview:self.elementXButton];
    self.elementXButton.tag = 0;
-   [self.elementXButton setTitle:@"X" forState:UIControlStateNormal];
+   self.elementXButton.typeName = @"X";
    [self.elementXButton addTarget:self action:@selector(handleTapped:) forControlEvents:UIControlEventTouchUpInside];
    
    self.elementYButton = [[AnimatingButton alloc] initWithFrame:CGRectZero];
    [self addSubview:self.elementYButton];
-      [self.elementYButton setTitle:@"Y" forState:UIControlStateNormal];
+   //   [self.elementYButton setTitle:@"Y" forState:UIControlStateNormal];
+   self.elementYButton.typeName = @"Y";
+   
    self.elementYButton.tag = 1;
    [self.elementYButton addTarget:self action:@selector(handleTapped:) forControlEvents:UIControlEventTouchUpInside];
    
@@ -92,50 +94,44 @@
    
 }
 
--(void)elementXChangedWithValue:(float)value {
+
+- (void)refreshElementButtonNames {
+   
+   KS_TypesAndHelpers * help = [KS_TypesAndHelpers sharedInstance];
+   
+   self.elementXButton.title.text = [NSString stringWithFormat:@"%@:%@",self.elementXButton.typeName,[help getNameFromKS_Parameter:self.elementX.parameter]];
+   
+   self.elementYButton.title.text = [NSString stringWithFormat:@"%@:%@",self.elementYButton.typeName,[help getNameFromKS_Parameter:self.elementY.parameter]];
+}
+
+- (void)elementXChangedWithValue:(float)value {
    [self.delegate changedWithParameter:self.elementX.parameter andValue:value];
 }
 
--(void)elementYChangedWithValue:(float)value {
+- (void)elementYChangedWithValue:(float)value {
    [self.delegate changedWithParameter:self.elementY.parameter andValue:value];
 }
 
 
-- (void)parameterChanged:(NSNotification *)notification {
-   
-   NSDictionary *theData = [notification userInfo];
-   
-   KS_Parameter_t param = (KS_Parameter_t)[[theData objectForKey:@"parameter"]integerValue];
-   
-   NSString * name = [[KS_TypesAndHelpers sharedInstance] getNameFromKS_Parameter:param];
-   
-   if (self.elementIsListening) {
-      [self.selectedElementButton animate:NO];
-      self.elementIsListening = NO;
-      [self.selectedElementButton setTitle:name forState:UIControlStateNormal];
-      self.selectedElement.parameter = param;
-      
-   }
-}
 
-
+// element button tapped puts controlPad in "elementIsListening" state \
+meaning that the controlpad can accept the notification "parameterTapped" sent from parameterBankVIew in the menu
 - (void)handleTapped:(AnimatingButton *)sender {
-
+   
    sender.selected = !sender.selected;
-
+   
    if (sender.selected) {
+   
+      if (sender.tag == 0) {
+         self.selectedElement = self.elementX;
+      } else if (sender.tag == 1) {
+         self.selectedElement = self.elementY;
+      }
       
-  
-   if (sender.tag == 0) {
-      self.selectedElement = self.elementX;
-   } else if (sender.tag == 1) {
-      self.selectedElement = self.elementY;
-   }
-   
-   [sender animate:YES];
-   self.elementIsListening = YES;
-   self.selectedElementButton = sender;
-   
+      [sender animate:YES];
+      self.elementIsListening = YES;
+      self.selectedElementButton = sender;
+      
       
    } else {
       
@@ -146,7 +142,28 @@
    
 }
 
--(void)layoutSubviews {
+
+// notification from parameterBank sets the "selectedElement"'s parameter to some int (sent KS_Parameter_t enum type as integer in NSNumber...)  then button and titles are set to initial state
+- (void)parameterChanged:(NSNotification *)notification {
+   
+   NSDictionary *theData = [notification userInfo];
+   
+   KS_Parameter_t param = (KS_Parameter_t)[[theData objectForKey:@"parameter"]integerValue];
+   
+//   NSString * name = [[KS_TypesAndHelpers sharedInstance] getNameFromKS_Parameter:param];
+//   NSString * full = [NSString stringWithFormat:@"%@:%@", self.selectedElementButton.typeName, name];
+   if (self.elementIsListening) {
+      [self.selectedElementButton animate:NO];
+      self.elementIsListening = NO;
+     // self.selectedElementButton.title.text = full;
+      self.selectedElement.parameter = param;
+   }
+   [self refreshElementButtonNames];
+}
+
+
+
+- (void)layoutSubviews {
    
    CGRect topFrame = self.bounds;
    topFrame.size.height = CGRectGetHeight(self.bounds) / 6;
@@ -157,8 +174,6 @@
    
    self.topView.frame = topFrame;
    self.matrixView.frame = matrixFrame;
-   
-   
    
    CGRect elemXButFr = topFrame;
    elemXButFr.size.width /= 2;

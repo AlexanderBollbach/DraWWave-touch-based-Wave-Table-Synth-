@@ -1,0 +1,1 @@
+#define kAppSmallPadding 5
