@@ -10,6 +10,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <Accelerate/Accelerate.h>
 
+
 #define kOutputBus 0
 #define kInputBus 1
 #define kSampleRate 88200
@@ -18,21 +19,26 @@
 
 typedef struct stuff {
    
-   //   float waveStart;
-   
    
    float * samplesBuffer;
    
-   int index;
    int timeIndex;
    int bufferIndex;
    
+   float duration;
    
    
-   float samplesDuration;
    
-   float lfoRate;
-   float lfoAmount;
+   
+   float param1;
+   float param2;
+   float param3;
+   float param4;
+   float param5;
+   float param6;
+   float param7;
+   float param8;
+   
    
 } stuff_t;
 
@@ -40,17 +46,16 @@ typedef struct stuff {
 @interface AudioController() {
    AudioUnit remoteIOUnit;
    AudioUnit reverbUnit;
-   
 }
 
 @property (nonatomic,assign) float bufferDuration;
-
 
 @end
 
 @implementation AudioController {
    stuff_t myStuff;
 }
+
 
 
 
@@ -66,18 +71,24 @@ typedef struct stuff {
 - (instancetype)init {
    if (self = [super init]) {
       
-      myStuff.samplesBuffer = malloc(1000000 * sizeof(float));
+      myStuff.samplesBuffer = malloc(10000000 * sizeof(float));
       
       
-      for (int x = 0; x < 10000; x++) {
-         myStuff.samplesBuffer[x] = -1;
-      }
       
       self.bufferDuration = kBufferDuration;
       
       
       [self initializeAudioSession];
       [self initializeAU];
+      
+      
+      CADisplayLink * link = [CADisplayLink displayLinkWithTarget:self selector:@selector(tick)];
+      [link addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+      
+      
+      [self PsetReverbAmount:0];
+      
+      [self setup];
       
    }
    return self;
@@ -86,11 +97,134 @@ typedef struct stuff {
 
 
 
+- (void)setup {
+   
+   NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+   [center addObserver:self selector:@selector(parameterChanged:) name:@"parameterChanged" object:nil];
+   
+   
+   
+   myStuff.param1 = 1;
+   myStuff.param2 = 1;
+   myStuff.param3 = 1;
+   myStuff.param4 = 1;
+   myStuff.param5 = 1;
+   myStuff.param6 = 1;
+   myStuff.param7 = 1;
+   myStuff.param8 = 1;
+}
 
 
+- (void)parameterChanged:(NSNotification *)notification {
+   
+   KS_Parameter_t param = (KS_Parameter_t)[[notification.userInfo objectForKey:@"Id"] integerValue];
+   float value = [[notification.userInfo objectForKey:@"value"] floatValue];
+   
+   switch (param) {
+      case KS_Parameter1:
+         [self parameter1ChangedWithValue:value];
+         break;
+      case KS_Parameter2:
+         [self parameter2ChangedWithValue:value];
+         break;
+      case KS_Parameter3:
+         [self parameter3ChangedWithValue:value];
+         break;
+      case KS_Parameter4:
+         [self parameter4ChangedWithValue:value];
+         break;
+      case KS_Parameter5:
+         [self parameter5ChangedWithValue:value];
+         break;
+      case KS_Parameter6:
+         [self parameter6ChangedWithValue:value];
+         break;
+      case KS_Parameter7:
+         [self parameter7ChangedWithValue:value];
+         break;
+      case KS_Parameter8:
+         [self parameter8ChangedWithValue:value];
+         break;
+      default:
+         break;
+   }
+}
 
 
+/* parameter table
+ 
+ 1. lfo1 rate
+ 2. lfo1 amount
+ 3. lfo2 rate
+ 4. lfo2 amount
+ 
+ 5. gap1 period
+ 6. gap1 width
+ 
+ */
 
+- (void)parameter1ChangedWithValue:(float)value {
+   value = alexMap(value, 0, 100, 0, 50);
+   myStuff.param1 = value;
+   
+}
+
+- (void)parameter2ChangedWithValue:(float)value {
+   value = alexMap(value, 0, 100, 0, 0.2);
+   myStuff.param2 = value;
+   
+}
+
+- (void)parameter3ChangedWithValue:(float)value {
+   value = alexMap(value, 0, 100, 0, 50);
+   myStuff.param3 = value;
+   
+}
+
+- (void)parameter4ChangedWithValue:(float)value {
+   value = alexMap(value, 0, 100, 0, 0.2);
+   myStuff.param4 = value;
+   
+}
+
+- (void)parameter5ChangedWithValue:(float)value {
+   
+   value = alexMap(value, 0, 100, 0, 500);
+   myStuff.param5 = value;
+}
+
+- (void)parameter6ChangedWithValue:(float)value {
+   
+   value = alexMap(value, 0, 100, 10, 100);
+   myStuff.param6 = value;
+   
+}
+
+- (void)parameter7ChangedWithValue:(float)value {
+   
+   myStuff.param7 = value;
+   
+}
+
+- (void)parameter8ChangedWithValue:(float)value {
+   
+   myStuff.param8 = value;
+   
+}
+
+
+// read out for visuals
+- (void)tick {
+   float sum = 0;
+   // for (int x = 0; x < 250; x++) {
+   sum += myStuff.samplesBuffer[5];
+   //  }
+   
+   
+   sum = alexMap(sum, -1, 1, 0, 1);
+   
+   [self.delegate waveFormChangedWithValue:sum];
+}
 
 
 
@@ -109,51 +243,73 @@ OSStatus playbackCallback(void * inRefCon,
    stuff_t * THIS = (stuff_t *)inRefCon;
    
    
-   // test
-   static int a = 0;
-   a++;
-   //  printf("playback %i \n", a);
-   
-   
-   
-   
-   
    // temp reference to buffer to fill
    float * bufferToFill = ioData->mBuffers[0].mData;
    
-   int start = 1;//THIS->waveStart;
-   int duration = THIS->samplesDuration;
-   float lfoRate = THIS->lfoRate;
-   float lfoAmount = THIS->lfoAmount;
+   //   int start = 1;
+   int duration = THIS->duration;
+   
+   float lfo1Rate = THIS->param1;
+   float lfo1Amount = THIS->param2;
+   
+   float lfo2Rate = THIS->param3;
+   float lfo2Amount = THIS->param4;
+   
+   int gap1Period = THIS->param5;
+   int gap1Width = THIS->param6;
    
    
-   
-   if (duration <= 0 || start <= 0) {
-      return noErr;
+   if (lfo2Rate <= 0) {
+      lfo2Rate = 1;
+   }
+   if (lfo1Rate <= 0) {
+      lfo1Rate = 1;
    }
    
-
    
+   int gap1Decrement = 0;
    
    // write samples to buffer
    for (int x = 0; x < inNumberFrames; x++) {
       
+      
+      
+      // bufferIndex manages the current index of samplesBuffer to mutate and the current frame to store in BufferToFill (ioData).  bufferIndex wraps around to 0 each 'duration' frames.  However, 'timeIndex' can either wrap around or continue growing.  wrapping around gives a more quantized-waveform while infinite growth creates a more continuous natural evolution of the wave
+      
       if (THIS->bufferIndex >= duration) {
-       //  lfoAmount = fabsf(lfoAmount);
-         THIS->bufferIndex = start;
+         THIS->bufferIndex = 0;
+         //         THIS->timeIndex = 0;
       }
       
-      THIS->samplesBuffer[THIS->bufferIndex] += lfoAmount;
       
-      if (THIS->timeIndex % (int)lfoRate == 0) lfoAmount = -lfoAmount;
+      // lfo1
+      if (THIS->timeIndex % (int)lfo1Rate == 0) lfo1Amount = -lfo1Amount;
+      THIS->samplesBuffer[THIS->bufferIndex] += lfo1Amount;
       
+      // lfo2
+      if (THIS->timeIndex % (int)lfo2Rate == 0) lfo2Amount = -lfo2Amount;
+      THIS->samplesBuffer[THIS->bufferIndex] += lfo2Amount;
+      
+      // gap1
+      if (THIS->bufferIndex % gap1Period == 0) {
+         gap1Decrement = gap1Width;
+      }
+      gap1Decrement--;
+      
+      
+      
+      // limiter
       if (THIS->samplesBuffer[THIS->bufferIndex] > 1) THIS->samplesBuffer[THIS->bufferIndex] = 1;
       if (THIS->samplesBuffer[THIS->bufferIndex] < -1) THIS->samplesBuffer[THIS->bufferIndex] = -1;
       
       
-      // float val = gainSample(&THIS->samplesBuffer[THIS->bufferIndex], 10);
+      if (gap1Decrement > 0) {
+         THIS->samplesBuffer[THIS->bufferIndex] = -1;
+      }
       
+      // fill playback buffer
       bufferToFill[x] = THIS->samplesBuffer[THIS->bufferIndex];
+      
       
       
       THIS->bufferIndex++;
@@ -169,28 +325,24 @@ OSStatus playbackCallback(void * inRefCon,
 
 
 
-
-
-
 #pragma mark - setters / getters -
 
-- (float *)getsamplesBuffer {
+- (float *)PgetsamplesBuffer {
    return myStuff.samplesBuffer;
 }
 
-- (void)setSamplesDurationValue:(float)value {
-   myStuff.samplesDuration = value;
-}
 
-- (void)setLfoRateValue:(float)value {
-   myStuff.lfoRate = value;
-}
-- (void)setLfoAmountValue:(float)value {
-   myStuff.lfoAmount = value;
+- (float)PgetNumOfSamples {
+   return myStuff.duration;
 }
 
 
-- (OSStatus)setReverbAmount:(float)amount {
+- (void)PsetDuration:(float)value {
+   myStuff.duration = value;
+}
+
+
+- (OSStatus)PsetReverbAmount:(float)amount {
    
    int scope = 0; // input scope
    
@@ -209,39 +361,15 @@ OSStatus playbackCallback(void * inRefCon,
 
 
 
-#pragma mark - custom DSP -
-
-
-float gainSample(float * data, int amount) {
-   
-   
-   float gainSample = *(data);
-   gainSample *= amount;
-   
-   if (gainSample > 0.8) gainSample = 1;
-   if (gainSample < -0.8) gainSample = -1;
-   
-   return gainSample;
-   
-}
 
 
 
-void gain(float * data, int amount, int n) {
-   
-   for (int x = 0; x < n; x++) {
-      
-      
-      float gainSample = *(data + x);
-      gainSample *= amount;
-      
-      if (gainSample > 0.8) gainSample = 1;
-      if (gainSample < -0.8) gainSample = -0.0;
-      
-      *(data + x) = gainSample;
-   }
-   
-}
+
+
+
+
+
+
 
 
 
@@ -263,7 +391,7 @@ void gain(float * data, int amount, int n) {
    AVAudioSession *session = [AVAudioSession sharedInstance];
    
    // set category
-   [session setCategory:AVAudioSessionCategoryPlayback error:&audioSessionError];
+   [session setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionMixWithOthers error:&audioSessionError];
    if (audioSessionError) {
       NSLog(@"Error %ld, %@",
             (long)audioSessionError.code, audioSessionError.localizedDescription);
@@ -288,6 +416,7 @@ void gain(float * data, int amount, int n) {
                                             selector: @selector(handleRouteChange:)
                                                 name: AVAudioSessionRouteChangeNotification
                                               object: session];
+   
    // set ACtive
    [session setActive:YES error:&audioSessionError];
    if (audioSessionError) {
@@ -299,7 +428,7 @@ void gain(float * data, int amount, int n) {
    // Get current values
    sampleRate = session.sampleRate;
    self.bufferDuration = session.IOBufferDuration;
-//   NSLog(@"Sample Rate:%0.0fHz I/O Buffer Duration:%f", sampleRate, self.bufferDuration);
+   //   NSLog(@"Sample Rate:%0.0fHz I/O Buffer Duration:%f", sampleRate, self.bufferDuration);
    
    NSLog(@"vol %f", session.outputVolume);
 }

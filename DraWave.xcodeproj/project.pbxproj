@@ -15,66 +15,49 @@
 		2902AB371C7C455B004632DF /* Draw_Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 295E440E1C7AF9BE002B28FD /* Draw_Helper.m */; };
 		2902AB381C7C455D004632DF /* AlexRingBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 29E471591C75646E00F6EA59 /* AlexRingBuffer.m */; };
 		2902AB391C7C455E004632DF /* RingBuff_t.c in Sources */ = {isa = PBXBuildFile; fileRef = 298290DE1C7561F7007613D6 /* RingBuff_t.c */; };
-		2902AB3A1C7C4560004632DF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 29D0601A1C6F96D000EC3B92 /* AppDelegate.m */; };
 		2902AB3B1C7C4563004632DF /* WaveFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = 29D060341C71649400EC3B92 /* WaveFormView.m */; };
-		2902AB3E1C7C456D004632DF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2902AB111C7C436B004632DF /* main.m */; };
 		2902AB491C7C5212004632DF /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = 2902AB481C7C5212004632DF /* TODO */; };
-		2902AB621C7E6AC9004632DF /* KS_ConnectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2902AB611C7E6AC9004632DF /* KS_ConnectorView.m */; };
-		2940D48B1C8145D800E5C405 /* KS_ControlPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2940D48A1C8145D800E5C405 /* KS_ControlPad.m */; };
-		2940D48E1C81557200E5C405 /* KS_ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2940D48D1C81557200E5C405 /* KS_ConnectionManager.m */; };
-		2940D4911C81566B00E5C405 /* KS_Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 2940D4901C81566B00E5C405 /* KS_Connection.m */; };
-		294FBB301C869E92005EFAFF /* ParameterBankView.m in Sources */ = {isa = PBXBuildFile; fileRef = 294FBB2F1C869E92005EFAFF /* ParameterBankView.m */; };
-		294FBB331C86B2F7005EFAFF /* KS_ControlPad_Element.m in Sources */ = {isa = PBXBuildFile; fileRef = 294FBB321C86B2F7005EFAFF /* KS_ControlPad_Element.m */; };
+		2940D48B1C8145D800E5C405 /* ControlPadTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2940D48A1C8145D800E5C405 /* ControlPadTopView.m */; };
+		294FBB301C869E92005EFAFF /* ControlPadParameterVew.m in Sources */ = {isa = PBXBuildFile; fileRef = 294FBB2F1C869E92005EFAFF /* ControlPadParameterVew.m */; };
+		294FBB331C86B2F7005EFAFF /* ControlPad_Element.m in Sources */ = {isa = PBXBuildFile; fileRef = 294FBB321C86B2F7005EFAFF /* ControlPad_Element.m */; };
 		294FBB361C86B782005EFAFF /* AnimatingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 294FBB351C86B782005EFAFF /* AnimatingButton.m */; };
-		294FBB391C86BA1A005EFAFF /* MenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 294FBB381C86BA1A005EFAFF /* MenuView.m */; };
 		294FBB3D1C86BCF0005EFAFF /* ControlPadMatrixView.m in Sources */ = {isa = PBXBuildFile; fileRef = 294FBB3C1C86BCF0005EFAFF /* ControlPadMatrixView.m */; };
-		296AA1A41C81252B00AE06E4 /* KS_ConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 296AA1A31C81252B00AE06E4 /* KS_ConnectionViewController.m */; };
 		297166621C81609C007B0772 /* KS_ParameterButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 297166611C81609C007B0772 /* KS_ParameterButton.m */; };
-		297644061C878F0E009D71FC /* SwiftClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297644051C878F0E009D71FC /* SwiftClass.swift */; };
-		2979FEE31C87E082009E56D3 /* MenuSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2979FEE21C87E082009E56D3 /* MenuSelectView.m */; };
-		29F305351C7FB55300912694 /* KS_LineDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F305341C7FB55300912694 /* KS_LineDrawer.m */; };
-		29F305391C7FC0A300912694 /* KS_ElementButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F305381C7FC0A300912694 /* KS_ElementButton.m */; };
+		2979FF081C8AA4CA009E56D3 /* ControlPadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2979FF071C8AA4CA009E56D3 /* ControlPadViewController.m */; };
+		2979FF0B1C8ABD02009E56D3 /* MainParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 2979FF0A1C8ABD02009E56D3 /* MainParameters.m */; };
+		2979FF0E1C8ABDD8009E56D3 /* Parameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2979FF0D1C8ABDD8009E56D3 /* Parameter.m */; };
+		2979FF311C8BC640009E56D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2979FF301C8BC640009E56D3 /* AppDelegate.swift */; };
 		29FF660B1C81A7860092CF50 /* KS_TypesAndHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 29FF660A1C81A7860092CF50 /* KS_TypesAndHelpers.m */; };
-		29FF660F1C82121E0092CF50 /* KS_SettingsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 29FF660E1C82121E0092CF50 /* KS_SettingsButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2902AB111C7C436B004632DF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = content/main.m; sourceTree = "<group>"; };
 		2902AB481C7C5212004632DF /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
-		2902AB601C7E6AC9004632DF /* KS_ConnectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KS_ConnectorView.h; sourceTree = "<group>"; };
-		2902AB611C7E6AC9004632DF /* KS_ConnectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KS_ConnectorView.m; sourceTree = "<group>"; };
-		2940D4891C8145D800E5C405 /* KS_ControlPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KS_ControlPad.h; sourceTree = "<group>"; };
-		2940D48A1C8145D800E5C405 /* KS_ControlPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KS_ControlPad.m; sourceTree = "<group>"; };
-		2940D48C1C81557200E5C405 /* KS_ConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KS_ConnectionManager.h; sourceTree = "<group>"; };
-		2940D48D1C81557200E5C405 /* KS_ConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KS_ConnectionManager.m; sourceTree = "<group>"; };
-		2940D48F1C81566B00E5C405 /* KS_Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KS_Connection.h; sourceTree = "<group>"; };
-		2940D4901C81566B00E5C405 /* KS_Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KS_Connection.m; sourceTree = "<group>"; };
-		294FBB2E1C869E92005EFAFF /* ParameterBankView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParameterBankView.h; sourceTree = "<group>"; };
-		294FBB2F1C869E92005EFAFF /* ParameterBankView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParameterBankView.m; sourceTree = "<group>"; };
-		294FBB311C86B2F7005EFAFF /* KS_ControlPad_Element.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KS_ControlPad_Element.h; sourceTree = "<group>"; };
-		294FBB321C86B2F7005EFAFF /* KS_ControlPad_Element.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KS_ControlPad_Element.m; sourceTree = "<group>"; };
+		2940D4891C8145D800E5C405 /* ControlPadTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlPadTopView.h; sourceTree = "<group>"; };
+		2940D48A1C8145D800E5C405 /* ControlPadTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlPadTopView.m; sourceTree = "<group>"; };
+		294FBB2E1C869E92005EFAFF /* ControlPadParameterVew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlPadParameterVew.h; sourceTree = "<group>"; };
+		294FBB2F1C869E92005EFAFF /* ControlPadParameterVew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlPadParameterVew.m; sourceTree = "<group>"; };
+		294FBB311C86B2F7005EFAFF /* ControlPad_Element.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlPad_Element.h; sourceTree = "<group>"; };
+		294FBB321C86B2F7005EFAFF /* ControlPad_Element.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlPad_Element.m; sourceTree = "<group>"; };
 		294FBB341C86B782005EFAFF /* AnimatingButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatingButton.h; sourceTree = "<group>"; };
 		294FBB351C86B782005EFAFF /* AnimatingButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatingButton.m; sourceTree = "<group>"; };
-		294FBB371C86BA1A005EFAFF /* MenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuView.h; sourceTree = "<group>"; };
-		294FBB381C86BA1A005EFAFF /* MenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuView.m; sourceTree = "<group>"; };
 		294FBB3B1C86BCF0005EFAFF /* ControlPadMatrixView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlPadMatrixView.h; sourceTree = "<group>"; };
 		294FBB3C1C86BCF0005EFAFF /* ControlPadMatrixView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlPadMatrixView.m; sourceTree = "<group>"; };
 		294FBB3E1C86E510005EFAFF /* constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 		295E440D1C7AF9BE002B28FD /* Draw_Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Draw_Helper.h; sourceTree = "<group>"; };
 		295E440E1C7AF9BE002B28FD /* Draw_Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Draw_Helper.m; sourceTree = "<group>"; };
-		296AA1A21C81252B00AE06E4 /* KS_ConnectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KS_ConnectionViewController.h; sourceTree = "<group>"; };
-		296AA1A31C81252B00AE06E4 /* KS_ConnectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KS_ConnectionViewController.m; sourceTree = "<group>"; };
 		297166601C81609C007B0772 /* KS_ParameterButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KS_ParameterButton.h; sourceTree = "<group>"; };
 		297166611C81609C007B0772 /* KS_ParameterButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KS_ParameterButton.m; sourceTree = "<group>"; };
-		297644031C878874009D71FC /* DraWave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DraWave.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		297644031C878874009D71FC /* DraWave.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = DraWave.app; path = "/Users/alexanderbollbach/Desktop/DraWave/build/Debug-iphoneos/DraWave.app"; sourceTree = "<absolute>"; };
 		297644041C878F0E009D71FC /* DraWave-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DraWave-Bridging-Header.h"; sourceTree = "<group>"; };
-		297644051C878F0E009D71FC /* SwiftClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftClass.swift; path = ../SwiftClass.swift; sourceTree = "<group>"; };
-		2979FEE11C87E082009E56D3 /* MenuSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuSelectView.h; sourceTree = "<group>"; };
-		2979FEE21C87E082009E56D3 /* MenuSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuSelectView.m; sourceTree = "<group>"; };
+		2979FF061C8AA4CA009E56D3 /* ControlPadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlPadViewController.h; sourceTree = "<group>"; };
+		2979FF071C8AA4CA009E56D3 /* ControlPadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlPadViewController.m; sourceTree = "<group>"; };
+		2979FF091C8ABD02009E56D3 /* MainParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainParameters.h; sourceTree = "<group>"; };
+		2979FF0A1C8ABD02009E56D3 /* MainParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainParameters.m; sourceTree = "<group>"; };
+		2979FF0C1C8ABDD8009E56D3 /* Parameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parameter.h; sourceTree = "<group>"; };
+		2979FF0D1C8ABDD8009E56D3 /* Parameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parameter.m; sourceTree = "<group>"; };
+		2979FF301C8BC640009E56D3 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		298290DD1C7561D8007613D6 /* RingBuff_t.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RingBuff_t.h; sourceTree = "<group>"; };
 		298290DE1C7561F7007613D6 /* RingBuff_t.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = RingBuff_t.c; sourceTree = "<group>"; };
-		29D060191C6F96D000EC3B92 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		29D0601A1C6F96D000EC3B92 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		29D0601C1C6F96D000EC3B92 /* SynthVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SynthVC.h; sourceTree = "<group>"; };
 		29D0601D1C6F96D000EC3B92 /* SynthVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SynthVC.m; sourceTree = "<group>"; };
 		29D060201C6F96D000EC3B92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -89,14 +72,8 @@
 		29E471581C75646E00F6EA59 /* AlexRingBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexRingBuffer.h; sourceTree = "<group>"; };
 		29E471591C75646E00F6EA59 /* AlexRingBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexRingBuffer.m; sourceTree = "<group>"; };
 		29E59ECD1C7C429B0038D86B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		29F305331C7FB55300912694 /* KS_LineDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KS_LineDrawer.h; sourceTree = "<group>"; };
-		29F305341C7FB55300912694 /* KS_LineDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KS_LineDrawer.m; sourceTree = "<group>"; };
-		29F305371C7FC0A300912694 /* KS_ElementButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KS_ElementButton.h; sourceTree = "<group>"; };
-		29F305381C7FC0A300912694 /* KS_ElementButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KS_ElementButton.m; sourceTree = "<group>"; };
 		29FF66091C81A7860092CF50 /* KS_TypesAndHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KS_TypesAndHelpers.h; sourceTree = "<group>"; };
 		29FF660A1C81A7860092CF50 /* KS_TypesAndHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KS_TypesAndHelpers.m; sourceTree = "<group>"; };
-		29FF660D1C82121E0092CF50 /* KS_SettingsButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KS_SettingsButton.h; sourceTree = "<group>"; };
-		29FF660E1C82121E0092CF50 /* KS_SettingsButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KS_SettingsButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,27 +92,23 @@
 			children = (
 				29D0601C1C6F96D000EC3B92 /* SynthVC.h */,
 				29D0601D1C6F96D000EC3B92 /* SynthVC.m */,
+				2979FF061C8AA4CA009E56D3 /* ControlPadViewController.h */,
+				2979FF071C8AA4CA009E56D3 /* ControlPadViewController.m */,
 			);
 			name = Controllers;
-			sourceTree = "<group>";
-		};
-		2940D4931C81569200E5C405 /* kaoss */ = {
-			isa = PBXGroup;
-			children = (
-				29FF66081C816D930092CF50 /* M */,
-				29FF66071C816D7B0092CF50 /* V */,
-				29FF660C1C81AA250092CF50 /* C */,
-			);
-			name = kaoss;
 			sourceTree = "<group>";
 		};
 		294FBB3A1C86BCD4005EFAFF /* ControlPad */ = {
 			isa = PBXGroup;
 			children = (
-				2940D4891C8145D800E5C405 /* KS_ControlPad.h */,
-				2940D48A1C8145D800E5C405 /* KS_ControlPad.m */,
+				294FBB311C86B2F7005EFAFF /* ControlPad_Element.h */,
+				294FBB321C86B2F7005EFAFF /* ControlPad_Element.m */,
+				2940D4891C8145D800E5C405 /* ControlPadTopView.h */,
+				2940D48A1C8145D800E5C405 /* ControlPadTopView.m */,
 				294FBB3B1C86BCF0005EFAFF /* ControlPadMatrixView.h */,
 				294FBB3C1C86BCF0005EFAFF /* ControlPadMatrixView.m */,
+				294FBB2E1C869E92005EFAFF /* ControlPadParameterVew.h */,
+				294FBB2F1C869E92005EFAFF /* ControlPadParameterVew.m */,
 			);
 			name = ControlPad;
 			sourceTree = "<group>";
@@ -143,18 +116,10 @@
 		295E44101C7C323A002B28FD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2979FEE51C8932EE009E56D3 /* control elements */,
 				294FBB3A1C86BCD4005EFAFF /* ControlPad */,
-				297644051C878F0E009D71FC /* SwiftClass.swift */,
 				29D060331C71649400EC3B92 /* WaveFormView.h */,
 				29D060341C71649400EC3B92 /* WaveFormView.m */,
-				294FBB2E1C869E92005EFAFF /* ParameterBankView.h */,
-				294FBB2F1C869E92005EFAFF /* ParameterBankView.m */,
-				294FBB371C86BA1A005EFAFF /* MenuView.h */,
-				294FBB381C86BA1A005EFAFF /* MenuView.m */,
-				294FBB341C86B782005EFAFF /* AnimatingButton.h */,
-				294FBB351C86B782005EFAFF /* AnimatingButton.m */,
-				2979FEE11C87E082009E56D3 /* MenuSelectView.h */,
-				2979FEE21C87E082009E56D3 /* MenuSelectView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -162,6 +127,7 @@
 		295E44111C7C3254002B28FD /* Help */ = {
 			isa = PBXGroup;
 			children = (
+				2979FF301C8BC640009E56D3 /* AppDelegate.swift */,
 				29D060301C6F971F00EC3B92 /* functions.h */,
 				29D060311C6F971F00EC3B92 /* functions.c */,
 				295E440D1C7AF9BE002B28FD /* Draw_Helper.h */,
@@ -170,8 +136,6 @@
 				29E471591C75646E00F6EA59 /* AlexRingBuffer.m */,
 				298290DD1C7561D8007613D6 /* RingBuff_t.h */,
 				298290DE1C7561F7007613D6 /* RingBuff_t.c */,
-				29D060191C6F96D000EC3B92 /* AppDelegate.h */,
-				29D0601A1C6F96D000EC3B92 /* AppDelegate.m */,
 				29D0601F1C6F96D000EC3B92 /* Main.storyboard */,
 				29D060241C6F96D000EC3B92 /* LaunchScreen.storyboard */,
 				29F3053D1C7FD16E00912694 /* Deprecated */,
@@ -193,8 +157,23 @@
 			children = (
 				29FF66091C81A7860092CF50 /* KS_TypesAndHelpers.h */,
 				29FF660A1C81A7860092CF50 /* KS_TypesAndHelpers.m */,
+				2979FF091C8ABD02009E56D3 /* MainParameters.h */,
+				2979FF0A1C8ABD02009E56D3 /* MainParameters.m */,
+				2979FF0C1C8ABDD8009E56D3 /* Parameter.h */,
+				2979FF0D1C8ABDD8009E56D3 /* Parameter.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		2979FEE51C8932EE009E56D3 /* control elements */ = {
+			isa = PBXGroup;
+			children = (
+				294FBB341C86B782005EFAFF /* AnimatingButton.h */,
+				294FBB351C86B782005EFAFF /* AnimatingButton.m */,
+				297166601C81609C007B0772 /* KS_ParameterButton.h */,
+				297166611C81609C007B0772 /* KS_ParameterButton.m */,
+			);
+			name = "control elements";
 			sourceTree = "<group>";
 		};
 		29D0600A1C6F96D000EC3B92 = {
@@ -202,10 +181,8 @@
 			children = (
 				2902AB481C7C5212004632DF /* TODO */,
 				29E59ECD1C7C429B0038D86B /* Default-568h@2x.png */,
-				2902AB111C7C436B004632DF /* main.m */,
 				29D060271C6F96D000EC3B92 /* Info.plist */,
 				29D060151C6F96D000EC3B92 /* content */,
-				297644031C878874009D71FC /* DraWave.app */,
 				297644041C878F0E009D71FC /* DraWave-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
@@ -214,7 +191,6 @@
 			isa = PBXGroup;
 			children = (
 				294FBB3E1C86E510005EFAFF /* constants.h */,
-				2940D4931C81569200E5C405 /* kaoss */,
 				2979FEE41C87E21D009E56D3 /* Models */,
 				295E44101C7C323A002B28FD /* Views */,
 				2902AB501C7D19A6004632DF /* Controllers */,
@@ -229,45 +205,6 @@
 			children = (
 			);
 			name = Deprecated;
-			sourceTree = "<group>";
-		};
-		29FF66071C816D7B0092CF50 /* V */ = {
-			isa = PBXGroup;
-			children = (
-				2902AB601C7E6AC9004632DF /* KS_ConnectorView.h */,
-				2902AB611C7E6AC9004632DF /* KS_ConnectorView.m */,
-				29FF660D1C82121E0092CF50 /* KS_SettingsButton.h */,
-				29FF660E1C82121E0092CF50 /* KS_SettingsButton.m */,
-				297166601C81609C007B0772 /* KS_ParameterButton.h */,
-				297166611C81609C007B0772 /* KS_ParameterButton.m */,
-				29F305371C7FC0A300912694 /* KS_ElementButton.h */,
-				29F305381C7FC0A300912694 /* KS_ElementButton.m */,
-				29F305331C7FB55300912694 /* KS_LineDrawer.h */,
-				29F305341C7FB55300912694 /* KS_LineDrawer.m */,
-			);
-			name = V;
-			sourceTree = "<group>";
-		};
-		29FF66081C816D930092CF50 /* M */ = {
-			isa = PBXGroup;
-			children = (
-				2940D48C1C81557200E5C405 /* KS_ConnectionManager.h */,
-				2940D48D1C81557200E5C405 /* KS_ConnectionManager.m */,
-				2940D48F1C81566B00E5C405 /* KS_Connection.h */,
-				2940D4901C81566B00E5C405 /* KS_Connection.m */,
-				294FBB311C86B2F7005EFAFF /* KS_ControlPad_Element.h */,
-				294FBB321C86B2F7005EFAFF /* KS_ControlPad_Element.m */,
-			);
-			name = M;
-			sourceTree = "<group>";
-		};
-		29FF660C1C81AA250092CF50 /* C */ = {
-			isa = PBXGroup;
-			children = (
-				296AA1A21C81252B00AE06E4 /* KS_ConnectionViewController.h */,
-				296AA1A31C81252B00AE06E4 /* KS_ConnectionViewController.m */,
-			);
-			name = C;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,31 +277,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2940D48E1C81557200E5C405 /* KS_ConnectionManager.m in Sources */,
-				29F305351C7FB55300912694 /* KS_LineDrawer.m in Sources */,
+				2979FF081C8AA4CA009E56D3 /* ControlPadViewController.m in Sources */,
 				294FBB361C86B782005EFAFF /* AnimatingButton.m in Sources */,
 				29FF660B1C81A7860092CF50 /* KS_TypesAndHelpers.m in Sources */,
 				2902AB321C7C453C004632DF /* SynthVC.m in Sources */,
 				2902AB311C7C453B004632DF /* AudioController.m in Sources */,
 				297166621C81609C007B0772 /* KS_ParameterButton.m in Sources */,
-				29F305391C7FC0A300912694 /* KS_ElementButton.m in Sources */,
-				2902AB3E1C7C456D004632DF /* main.m in Sources */,
+				2979FF0B1C8ABD02009E56D3 /* MainParameters.m in Sources */,
 				2902AB391C7C455E004632DF /* RingBuff_t.c in Sources */,
 				2902AB3B1C7C4563004632DF /* WaveFormView.m in Sources */,
-				294FBB301C869E92005EFAFF /* ParameterBankView.m in Sources */,
+				294FBB301C869E92005EFAFF /* ControlPadParameterVew.m in Sources */,
 				2902AB361C7C4559004632DF /* functions.c in Sources */,
-				296AA1A41C81252B00AE06E4 /* KS_ConnectionViewController.m in Sources */,
-				2902AB3A1C7C4560004632DF /* AppDelegate.m in Sources */,
-				2940D48B1C8145D800E5C405 /* KS_ControlPad.m in Sources */,
-				2902AB621C7E6AC9004632DF /* KS_ConnectorView.m in Sources */,
-				2940D4911C81566B00E5C405 /* KS_Connection.m in Sources */,
-				294FBB331C86B2F7005EFAFF /* KS_ControlPad_Element.m in Sources */,
-				29FF660F1C82121E0092CF50 /* KS_SettingsButton.m in Sources */,
-				294FBB391C86BA1A005EFAFF /* MenuView.m in Sources */,
+				2940D48B1C8145D800E5C405 /* ControlPadTopView.m in Sources */,
+				294FBB331C86B2F7005EFAFF /* ControlPad_Element.m in Sources */,
+				2979FF0E1C8ABDD8009E56D3 /* Parameter.m in Sources */,
+				2979FF311C8BC640009E56D3 /* AppDelegate.swift in Sources */,
 				2902AB381C7C455D004632DF /* AlexRingBuffer.m in Sources */,
 				2902AB371C7C455B004632DF /* Draw_Helper.m in Sources */,
-				2979FEE31C87E082009E56D3 /* MenuSelectView.m in Sources */,
-				297644061C878F0E009D71FC /* SwiftClass.swift in Sources */,
 				294FBB3D1C86BCF0005EFAFF /* ControlPadMatrixView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

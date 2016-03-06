@@ -9,9 +9,16 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 #import "functions.h"
+#import "KS_TypesAndHelpers.h"
 
+
+@protocol AudioControllerDelegate <NSObject>
+- (void)waveFormChangedWithValue:(float)value;
+@end
 
 @interface AudioController : NSObject
+
+
 @property (nonatomic,assign) float amp;
 @property (nonatomic,assign) AudioBufferList * inputBuffer;
 @property (nonatomic,assign) AudioStreamBasicDescription streamFormat;
@@ -20,18 +27,15 @@
 
 + (instancetype)sharedInstance;
 
+@property (nonatomic,weak) id <AudioControllerDelegate> delegate;
+
+- (float *)PgetsamplesBuffer;
+- (float)PgetNumOfSamples;
+- (void)PsetDuration:(float)value;
+
+//- (void)PsetSamplesDurationValue:(float)value;
 
 
-- (float *)getsamplesBuffer;
-- (int *)getsamplesIndex;
-
-
-- (void)setSamplesDurationValue:(float)value;
-- (void)setLfoRateValue:(float)value;
-- (void)setLfoAmountValue:(float)value;
-
-
-- (OSStatus)setReverbAmount:(float)amount;
 
 
 @end

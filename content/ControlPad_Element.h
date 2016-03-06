@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "KS_TypesAndHelpers.h"
 
-@interface KS_ControlPad_Element : NSObject
+@interface ControlPad_Element : NSObject
 
 @property KS_Element_t element;
 @property KS_Parameter_t parameter;

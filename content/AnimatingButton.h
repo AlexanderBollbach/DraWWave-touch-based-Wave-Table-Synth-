@@ -14,5 +14,6 @@
 @property (nonatomic,strong) UILabel * title;
 
 - (void)animate:(BOOL)animate;
+- (void)animateQuick;
 
 @end

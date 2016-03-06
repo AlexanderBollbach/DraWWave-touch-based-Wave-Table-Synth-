@@ -80,7 +80,7 @@
    
       int i = alexMap(xPos, 0, w, 0, w);
    
-      float * buffer = [[AudioController sharedInstance] getsamplesBuffer];
+      float * buffer = [[AudioController sharedInstance] PgetsamplesBuffer];
    
       buffer[i] = amp;
    

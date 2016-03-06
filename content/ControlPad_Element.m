@@ -6,9 +6,9 @@
 //  Copyright © 2016 alexanderbollbach. All rights reserved.
 //
 
-#import "KS_ControlPad_Element.h"
+#import "ControlPad_Element.h"
 
-@implementation KS_ControlPad_Element
+@implementation ControlPad_Element
 
 
 

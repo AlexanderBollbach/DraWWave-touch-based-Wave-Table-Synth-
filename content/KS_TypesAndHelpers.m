@@ -63,19 +63,19 @@
    
    switch (parameter) {
       case KS_Parameter1:
-         return @"samples long";
+         return @"lfo1 rate";
          break;
       case KS_Parameter2:
-         return @"samples short";
+         return @"lfo1 amount";
          break;
       case KS_Parameter3:
-         return @"lfo rate";
+         return @"lfo2 rate";
          break;
       case KS_Parameter4:
-         return @"lfo amount";
+         return @"lfo2 amount";
          break;
       case KS_Parameter5:
-         return @"reverb amount";
+         return @"duration";
          break;
       case KS_Parameter6:
          return @"empty";

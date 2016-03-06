@@ -48,7 +48,20 @@
    }
 }
 
-
+- (void)animateQuick {
+   
+   
+   [UIView animateWithDuration:0.3 delay:0.0 options: UIViewAnimationOptionAllowUserInteraction animations:^{
+      self.backgroundColor = [UIColor whiteColor];
+   } completion:^(BOOL finished) {
+      [self.layer removeAllAnimations];
+      self.backgroundColor = [UIColor blackColor];
+      
+   }];
+   
+   
+   
+}
 
 -(void)layoutSubviews {
    self.title.frame = self.bounds;

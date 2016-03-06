@@ -25,7 +25,7 @@
    self.name = [[UILabel alloc] initWithFrame:CGRectZero];
    self.name.textColor = [UIColor whiteColor];
    self.name.textAlignment = NSTextAlignmentCenter;
-   self.name.font = [UIFont systemFontOfSize:10];
+   self.name.font = [UIFont systemFontOfSize:13];
    [self addSubview:self.name];
    
    self.layer.borderColor = [UIColor whiteColor].CGColor;

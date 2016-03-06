@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol ControlPadMatrixDelegate <NSObject>
+@protocol ControlPadMatrixViewDelegate <NSObject>
 
 - (void)elementXChangedWithValue:(float)value;
 - (void)elementYChangedWithValue:(float)value;
@@ -17,5 +17,6 @@
 
 @interface ControlPadMatrixView : UIView
 
-@property (nonatomic,weak) id <ControlPadMatrixDelegate> delegate;
+@property (nonatomic,weak) id <ControlPadMatrixViewDelegate> delegate;
+
 @end

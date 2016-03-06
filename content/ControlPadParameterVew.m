@@ -6,9 +6,9 @@
 //  Copyright © 2016 alexanderbollbach. All rights reserved.
 //
 
-#import "ParameterBankView.h"
+#import "ControlPadParameterVew.h"
 
-@interface ParameterBankView()
+@interface ControlPadParameterVew()
 @property (nonatomic,strong) KS_ParameterButton * parameterView1;
 @property (nonatomic,strong) KS_ParameterButton * parameterView2;
 @property (nonatomic,strong) KS_ParameterButton * parameterView3;
@@ -19,7 +19,7 @@
 @property (nonatomic,strong) KS_ParameterButton * parameterView8;
 @end
 
-@implementation ParameterBankView
+@implementation ControlPadParameterVew
 
 
 -(instancetype)initWithFrame:(CGRect)frame {
@@ -31,6 +31,8 @@
 
 
 - (void)setup {
+   
+   self.backgroundColor = [UIColor blackColor];
 
    self.parameterView1 = [[KS_ParameterButton alloc] initWithFrame:CGRectZero];
    [self addSubview:self.parameterView1];
@@ -87,16 +89,14 @@
 
 - (void)parameterButtonTapped:(KS_ParameterButton *)sender {
    
-   NSDictionary *param = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:sender.parameter]
-                                                     forKey:@"parameter"];
-   
-   [[NSNotificationCenter defaultCenter] postNotificationName:@"parameterTapped" object:self userInfo:param];
+  
+   [self.delegate parameterButtonTapped:sender.parameter];
    
    [sender animateQuick];
    
 }
 
--(void)layoutSubviews {
+- (void)layoutSubviews {
    
    
    CGRect top = self.bounds;
@@ -104,8 +104,6 @@
    
    CGRect bottom = top;
    bottom.origin.y += top.size.height;
-   
-   
    
    
    CGRect top1 = top;
